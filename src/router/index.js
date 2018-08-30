@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HomePage from '@/pages/HomePage';
+import HomePage from '@/pages/Homepage';
 import BrowsePage from '@/pages/BrowsePage';
 import PhotoDetailPage from '@/pages/PhotoDetailPage';
 import ShareListPage from '@/pages/ShareListPage';
