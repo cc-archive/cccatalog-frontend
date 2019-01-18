@@ -39,7 +39,7 @@
             <a class="photo_provider"
                :href="image.foreign_landing_url"
                target="blank"
-               rel="noopener noreferrer">{{ image.provider }}</a>
+               rel="noopener noreferrer">{{ providerName }}</a>
           </li>
           <li>
             <h3>Dimensions</h3>
@@ -80,6 +80,13 @@ export default {
     LicenseIcons,
   },
   computed: {
+    providerName() {
+      if (!this.image && !this.image.provider) {
+        return '';
+      }
+
+      return this.image.provider.name;
+    },
     ccLicenseURL() {
       if (!this.image) {
         return '';

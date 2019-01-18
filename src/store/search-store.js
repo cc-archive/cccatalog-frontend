@@ -15,6 +15,7 @@ import {
   SET_QUERY,
   SET_RELATED_IMAGES,
 } from './mutation-types';
+import ImageProviderService from '../api/ImageProviderService';
 
 const state = {
   image: {},
@@ -97,7 +98,11 @@ const mutations = {
     _state.isFetchingImages = false;
   },
   [SET_IMAGE](_state, params) {
-    _state.image = params.image;
+    const image = {
+      ...params.image,
+      provider: params.image ? ImageProviderService.getProviderInfo(params.image.provider) : null,
+    };
+    _state.image = image;
   },
   [SET_FILTER_IS_VISIBLE](_state, params) {
     _state.isFilterVisible = params.isFilterVisible;
