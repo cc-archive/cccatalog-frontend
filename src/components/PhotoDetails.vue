@@ -81,7 +81,7 @@ export default {
   },
   computed: {
     providerName() {
-      if (!this.image && !this.image.provider) {
+      if (!this.image || !this.image.provider) {
         return '';
       }
 
