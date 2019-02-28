@@ -42,6 +42,7 @@
 
 <script>
 import { FETCH_LISTS } from '@/store/action-types';
+import { SET_QUERY } from '@/store/mutation-types';
 
 export default {
   props: ['showNavSearch', 'fixedNav'],
@@ -57,7 +58,7 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$router.push({ path: '../search', query: { q: this.form.searchTerm } });
+      this.$store.commit(SET_QUERY, { query: { q: this.form.searchTerm }, shouldNavigate: true });
     },
   },
 };
