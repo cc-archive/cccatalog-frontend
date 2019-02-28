@@ -1,5 +1,4 @@
 import NavSection from '@/components/NavSection';
-import SET_QUERY from '@/store/mutation-types'
 import render from '../../test-utils/render';
 
 describe('NavSection', () => {
@@ -15,7 +14,7 @@ describe('NavSection', () => {
 
     const options = {
       propsData: {
-        ...props,
+        fixedNav: null,
         showNavSearch: true,
       },
       mocks: {
@@ -23,7 +22,7 @@ describe('NavSection', () => {
       },
     };
 
-    const wrapper = render(Navsection, options);
+    const wrapper = render(NavSection, options);
 
     wrapper.find('.hero_search-form').trigger('submit.prevent');
 
