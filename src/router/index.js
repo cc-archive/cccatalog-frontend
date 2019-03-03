@@ -46,7 +46,10 @@ const router = new VueRouter({
       component: HomePage,
     },
   ],
-  scrollBehavior() {
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
     return { x: 0, y: 0 };
   },
 });

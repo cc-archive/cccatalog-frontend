@@ -98,7 +98,7 @@ describe('PhotoDetails', () => {
 
   it('redirects back when clicking on the back to results link', () => {
     const routerMock = {
-      push: jest.fn(),
+      go: jest.fn(),
     };
     const opts = {
       propsData: {
@@ -115,6 +115,6 @@ describe('PhotoDetails', () => {
     const wrapper = render(PhotoDetails, opts);
     const link = wrapper.find('.photo_breadcrumb');
     link.trigger('click');
-    expect(routerMock.push).toHaveBeenCalledWith({ name: 'browse-page', query: opts.propsData.query });
+    expect(routerMock.go).toHaveBeenCalledWith(-1);
   });
 });
