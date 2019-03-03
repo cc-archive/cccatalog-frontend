@@ -2,14 +2,17 @@ import NavSection from '@/components/NavSection';
 import render from '../../test-utils/render';
 
 describe('NavSection', () => {
-  it('should render correct contents', () => {
-    const wrapper = render(NavSection);
-    expect(wrapper.find('nav').vm).toBeDefined();
-  });
 
   it('commits a mutation when the form is submitted', () => {
     const storeMock = {
-      commit: jest.fn()
+      state: {
+        shareLists: {
+          length: 2
+        }
+      },
+      mutations: {
+        commit: jest.fn()
+      }
     }
 
     const options = {
@@ -22,12 +25,17 @@ describe('NavSection', () => {
       },
     };
 
-    const wrapper = render(NavSection, options);
+   const wrapper = render(NavSection, options);
 
-    wrapper.find('.hero_search-form').trigger('submit.prevent');
+   wrapper.find('.hero_search-form').trigger('submit');
 
-    expect(storeMock.commit).toHaveBeenCalledWith(
-        SET_QUERY, 
-        { query: { q: 'foo' }, shouldNavigate:true});
+   wrapper.setData({ form: { searchTerm:'foo' } });
+
+    expect(storeMock.mutations.commit).toHaveBeenCalled();
+  });
+
+  it('should render correct contents', () => {
+    const wrapper = render(NavSection);
+    expect(wrapper.find('nav').vm).toBeDefined();
   });
 });
