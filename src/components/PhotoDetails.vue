@@ -79,6 +79,10 @@
              @click.stop="onAddToImageList(image, $event)">
              Add to list
           </a>
+          <a class="download-image"
+            @click.stop="downloadImage(image.url)">
+            Download image
+          </a>
         </section>
       </section>
     </div>
@@ -164,6 +168,23 @@ export default {
 
       this.$store.commit(SELECT_IMAGE_FOR_LIST, { image: imageWithDimensions });
     },
+    downloadImage(url) {
+      fetch(url, {
+        headers: new Headers({
+          Origin: location.origin,
+        }),
+        mode: 'cors',
+      })
+        .then(response => response.blob())
+        .then((blob) => {
+          const a = document.createElement('a');
+          a.download = url.split('/').pop();
+          a.href = window.URL.createObjectURL(blob);
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+        });
+    },
   },
 };
 </script>
@@ -172,6 +193,7 @@ export default {
   @import '../styles/photodetails.scss';
 
   .add-to-list {
+    display: block;
     &:before {
       height: 13px;
       width: 13px;
@@ -181,5 +203,16 @@ export default {
       display: inline-block;
     }
   }
-</style>
 
+  .download-image {
+    display: block;
+    &:before {
+      height: 13px;
+      width: 13px;
+      content: '';
+      background: url('../assets/download-icon.svg') no-repeat;
+      opacity: .5;
+      display: inline-block;
+    }
+  }
+</style>
