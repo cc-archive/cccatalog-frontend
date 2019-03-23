@@ -42,6 +42,7 @@
           <h5>Error fetching images</h5>
       </div>
     </div>
+       <button onclick="topFunction ()" id="myBtn" title="Go to top">Top</button>
   </section>
 </template>
 
@@ -238,5 +239,24 @@ export default {
     margin: auto;
     font-weight: 500;
     text-align: center;
+  }
+  #myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: lightblue;
+    color: black;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 18px;
+  }
+
+  #myBtn:hover {
+    background-color: #555;
   }
 </style>
