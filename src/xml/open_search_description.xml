@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <InputEncoding>UTF-8</InputEncoding>
+
+  <ShortName>CC Search</ShortName>
+  <LongName>Creative Commons Search</LongName>
+
+  <Description>
+    Find content you can share, use and remix.
+  </Description>
+  <Image height="16" width="16" type="image/vnd.microsoft.icon">
+    https://search.creativecommons.org/cc-wp/favicon.ico
+  </Image>
+
+  <Tags>example web creative commons</Tags>
+  <Contact>webmaster@creativecommons.org</Contact>
+
+  <Url
+    type="text/html"
+    method="get"
+    template="https://ccsearch.creativecommons.org/search?q={searchTerms}"
+  />
+</OpenSearchDescription>
