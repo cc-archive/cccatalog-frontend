@@ -260,8 +260,15 @@ export default {
 <style lang="scss" scoped>
   @import '../styles/photodetails.scss';
   .download-watermark {
-    background: #01a635;
+    background: #05A081;
     color: #fff;
+    width: 32%;
+    border-radius: 3px;
+    
+    &:hover {
+      color: #fff;
+      background: #02735d
+    }
   }
 
   label {
