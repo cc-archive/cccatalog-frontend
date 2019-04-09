@@ -2,7 +2,7 @@
 <div class="home-page grid-container full">
   <header-section showHero="true"></header-section>
   <div class="home-page_body">
-    <section class="featured-images">
+    <section class="featured-images grid-container">
       <header class="featured-images_header">
         <h2 class="featured-items_title">Top Categories</h2>
       </header>
@@ -32,7 +32,7 @@
         </div>
       </div>
     </section>
-  <section class="grid top-images">
+  <section class="top-images grid-container">
     <header class="top-images_header">
       <h2 class="featured-items_title">Top Picks</h2>
     </header>
@@ -204,7 +204,6 @@ $vert-seperate: 4rem;
 }
 
 .featured-images {
-  margin: 30px 0;
   padding: 30px;
 
   &_header {
