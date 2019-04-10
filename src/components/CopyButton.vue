@@ -23,6 +23,55 @@ export default {
   },
   methods: {
     listener(clickEvent) {
+
+      // Copy To Clipboard [Works on Safari] => Ref: https://stackoverflow.com/a/46858939/5560399
+      window.Clipboard = (function(window, document, navigator) {
+          var textArea,
+              copy;
+
+          function isOS() {
+              return navigator.userAgent.match(/ipad|iphone/i);
+          }
+
+          function createTextArea(text) {
+              textArea = document.createElement('textArea');
+              textArea.value = text;
+              document.body.appendChild(textArea);
+          }
+
+          function selectText() {
+              var range,
+                  selection;
+
+              if (isOS()) {
+                  range = document.createRange();
+                  range.selectNodeContents(textArea);
+                  selection = window.getSelection();
+                  selection.removeAllRanges();
+                  selection.addRange(range);
+                  textArea.setSelectionRange(0, 999999);
+              } else {
+                  textArea.select();
+              }
+          }
+
+          function copyToClipboard() {        
+              document.execCommand('copy');
+              document.body.removeChild(textArea);
+          }
+
+          copy = function(text) {
+              createTextArea(text);
+              selectText();
+              copyToClipboard();
+          };
+
+          return {
+              copy: copy
+          };
+      })(window, document, navigator);
+
+
       // Prepare the content to copy into the clipboard
       const content = this.toCopy().replace(/\s\s/g, '');
 
@@ -38,7 +87,7 @@ export default {
         event.preventDefault();
       };
       document.addEventListener('copy', copier);
-      document.execCommand('copy');
+      Clipboard.copy('text to be copied');
       document.removeEventListener('copy', copier);
 
       // Set the success flag and log the copy action for Analytics
