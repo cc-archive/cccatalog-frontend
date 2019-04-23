@@ -10,11 +10,6 @@ const ImageProviderService = {
   },
   getProviderInfo(providerName) {
     const PROVIDER_NAME_LOOKUP = {
-      '500px': {
-        name: '500px',
-        url: 'https://500px.com',
-        logo: '500px_logo.png',
-      },
       animaldiversity: {
         name: 'Animal Diversity Web',
         url: 'https://animaldiversity.org',
@@ -64,11 +59,6 @@ const ImageProviderService = {
         name: 'Geograph® Britain and Ireland',
         url: 'https://www.geograph.org.uk',
         logo: 'geographorguk_logo.gif',
-      },
-      iha: {
-        name: 'IHA Holiday Ads',
-        url: 'https://www.iha.com',
-        logo: 'iha_logo.png',
       },
       mccordmuseum: {
         name: 'Montreal Social History Museum',
