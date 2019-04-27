@@ -22,9 +22,6 @@
       </li>
       <li>
         <h3>License</h3>
-        <a class="photo_license" :href="ccLicenseURL">
-        {{ fullLicenseName }}
-        </a>
         <license-icons :image="image"></license-icons>
       </li>
       <li>

@@ -4,6 +4,7 @@
      class="photo-license-icons"
      target="_blank"
      rel="noopener noreferrer">
+    <span>{{image.license.toUpperCase()}} {{image.license_version}}</span>
     <img class="photo-license-icon" src="@/assets/cc_icon.svg"><img
           v-for="(license, index) in onGetLicenseIcon(image.license)"
           v-if="license" class="photo-license-icon"
