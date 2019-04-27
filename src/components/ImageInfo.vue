@@ -47,7 +47,7 @@ import ImageProviderService from '@/api/ImageProviderService';
 
 export default {
   name: 'image-info',
-  props: ['image', 'ccLicenseURL', 'fullLicenseName', 'imageWidth', 'imageHeight'],
+  props: ['image', 'imageWidth', 'imageHeight'],
   components: {
     LicenseIcons,
   },

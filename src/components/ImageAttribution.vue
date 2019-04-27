@@ -51,7 +51,7 @@ import { COPY_ATTRIBUTION, EMBED_ATTRIBUTION } from '@/store/action-types';
 
 export default {
   name: 'image-attribution',
-  props: ['id', 'image', 'ccLicenseURL', 'fullLicenseName', 'attributionHtml'],
+  props: ['id', 'image', 'attributionHtml'],
   components: {
     LicenseIcons,
     CopyButton,
