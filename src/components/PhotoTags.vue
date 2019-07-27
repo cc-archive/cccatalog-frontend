@@ -25,12 +25,12 @@ export default {
   props: ['tags'],
   computed: {
     hasClarifaiTags() {
-      return this.$props.tags.some(tag => tag.provider === 'clarifai');
+      return this.$props.tags.some(tag => tag.source === 'clarifai');
     },
   },
   methods: {
-    isClarifaiTag(provider) {
-      return provider === 'clarifai';
+    isClarifaiTag(source) {
+      return source === 'clarifai';
     },
     searchByTagName(query) {
       this.$store.commit(SET_QUERY, { query: { q: query }, shouldNavigate: true });

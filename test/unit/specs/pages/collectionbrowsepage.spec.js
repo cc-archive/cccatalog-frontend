@@ -6,7 +6,7 @@ describe('CollectionBrowsePage', () => {
   const options = {
     propsData: {
       query: {
-        provider: 'foo',
+        source: 'foo',
       },
     },
     mocks: {
@@ -14,7 +14,7 @@ describe('CollectionBrowsePage', () => {
         state: {
           query: {
             q: 'foo',
-            provider: 'foo',
+            source: 'foo',
           },
         },
         dispatch: jest.fn(),

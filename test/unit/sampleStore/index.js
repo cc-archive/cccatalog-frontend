@@ -1,10 +1,10 @@
 import SearchStore from '@/store/search-store';
-import ImageProviderStore from '@/store/image-provider-store';
+import ImageSourceStore from '@/store/image-source-store';
 
 const store = {
   state: Object.assign(
     SearchStore.state('?q=nature'),
-    ImageProviderStore.state,
+    ImageSourceStore.state,
   ),
 };
 

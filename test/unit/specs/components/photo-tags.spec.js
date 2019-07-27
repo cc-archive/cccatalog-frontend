@@ -12,12 +12,12 @@ describe('PhotoTags', () => {
         {
           accuracy: 1,
           name: 'foo',
-          provider: 'clarifai',
+          source: 'clarifai',
         },
         {
           accuracy: 1,
           name: 'bar',
-          provider: 'foo',
+          source: 'foo',
         },
       ],
     };

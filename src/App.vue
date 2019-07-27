@@ -5,22 +5,22 @@
 </template>
 
 <script>
-import { FETCH_IMAGE_PROVIDERS } from '@/store/action-types';
+import { FETCH_IMAGE_SOURCES } from '@/store/action-types';
 
 export default {
   name: 'App',
   methods: {
-    fetchProviders() {
-      return this.$store.dispatch(FETCH_IMAGE_PROVIDERS);
+    fetchSources() {
+      return this.$store.dispatch(FETCH_IMAGE_SOURCES);
     },
   },
   beforeMount() {
-    if (!this.$store.state.imageProviders || !this.$store.state.imageProviders.length) {
-      this.fetchProviders();
+    if (!this.$store.state.imageSources || !this.$store.state.imageSources.length) {
+      this.fetchSources();
     }
   },
   serverPrefetch() {
-    return this.fetchProviders();
+    return this.fetchSources();
   },
 };
 </script>

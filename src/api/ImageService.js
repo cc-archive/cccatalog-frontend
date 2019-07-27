@@ -9,8 +9,8 @@ const ImageService = {
     return ApiService.query('image/search', params);
   },
 
-  getProviderCollection(params) {
-    return ApiService.query(`image/browse/${params.provider}`, params);
+  getSourceCollection(params) {
+    return ApiService.query(`image/browse/${params.source}`, params);
   },
 
   /**

@@ -6,9 +6,9 @@ describe('CollectionsPage', () => {
     mocks: {
       $store: {
         state: {
-          imageProviders: [
-            { provider_name: 'met' },
-            { provider_name: 'flickr' },
+          imageSources: [
+            { source_name: 'met' },
+            { source_name: 'flickr' },
           ],
         },
         dispatch: jest.fn(),
@@ -20,21 +20,21 @@ describe('CollectionsPage', () => {
     expect(wrapper.findAll({ name: 'collection-item' }).length).toBe(2);
   });
 
-  it('should get museum providers', () => {
+  it('should get museum sources', () => {
     const wrapper = render(CollectionsPage, options);
-    const museumProviders = wrapper.vm.museumProviders;
-    expect(museumProviders[0].provider_name).toBe('met');
+    const museumSources = wrapper.vm.museumSources;
+    expect(museumSources[0].source_name).toBe('met');
   });
 
-  it('should get museum providers', () => {
+  it('should get museum sources', () => {
     const wrapper = render(CollectionsPage, options);
-    const museumProviders = wrapper.vm.otherProviders;
-    expect(museumProviders[0].provider_name).toBe('flickr');
+    const museumSources = wrapper.vm.otherSources;
+    expect(museumSources[0].source_name).toBe('flickr');
   });
 
-  it('should get all providers', () => {
+  it('should get all sources', () => {
     const wrapper = render(CollectionsPage, options);
-    const museumProviders = wrapper.vm.providers;
-    expect(museumProviders).toHaveLength(2);
+    const museumSources = wrapper.vm.sources;
+    expect(museumSources).toHaveLength(2);
   });
 });

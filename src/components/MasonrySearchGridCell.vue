@@ -14,13 +14,13 @@
         <license-icons :image="image"></license-icons>
       </figcaption>
       <figcaption class="search-grid_item-overlay search-grid_item-overlay__bottom">
-        <a class="search-grid_overlay-provider"
+        <a class="search-grid_overlay-source"
             :title="image.title"
             :href="getImageForeignUrl(image)"
             @click.stop="() => false"
             target="new">
-            <img class="search-grid_overlay-provider-logo" :alt="image.provider"
-                :src="getProviderLogo(image.provider)">
+            <img class="search-grid_overlay-source-logo" :alt="image.source"
+                :src="getSourceLogo(image.source)">
             {{ image.title }}
         </a>
       </figcaption>
@@ -30,7 +30,7 @@
 
 <script>
 import LicenseIcons from '@/components/LicenseIcons';
-import getProviderLogo from '@/utils/getProviderLogo';
+import getSourceLogo from '@/utils/getSourceLogo';
 
 const errorImage = require('@/assets/image_not_available_placeholder.png');
 
@@ -58,8 +58,8 @@ export default {
     getImageForeignUrl(image) {
       return toAbsolutePath(image.foreign_landing_url);
     },
-    getProviderLogo(providerName) {
-      return getProviderLogo(providerName);
+    getSourceLogo(sourceName) {
+      return getSourceLogo(sourceName);
     },
     onGotoDetailPage(event, image) {
       // doesn't use router to redirect to photo details page in case the user
@@ -136,7 +136,7 @@ export default {
     }
   }
 
-  .search-grid_overlay-provider {
+  .search-grid_overlay-source {
     width: calc( 100% - 30px );
     display: block;
     bottom: 10px;
@@ -152,7 +152,7 @@ export default {
     }
   }
 
-  .search-grid_overlay-provider-logo {
+  .search-grid_overlay-source-logo {
     max-height: 30px;
     max-width: 40px;
     margin-right: 5px;

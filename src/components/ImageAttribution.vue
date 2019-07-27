@@ -45,7 +45,7 @@
         </CopyButton>
       </div>
       <reuse-survey />
-      <legal-disclaimer :source="image.provider" :sourceURL="image.foreign_landing_url" />
+      <legal-disclaimer :source="image.source" :sourceURL="image.foreign_landing_url" />
     </div>
   </section>
 </template>

@@ -34,15 +34,15 @@
           :showLabels="false">
         </multiselect>
       </div>
-      <div v-if="showProvidersFilter" class="filter-option search-filters_providers">
+      <div v-if="showSourcesFilter" class="filter-option search-filters_sources">
         <multiselect
-          v-model="filter.provider"
+          v-model="filter.source"
           @input="onUpdateFilter"
           tag-placeholder="Add this as new tag"
-          placeholder="All Providers"
+          placeholder="All Sources"
           label="name"
           track-by="code"
-          :options="providers"
+          :options="sources"
           :multiple="true"
           :searchable="true"
           :closeOnSelect="false"
@@ -81,7 +81,7 @@ const transformFilterValue = (filter, key) => {
 
 export default {
   name: 'search-grid-filter',
-  props: ['showProvidersFilter'],
+  props: ['showSourcesFilter'],
   components: {
     Multiselect,
   },
@@ -98,13 +98,13 @@ export default {
     query() {
       return this.$store.state.query;
     },
-    providers() {
-      const providers = this.$store.state.imageProviders.map(provider => ({
-        code: provider.provider_name,
-        name: provider.display_name,
+    sources() {
+      const sources = this.$store.state.imageSources.map(source => ({
+        code: source.source_name,
+        name: source.display_name,
       }));
 
-      return providers;
+      return sources;
     },
   },
   methods: {
@@ -123,7 +123,7 @@ export default {
     },
     parseQueryFilters() {
       const filterLookup = {
-        provider: 'providers',
+        source: 'sources',
         li: 'licenses',
         lt: 'licenseTypes',
       };
@@ -167,7 +167,7 @@ export default {
       { code: 'modification', name: 'Modify or adapt' },
     ],
     filter: {
-      provider: [],
+      source: [],
       li: [],
       lt: [],
       searchBy: {

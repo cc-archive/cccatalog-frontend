@@ -38,32 +38,32 @@
       "by-nc-nd", "cc0", "pdm".
     </p>
 
-    <h2>Search by provider</h2>
+    <h2>Search by source</h2>
     <p>
-      Put <em>provider:</em> in front of your search term to see only results from the
+      Put <em>source:</em> in front of your search term to see only results from the
       specified source. For example,
-      <a href='https://search.creativecommons.org/search?q=provider%3A%20"met"'>
-        <em>provider:"met"</em>
+      <a href='https://search.creativecommons.org/search?q=source%3A%20"met"'>
+        <em>source:"met"</em>
       </a>
       <br />
-      Note that you must use one of the provider codes specified below, searching for
-      something like <em>provider:"Metropolitan Museum of Art"</em> will not return any results.
-      Use the following table with the provider code of every provider in our collection.
+      Note that you must use one of the source codes specified below, searching for
+      something like <em>source:"Metropolitan Museum of Art"</em> will not return any results.
+      Use the following table with the source code of every source in our collection.
     </p>
 
-    <div class="page_provider-stats-ctr">
-      <table class="page_provider-stats-table">
+    <div class="page_source-stats-ctr">
+      <table class="page_source-stats-table">
         <thead>
-          <th>Provider Name</th>
-          <th>Provider Code</th>
+          <th>Source Name</th>
+          <th>Source Code</th>
         </thead>
         <tbody>
-          <tr v-for="(imageProvider, index) in imageProviders"
+          <tr v-for="(imageSource, index) in imageSources"
               :key="index">
-            <td>{{ imageProvider.display_name }}</td>
+            <td>{{ imageSource.display_name }}</td>
             <td>
-              <a :href="providerSearchLink(imageProvider.provider_name)">
-                {{ imageProvider.provider_name }}
+              <a :href="sourceSearchLink(imageSource.source_name)">
+                {{ imageSource.source_name }}
               </a>
             </td>
           </tr>
@@ -107,8 +107,8 @@
       For example:
       <ul>
         <li>
-          <a href='https://ccsearch.creativecommons.org/search?q=title%3A%20"nature"%20AND%20provider%3A%20"met"'>
-            <em>title:"nature" AND provider:"met"</em>
+          <a href='https://ccsearch.creativecommons.org/search?q=title%3A%20"nature"%20AND%20source%3A%20"met"'>
+            <em>title:"nature" AND source:"met"</em>
           </a>
           will return images from the MET and whose title contains nature.
         </li>
@@ -126,8 +126,8 @@
       For example:
       <ul>
         <li>
-          <a href='https://ccsearch.creativecommons.org/search?q=title%3A%20"nature"%20AND%20provider%3A%20"met"'>
-            <em>provider:"met" OR provider:"flickr"</em>
+          <a href='https://ccsearch.creativecommons.org/search?q=title%3A%20"nature"%20AND%20source%3A%20"met"'>
+            <em>source:"met" OR source:"flickr"</em>
           </a>
           will return images which are either from MET or from Flickr.
         </li>
@@ -146,10 +146,10 @@
       of these operations For example:
       <ul>
         <li>
-          <a href='https://ccsearch.creativecommons.org/search?q=license%3A"by"%20AND%20%28NOT%20provider%3A"flickr"%29'>
-            <em>license:"by" AND (NOT provider:"flickr")</em>
+          <a href='https://ccsearch.creativecommons.org/search?q=license%3A"by"%20AND%20%28NOT%20source%3A"flickr"%29'>
+            <em>license:"by" AND (NOT source:"flickr")</em>
           </a>
-          will return images licensed under CC BY from all providers except from Flickr.
+          will return images licensed under CC BY from all sources except from Flickr.
         </li>
         <li>
           <a href='https://ccsearch.creativecommons.org/search?q=tags.name%3A"bird"%20AND%20%28NOT%20tags.name%3A"flamingo"%29'>
@@ -175,13 +175,13 @@ const SearchHelpPage = {
     FooterSection,
   },
   computed: {
-    imageProviders() {
-      return this.$store.state.imageProviders;
+    imageSources() {
+      return this.$store.state.imageSources;
     },
   },
   methods: {
-    providerSearchLink(providerCode) {
-      return `https://search.creativecommons.org/search?q=provider%3A%20"${providerCode}"`;
+    sourceSearchLink(sourceCode) {
+      return `https://search.creativecommons.org/search?q=source%3A%20"${sourceCode}"`;
     },
   },
 };

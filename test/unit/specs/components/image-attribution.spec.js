@@ -16,7 +16,7 @@ describe('ImageAttribution', () => {
       image: {
         id: 0,
         title: 'foo',
-        provider: 'flickr',
+        source: 'flickr',
         url: 'foo.bar',
         thumbnail: 'http://foo.bar',
         foreign_landing_url: 'http://foo.bar',

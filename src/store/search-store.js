@@ -25,7 +25,7 @@ import {
 const state = (searchParams) => {
   const query = {
     q: getParameterByName('q', searchParams),
-    provider: getParameterByName('provider', searchParams),
+    source: getParameterByName('source', searchParams),
     li: getParameterByName('li', searchParams),
     lt: getParameterByName('lt', searchParams),
     searchBy: getParameterByName('searchBy', searchParams),
@@ -38,7 +38,7 @@ const state = (searchParams) => {
     isFetchingImages: false,
     isFetchingImagesError: true,
     isFilterVisible: false,
-    isFilterApplied: !!query.provider || !!query.li || !!query.lt || !!query.searchBy,
+    isFilterApplied: !!query.source || !!query.li || !!query.lt || !!query.searchBy,
     query,
     relatedImages: [],
     relatedImagesCount: 0,
@@ -71,13 +71,13 @@ const fetchCollectionImages = (commit, params, imageService) => {
 
   const queryParams = {
     q: params.q,
-    provider: params.provider,
+    source: params.source,
     searchBy: params.searchBy,
   };
-  // the provider collection API doesn't support the `q` parameter.
+  // the source collection API doesn't support the `q` parameter.
   // so if the `q`, or any other search filter is provided, and
-  // since the `provider` parameter is passed, we can just call the search API instead
-  const searchMethod = allKeysUndefinedExcept(queryParams, 'provider') ? imageService.getProviderCollection : imageService.search;
+  // since the `source` parameter is passed, we can just call the search API instead
+  const searchMethod = allKeysUndefinedExcept(queryParams, 'source') ? imageService.getSourceCollection : imageService.search;
   return searchMethod(prepareSearchQueryParams(params));
 };
 
@@ -153,7 +153,7 @@ const actions = ImageService => ({
 
 function setQuery(_state, params, path, routePush) {
   const query = Object.assign({}, _state.query, params.query);
-  const isFilterApplied = ['li', 'provider', 'lt', 'searchBy']
+  const isFilterApplied = ['li', 'source', 'lt', 'searchBy']
     .some(key => query[key] && query[key].length > 0);
 
   _state.isFilterApplied = isFilterApplied;
@@ -210,7 +210,7 @@ const mutations = routePush => ({
     setQuery(_state, params, '/search', routePush);
   },
   [SET_COLLECTION_QUERY](_state, params) {
-    setQuery(_state, params, `/collections/${params.provider}`, routePush);
+    setQuery(_state, params, `/collections/${params.source}`, routePush);
   },
 });
 

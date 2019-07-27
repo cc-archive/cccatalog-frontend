@@ -31,7 +31,7 @@ describe('Search Store', () => {
     });
 
     it('gets query from search params', () => {
-      const state = store.state('?q=landscapes&provider=met&li=by&lt=all&searchBy=creator');
+      const state = store.state('?q=landscapes&source=met&li=by&lt=all&searchBy=creator');
       expect(state.imagesCount).toBe(0);
       expect(state.imagePage).toBe(1);
       expect(state.images).toHaveLength(0);
@@ -40,7 +40,7 @@ describe('Search Store', () => {
       expect(state.isFilterVisible).toBeFalsy();
       expect(state.isFilterApplied).toBeTruthy();
       expect(state.query.q).toBe('landscapes');
-      expect(state.query.provider).toBe('met');
+      expect(state.query.source).toBe('met');
       expect(state.query.li).toBe('by');
       expect(state.query.lt).toBe('all');
       expect(state.query.searchBy).toBe('creator');
@@ -48,8 +48,8 @@ describe('Search Store', () => {
       expect(state.relatedImagesCount).toBe(0);
     });
 
-    it('isFilterApplied is set to true when provider filter is set', () => {
-      const state = store.state('?q=landscapes&provider=met&li=by&lt=');
+    it('isFilterApplied is set to true when source filter is set', () => {
+      const state = store.state('?q=landscapes&source=met&li=by&lt=');
       expect(state.isFilterApplied).toBeTruthy();
     });
 
@@ -179,11 +179,11 @@ describe('Search Store', () => {
       expect(state.query.q).toBe(params.query.q);
     });
 
-    it('SET_QUERY updates isFilterApplied with provider', () => {
-      const params = { query: { q: 'foo', provider: 'bar' } };
+    it('SET_QUERY updates isFilterApplied with source', () => {
+      const params = { query: { q: 'foo', source: 'bar' } };
       mutations[SET_QUERY](state, params);
 
-      expect(state.query.provider).toBe(params.query.provider);
+      expect(state.query.source).toBe(params.query.source);
       expect(state.isFilterApplied).toBeTruthy();
     });
 
@@ -229,7 +229,7 @@ describe('Search Store', () => {
       imageServiceMock = {
         search: jest.fn(() => Promise.resolve({ data: searchData })),
         getRelatedImages: jest.fn(() => Promise.resolve({ data: searchData })),
-        getProviderCollection: jest.fn(() => Promise.resolve({ data: searchData })),
+        getSourceCollection: jest.fn(() => Promise.resolve({ data: searchData })),
         getImageDetail: jest.fn(() => Promise.resolve({ data: imageDetailData })),
       };
       commit = jest.fn();
@@ -256,7 +256,7 @@ describe('Search Store', () => {
     });
 
     it('FETCH_COLLECTION_IMAGES on success', (done) => {
-      const params = { provider: 'met', page: 1, shouldPersistImages: false };
+      const params = { source: 'met', page: 1, shouldPersistImages: false };
       const action = store.actions(imageServiceMock)[FETCH_COLLECTION_IMAGES];
       action({ commit }, params).then(() => {
         expect(commit).toBeCalledWith(FETCH_START_IMAGES);
@@ -269,13 +269,13 @@ describe('Search Store', () => {
           page: params.page,
         });
 
-        expect(imageServiceMock.getProviderCollection).toBeCalledWith(params);
+        expect(imageServiceMock.getSourceCollection).toBeCalledWith(params);
         done();
       });
     });
 
     it('FETCH_COLLECTION_IMAGES calls search API if q param exist', (done) => {
-      const params = { q: 'nature', provider: 'met', page: 1, shouldPersistImages: false };
+      const params = { q: 'nature', source: 'met', page: 1, shouldPersistImages: false };
       const action = store.actions(imageServiceMock)[FETCH_COLLECTION_IMAGES];
       action({ commit }, params).then(() => {
         expect(imageServiceMock.search).toBeCalledWith(params);
@@ -284,28 +284,28 @@ describe('Search Store', () => {
       });
     });
 
-    it('FETCH_COLLECTION_IMAGES calls getProviderCollection API if li param exist', (done) => {
-      const params = { li: 'by', provider: 'met', page: 1, shouldPersistImages: false };
+    it('FETCH_COLLECTION_IMAGES calls getSourceCollection API if li param exist', (done) => {
+      const params = { li: 'by', source: 'met', page: 1, shouldPersistImages: false };
       const action = store.actions(imageServiceMock)[FETCH_COLLECTION_IMAGES];
       action({ commit }, params).then(() => {
-        expect(imageServiceMock.getProviderCollection).toBeCalledWith(params);
+        expect(imageServiceMock.getSourceCollection).toBeCalledWith(params);
 
         done();
       });
     });
 
-    it('FETCH_COLLECTION_IMAGES calls getProviderCollection API if lt param exist', (done) => {
-      const params = { lt: 'commercial', provider: 'met', page: 1, shouldPersistImages: false };
+    it('FETCH_COLLECTION_IMAGES calls getSourceCollection API if lt param exist', (done) => {
+      const params = { lt: 'commercial', source: 'met', page: 1, shouldPersistImages: false };
       const action = store.actions(imageServiceMock)[FETCH_COLLECTION_IMAGES];
       action({ commit }, params).then(() => {
-        expect(imageServiceMock.getProviderCollection).toBeCalledWith(params);
+        expect(imageServiceMock.getSourceCollection).toBeCalledWith(params);
 
         done();
       });
     });
 
     it('FETCH_COLLECTION_IMAGES calls search API if q param exist', (done) => {
-      const params = { q: 'nature', provider: 'met', page: 1, shouldPersistImages: false };
+      const params = { q: 'nature', source: 'met', page: 1, shouldPersistImages: false };
       const action = store.actions(imageServiceMock)[FETCH_COLLECTION_IMAGES];
       action({ commit }, params).then(() => {
         expect(imageServiceMock.search).toBeCalledWith(params);
@@ -329,7 +329,7 @@ describe('Search Store', () => {
 
     it('FETCH_COLLECTION_IMAGES on error', (done) => {
       const failedMock = {
-        getProviderCollection: jest.fn(() => Promise.reject('error')),
+        getSourceCollection: jest.fn(() => Promise.reject('error')),
         search: jest.fn(() => Promise.reject('error')),
       };
       const params = { q: 'foo', page: 1, shouldPersistImages: false };

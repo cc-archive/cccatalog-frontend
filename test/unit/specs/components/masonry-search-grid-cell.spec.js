@@ -6,7 +6,7 @@ describe('SearchGridCell', () => {
     image: {
       id: 0,
       title: 'foo',
-      provider: 'flickr',
+      source: 'flickr',
       url: 'foo.bar',
       thumbnail: 'foo.bar',
       foreign_landing_url: 'foreign_foo.bar',
@@ -18,14 +18,14 @@ describe('SearchGridCell', () => {
     expect(wrapper.find('div').find('figure').element).toBeDefined();
   });
 
-  it('getProviderLogo should return existing logo', () => {
+  it('getSourceLogo should return existing logo', () => {
     const wrapper = render(MasonrySearchGridCell, { propsData: props });
-    expect(wrapper.vm.getProviderLogo('flickr')).not.toBe('');
+    expect(wrapper.vm.getSourceLogo('flickr')).not.toBe('');
   });
 
-  it('getProviderLogo should not return non existing logo', () => {
+  it('getSourceLogo should not return non existing logo', () => {
     const wrapper = render(MasonrySearchGridCell, { propsData: props });
-    expect(wrapper.vm.getProviderLogo('does not exist')).toBe('');
+    expect(wrapper.vm.getSourceLogo('does not exist')).toBe('');
   });
 
   it('getImageUrl returns image url with https://', () => {

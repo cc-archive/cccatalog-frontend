@@ -47,7 +47,7 @@ const router = new VueRouter({
       component: CollectionsPage,
     },
     {
-      path: '/collections/:provider',
+      path: '/collections/:source',
       name: 'collections-browse-page',
       component: CollectionBrowsePage,
       props: true,

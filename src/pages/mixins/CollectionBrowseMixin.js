@@ -1,19 +1,19 @@
 import { FETCH_COLLECTION_IMAGES } from '@/store/action-types';
 import { SET_COLLECTION_QUERY } from '@/store/mutation-types';
-import getProviderName from '@/utils/getProviderName';
+import getSourceName from '@/utils/getSourceName';
 
 const CollectionBrowsePage = {
   name: 'collection-browse-page',
-  props: ['provider'],
+  props: ['source'],
   computed: {
     query() {
       return {
         ...this.$store.state.query,
-        provider: this.$props.provider,
+        source: this.$props.source,
       };
     },
-    providerName() {
-      return getProviderName(this.$store.state.imageProviders, this.$props.provider);
+    sourceName() {
+      return getSourceName(this.$store.state.imageSources, this.$props.source);
     },
   },
   methods: {
@@ -26,13 +26,13 @@ const CollectionBrowsePage = {
     onSearchFormSubmit(searchParams) {
       this.$store.commit(SET_COLLECTION_QUERY, {
         ...searchParams,
-        provider: this.$props.provider,
+        source: this.$props.source,
       });
     },
   },
   created() {
     this.ticking = false;
-    if (this.query.provider) {
+    if (this.query.source) {
       this.getImages(this.query);
     }
   },

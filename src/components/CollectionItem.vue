@@ -1,34 +1,34 @@
 <template>
-  <div class="card provider-card cell small">
+  <div class="card source-card cell small">
     <div class="card-divider">
-      <span class="provider-name">{{ provider.display_name }}</span>
+      <span class="source-name">{{ source.display_name }}</span>
     </div>
-    <div class="provider-logo">
-      <a :href="'/collections/'+provider.provider_name">
-        <img :alt="provider.display_name"
-            :src="getProviderLogo(provider.provider_name)">
+    <div class="source-logo">
+      <a :href="'/collections/'+source.source_name">
+        <img :alt="source.display_name"
+            :src="getSourceLogo(source.source_name)">
       </a>
     </div>
     <div class="card-section">
-      <span>Collection size: {{ getProviderImageCount(provider.image_count) }} images</span>
+      <span>Collection size: {{ getSourceImageCount(source.image_count) }} images</span>
     </div>
   </div>
 </template>
 
 <script>
-import ImageProviderService from '@/api/ImageProviderService';
+import ImageSourceService from '@/api/ImageSourceService';
 
 export default {
   name: 'collection-item',
-  props: ['provider'],
+  props: ['source'],
   methods: {
-    getProviderImageCount(imageCount) {
+    getSourceImageCount(imageCount) {
       return (imageCount).toLocaleString('en');
     },
-    getProviderLogo(providerName) {
-      const provider = ImageProviderService.getProviderInfo(providerName);
-      if (provider) {
-        const logo = provider.logo;
+    getSourceLogo(sourceName) {
+      const source = ImageSourceService.getSourceInfo(sourceName);
+      if (source) {
+        const logo = source.logo;
         const logoUrl = require(`@/assets/${logo}`); // eslint-disable-line global-require, import/no-dynamic-require
 
         return logoUrl;
@@ -41,17 +41,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .provider-card {
+  .source-card {
     width: 18em;
     background-color: #dedede;
     margin: 0.5em;
   }
 
-  .provider-name {
+  .source-name {
     font-weight: 800;
   }
 
-  .provider-logo {
+  .source-logo {
     height: 10em;
     line-height: 10em;
     white-space: nowrap;

@@ -29,14 +29,14 @@
       </li>
       <li>
         <h3>Source</h3>
-        <a class="photo_provider"
+        <a class="photo_source"
           :href="image.foreign_landing_url"
           target="blank"
           rel="noopener noreferrer">
-          <img class="provider-logo"
-               :alt="image.provider"
-               :src="getProviderLogo(image.provider_code)" />
-          {{ image.provider }}
+          <img class="source-logo"
+               :alt="image.source"
+               :src="getSourceLogo(image.source_code)" />
+          {{ image.source }}
         </a>
       </li>
       <li>
@@ -49,7 +49,7 @@
 
 <script>
 import LicenseIcons from '@/components/LicenseIcons';
-import getProviderLogo from '@/utils/getProviderLogo';
+import getSourceLogo from '@/utils/getSourceLogo';
 
 export default {
   name: 'image-info',
@@ -58,8 +58,8 @@ export default {
     LicenseIcons,
   },
   methods: {
-    getProviderLogo(providerName) {
-      return getProviderLogo(providerName);
+    getSourceLogo(sourceName) {
+      return getSourceLogo(sourceName);
     },
   },
 };

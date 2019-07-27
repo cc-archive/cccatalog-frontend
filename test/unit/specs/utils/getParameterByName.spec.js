@@ -1,13 +1,13 @@
 import getParameterByName from '@/utils/getParameterByName';
 
 describe('getParameterByName', () => {
-  const queryStr = '?q=nature&provider=flickr&li=by&lt=';
+  const queryStr = '?q=nature&source=flickr&li=by&lt=';
   it('finds "q" key', () => {
     expect(getParameterByName('q', queryStr)).toBe('nature');
   });
 
-  it('finds "provider" key', () => {
-    expect(getParameterByName('provider', queryStr)).toBe('flickr');
+  it('finds "source" key', () => {
+    expect(getParameterByName('source', queryStr)).toBe('flickr');
   });
 
   it('finds "li" key', () => {
@@ -19,7 +19,7 @@ describe('getParameterByName', () => {
   });
 
   it('finds "lt"', () => {
-    const query = '?q=landscapes&provider=met&li=&lt=commercial';
+    const query = '?q=landscapes&source=met&li=&lt=commercial';
     expect(getParameterByName('lt', query)).toBe('commercial');
   });
 });

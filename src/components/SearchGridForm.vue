@@ -89,7 +89,7 @@
             </li>
           </ul>
         </div>
-        <search-grid-filter :showProvidersFilter="showProvidersFilter"
+        <search-grid-filter :showSourcesFilter="showSourcesFilter"
                             @onSearchFilterChanged="onSearchFilterChanged"/>
     </div>
   </form>
@@ -102,7 +102,7 @@ import { SET_FILTER_IS_VISIBLE } from '@/store/mutation-types';
 export default {
   name: 'search-grid-form',
   props: {
-    showProvidersFilter: {
+    showSourcesFilter: {
       default: false,
     },
     searchBoxPlaceholder: {

@@ -1,16 +1,16 @@
 
 import ApiService from './ApiService';
 
-const ImageProviderService = {
+const ImageSourceService = {
   /**
-   * Implements an endpoint to get image provider statistics.
+   * Implements an endpoint to get image source statistics.
    * SSR-called
   */
-  getProviderStats() {
+  getSourceStats() {
     return ApiService.get('statistics', 'image');
   },
-  getProviderInfo(providerName) {
-    const PROVIDER_NAME_LOOKUP = {
+  getSourceInfo(sourceName) {
+    const SOURCE_NAME_LOOKUP = {
       animaldiversity: {
         logo: 'animaldiversity_logo.png',
       },
@@ -82,8 +82,8 @@ const ImageProviderService = {
       },
     };
 
-    return PROVIDER_NAME_LOOKUP[providerName];
+    return SOURCE_NAME_LOOKUP[sourceName];
   },
 };
 
-export default ImageProviderService;
+export default ImageSourceService;

@@ -9,9 +9,9 @@
                           searchBoxPlaceholder="Search this collection" />
       </div>
       <div :class="{ 'cell search-grid-ctr': true }">
-        <search-grid v-if="query.provider"
+        <search-grid v-if="query.source"
                      :query="query"
-                     :searchTerm="providerName"
+                     :searchTerm="sourceName"
                      @onLoadMoreImages="onLoadMoreImages"></search-grid>
       </div>
     </div>

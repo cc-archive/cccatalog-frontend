@@ -3,7 +3,7 @@ import ApiService from './ApiService';
 
 const SocialService = {
   /**
-   * Implements an endpoint to convert a provider token to an access token.
+   * Implements an endpoint to convert a source token to an access token.
    */
   convertToken() {
     return ApiService.post('/social/token/');

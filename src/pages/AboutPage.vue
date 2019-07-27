@@ -40,24 +40,24 @@
         Looking for the old CC Search portal? Visit
         <a href="https://oldsearch.creativecommons.org">https://oldsearch.creativecommons.org</a>.
       </p>
-      <h2>Providers</h2>
-      <div class="page_provider-stats-ctr">
-        <table class="page_provider-stats-table">
+      <h2>Sources</h2>
+      <div class="page_source-stats-ctr">
+        <table class="page_source-stats-table">
           <thead>
-            <th>Provider</th>
+            <th>Source</th>
             <th>Domain</th>
             <th># CC Licensed Works</th>
           </thead>
           <tbody>
-            <tr v-for="(imageProvider, index) in imageProviders"
+            <tr v-for="(imageSource, index) in imageSources"
                 :key="index">
-              <td>{{ imageProvider.display_name }}</td>
+              <td>{{ imageSource.display_name }}</td>
               <td>
-                <a :href="imageProvider.provider_url">
-                  {{ imageProvider.provider_url }}
+                <a :href="imageSource.source_url">
+                  {{ imageSource.source_url }}
                 </a>
               </td>
-              <td>{{ getProviderImageCount(imageProvider.image_count) }}</td>
+              <td>{{ getSourceImageCount(imageSource.image_count) }}</td>
             </tr>
           </tbody>
         </table>
@@ -78,12 +78,12 @@ const AboutPage = {
     FooterSection,
   },
   computed: {
-    imageProviders() {
-      return this.$store.state.imageProviders;
+    imageSources() {
+      return this.$store.state.imageSources;
     },
   },
   methods: {
-    getProviderImageCount(imageCount) {
+    getSourceImageCount(imageCount) {
       return (imageCount).toLocaleString('en');
     },
   },
