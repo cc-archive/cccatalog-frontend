@@ -1,79 +1,72 @@
 <template>
-  <a :href="getLicenseURL(image)"
-      @click.stop="() => false"
+  <a :href="licenseUrl"
      class="photo-license-icons"
      target="_blank"
-     rel="noopener noreferrer">
-    <img class="photo-license-icon" src="@/assets/cc_icon.svg"><img
-          v-for="(license, index) in onGetLicenseIcon(image.license)"
-          v-if="license" class="photo-license-icon"
-          :src="require(`@/assets/cc-${license.toLowerCase()}_icon.svg`)"
-          :key="index">
+     rel="noopener noreferrer"
+     @click.stop="() => false">
+    <LicenseIconography :icon-list="licenseIcons"/>
   </a>
 </template>
 
 <script>
+import {
+  LicenseIconography,
+} from '@creativecommons/vocabulary';
+
 const LicenseIcons = {
   name: 'license-icons',
-  components: {},
-  props: {
-    image: '',
-    shouldWrapInLink: false,
+  components: {
+    LicenseIconography,
   },
-  methods: {
-    onGetLicenseIcon(license) {
-      let licenses = [];
-      if (license) {
-        licenses = license.split('-');
-      }
-      return licenses;
+  props: {
+    image: {
+      type: Object,
+      required: true,
     },
-    getLicenseURL(image) {
+  },
+  computed: {
+    licenseUrl() {
+      const image = this.image;
       if (!image) {
         return '';
       }
 
-      const BASE_URL = 'https://creativecommons.org';
-      let url = `${BASE_URL}/licenses/${image.license}/${image.license_version}`;
-      let license = '';
-
-      if (image.license) {
-        license = image.license;
+      let license = image.license;
+      if (!license) {
+        return '';
       }
+      let licenseVersion = image.license_version;
+      let category = 'licenses';
 
       if (license === 'cc0') {
-        this.image.license_version = '1.0';
-        url = `${BASE_URL}/publicdomain/zero/1.0/`;
+        license = 'zero';
+        licenseVersion = '1.0';
+        category = 'publicdomain';
       }
-      else if (image.license === 'pdm') {
-        url = `${BASE_URL}/publicdomain/mark/1.0/`;
+      else if (license === 'pdm') {
+        license = 'mark';
+        licenseVersion = '1.0';
+        category = 'publicdomain';
       }
 
-      return url;
+      const baseUrl = 'https://creativecommons.org';
+      return `${baseUrl}/${category}/${license}/${licenseVersion}`;
+    },
+    licenseIcons() {
+      const license = this.image.license;
+      if (license === 'cc0') {
+        return ['zero'];
+      }
+      if (license === 'pdm') {
+        return ['pd'];
+      }
+      return [
+        '',
+        ...license.split('-'),
+      ];
     },
   },
 };
 
 export default LicenseIcons;
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-  .photo-license-icons {
-    display: inline-block;
-    height: 32px;
-    white-space: none;
-    opacity: .7;
-    margin-top: 2px;
-    height: 22px !important;
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-
-  .photo-license-icon {
-    height: inherit;
-    margin-right: 3px;
-  }
-</style>
