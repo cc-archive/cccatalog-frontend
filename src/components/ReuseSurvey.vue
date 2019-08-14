@@ -1,10 +1,13 @@
 <template>
   <div class="reuse-survey">
-    <span>How are you using this image?</span>
+    <header>
+      <h3>{{ $t('how') }}</h3>
+    </header>
+
     <span>Let us know how you use this image in</span>
     <a :href="formLink">
       this quick survey
-    </a>
+    </a>.
   </div>
 </template>
 
@@ -29,15 +32,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../styles/photodetails.scss';
+  @import "~@creativecommons/vocabulary/tokens";
 
   .reuse-survey {
-    margin: 2rem 0 2rem;
+    margin-bottom: $space-normal;
 
-    span:first-child {
-      font-size: 1.1rem;
-      font-weight: 600;
-      display: block;
+    a {
+      color: inherit;
+
+      text-decoration-style: dotted;
+
+      &:hover {
+        text-decoration-style: solid;
+      }
     }
   }
 </style>
+
+<i18n src="../locales/components/ReuseSurvey.json">
+</i18n>
