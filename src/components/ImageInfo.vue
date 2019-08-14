@@ -38,7 +38,7 @@
           <TableCell is-heading>{{ $t('table.license') }}</TableCell>
           <TableCell>
             <a class="photo_license" :href="ccLicenseURL">
-              {{ fullLicenseName }}
+              {{ fullLicenseName.toUpperCase() }}
             </a>
             <license-icons :image="image"></license-icons>
           </TableCell>
