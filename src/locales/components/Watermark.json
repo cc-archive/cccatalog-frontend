@@ -1,0 +1,26 @@
+{
+  "en": {
+    "downloadimage": "Download watermarked image",
+    "labels": {
+      "include": "Include attribution frame",
+      "embed": "Embed attribution metadata"
+    },
+    "help": {
+      "watermark": "This option frames the image in white with a plain text attribution beneath.",
+      "metadata": "This option embeds attribution and CC license metadata in the image file using XMP."
+    },
+    "download": "Download image"
+  },
+  "hi": {
+    "downloadimage": "वॉटरमार्क के साथ छवि डाउनलोड करें",
+    "labels": {
+      "include": "एट्रिब्यूशन फ्रेम शामिल करें",
+      "embed": "एंबेडेशन मेटाडेटा एम्बेड करें"
+    },
+    "help": {
+      "watermark": "यह विकल्प छवि को एक सादे टेक्स्ट एट्रिब्यूशन के साथ सफेद रंग में फ्रेम करता है।",
+      "metadata": "यह विकल्प XMP का उपयोग करके छवि फ़ाइल में एट्रिब्यूशन और CC लाइसेंस मेटाडेटा को एम्बेड करता है।"
+    },
+    "download": "छवि प्राप्त करें"
+  }
+}
