@@ -1,29 +1,42 @@
 <template>
-  <div>
+  <div class="collections page">
     <header-section></header-section>
-    <div class="collections-page grid-container full">
-      <h1>Browse collections</h1>
-      <h2>Museum Collections</h2>
-      <div class="providers-list grid-x">
-        <collection-item class="card provider-card cell small"
-                        v-for="(provider, index) in museumProviders"
-                        :key="index"
-                        :provider="provider" />
-      </div>
-      <hr />
-      <h2>Other Collections</h2>
-      <div class="providers-list grid-x">
-        <collection-item class="card provider-card cell small"
-                          v-for="(provider, index) in otherProviders"
-                          :key="index"
-                          :provider="provider" />
-      </div>
+
+    <div class="content">
+      <Container>
+        <h1>{{ $t('browse') }}</h1>
+        <h2>{{ $t('museum') }}</h2>
+        <Grid density="sparse">
+          <GridCell :span-set="[12, 6, 3, 3, 3]"
+                    v-for="(provider, index) in museumProviders"
+                    :key="index">
+            <collection-item class="card provider-card cell small"
+                             :provider="provider"/>
+          </GridCell>
+        </Grid>
+        <h2>{{ $t('other') }}</h2>
+        <Grid density="sparse">
+          <GridCell :span-set="[12, 6, 3, 3, 3]"
+                    v-for="(provider, index) in otherProviders"
+                    :key="index">
+            <collection-item class="card provider-card cell small"
+                             :provider="provider"/>
+          </GridCell>
+        </Grid>
+      </Container>
     </div>
+
     <footer-section></footer-section>
   </div>
 </template>
 
 <script>
+import {
+  Container,
+  Grid,
+  GridCell,
+} from '@creativecommons/vocabulary';
+
 import CollectionItem from '@/components/CollectionItem';
 import HeaderSection from '@/components/HeaderSection';
 import FooterSection from '@/components/FooterSection';
@@ -36,6 +49,9 @@ const MUSEUM_PROVIDERS = [
 const CollectionsPage = {
   name: 'collections-page',
   components: {
+    Container,
+    Grid,
+    GridCell,
     HeaderSection,
     FooterSection,
     CollectionItem,
@@ -68,14 +84,15 @@ export default CollectionsPage;
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-  h1 {
-    margin-bottom: .44117647em;
-    letter-spacing: initial;
-    line-height: 1.25;
-    text-transform: initial;
-  }
+  @import "~@creativecommons/vocabulary/tokens";
+  @import '../styles/text-only-page.scss';
 
-  .collections-page {
-    margin: 45px !important;
+  .collections.page {
+    .content {
+      margin-bottom: $space-large;
+    }
   }
 </style>
+
+<i18n src="../locales/pages/CollectionsPage.json">
+</i18n>

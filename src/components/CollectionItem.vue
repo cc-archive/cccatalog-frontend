@@ -1,25 +1,37 @@
 <template>
-  <div class="card provider-card cell small">
-    <div class="card-divider">
-      <span class="provider-name">{{ provider.display_name }}</span>
-    </div>
-    <div class="provider-logo">
-      <a :href="'/collections/'+provider.provider_name">
-        <img :alt="provider.display_name"
-            :src="getProviderLogo(provider.provider_name)">
-      </a>
-    </div>
-    <div class="card-section">
-      <span>Collection size: {{ getProviderImageCount(provider.image_count) }} images</span>
-    </div>
-  </div>
+  <Card class="individual"
+        color="blue"
+        shade="dark"
+        :heading="provider.display_name"
+        is-decked
+        is-rounded
+        @click.native="goToProvider(provider.provider_name)">
+    <template #feature>
+      <div class="featured-content">
+        <img class="provider-logo"
+             :alt="provider.display_name"
+             :src="getProviderLogo(provider.provider_name)">
+      </div>
+    </template>
+    <template #default>
+      <div class="body-content">&nbsp;</div>
+    </template>
+    <template #foot>
+      {{ $t('count') }}: {{ getProviderImageCount(provider.image_count) }} {{ $t('images') }}
+    </template>
+  </Card>
 </template>
 
 <script>
+import { Card } from '@creativecommons/vocabulary';
+
 import ImageProviderService from '@/api/ImageProviderService';
 
-export default {
+const CollectionItem = {
   name: 'collection-item',
+  components: {
+    Card,
+  },
   props: ['provider'],
   methods: {
     getProviderImageCount(imageCount) {
@@ -29,43 +41,58 @@ export default {
       const provider = ImageProviderService.getProviderInfo(providerName);
       if (provider) {
         const logo = provider.logo;
-        const logoUrl = require(`@/assets/${logo}`); // eslint-disable-line global-require, import/no-dynamic-require
-
-        return logoUrl;
+        return require(`@/assets/${logo}`); // eslint-disable-line global-require, import/no-dynamic-require
       }
 
       return '';
     },
+    goToProvider(url) {
+      window.location.href = `/collections/${url}`;
+    },
   },
 };
+
+export default CollectionItem;
 </script>
 
 <style lang="scss" scoped>
-  .provider-card {
-    width: 18em;
-    background-color: #dedede;
-    margin: 0.5em;
+  @import "~@creativecommons/vocabulary/tokens";
+
+  .individual {
+    cursor: pointer;
   }
 
-  .provider-name {
-    font-weight: 800;
+  .featured-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 5em;
+
+    padding: 1em;
+
+    .provider-logo {
+      max-width: 100%;
+      max-height: 4em;
+
+      a {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      img {
+        max-width: 100%;
+      }
+    }
   }
 
-  .provider-logo {
-    height: 10em;
-    line-height: 10em;
-    white-space: nowrap;
-    position: relative;
-
-    a {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    img {
-      width: 100%;
-    }
+  .body-content {
+    height: 0;
+    overflow: hidden;
   }
 </style>
+
+<i18n src="../locales/components/CollectionItem.json">
+</i18n>

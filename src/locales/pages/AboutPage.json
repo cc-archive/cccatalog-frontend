@@ -1,0 +1,18 @@
+{
+  "en": {
+    "about": "About CC Search",
+    "caption": "Providers for CC Search",
+    "provider": "No providers|Provider|Providers",
+    "domain": "Domain",
+    "images": "Images",
+    "works": "CC licensed works"
+  },
+  "hi": {
+    "about": "CC खोज की जानकारी",
+    "caption": "CC खोज के प्रदाता",
+    "provider": "No प्रदाता|प्रदाता|प्रदाता",
+    "domain": "डोमेन",
+    "images": "तस्वीरें",
+    "works": "CC लाइसेंस प्राप्त रचनाएँ"
+  }
+}

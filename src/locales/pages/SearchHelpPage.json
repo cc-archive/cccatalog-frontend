@@ -1,0 +1,30 @@
+{
+  "en": {
+    "help": "CC Search syntax guide",
+    "provider": "No providers|Provider|Providers",
+    "code": "Code",
+    "categories": {
+      "searchby": "Search by {0}",
+      "exactness": "exactness",
+      "provider": "provider",
+      "title": "title",
+      "license": "license",
+      "tags": "tags",
+      "combination": "combination of keywords"
+    }
+  },
+  "hi": {
+    "help": "CC खोज सिंटेक्स गाइड",
+    "provider": "No प्रदाता|प्रदाता|प्रदाता",
+    "code": "संकेतावली",
+    "categories": {
+      "searchby": "{0} से खोजें",
+      "exactness": "सटीकता",
+      "provider": "प्रदाता",
+      "title": "शीर्षक",
+      "license": "लाइसेंस",
+      "tags": "टैग",
+      "combination": "कीवर्ड के संयोजन"
+    }
+  }
+}

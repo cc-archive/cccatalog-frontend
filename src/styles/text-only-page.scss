@@ -1,3 +1,5 @@
+@import "~@creativecommons/vocabulary/tokens";
+
 h1 {
   font-size: 2.125em;
 }
@@ -14,26 +16,27 @@ h3 {
   background: #e9ebee;
 }
 
-.page_body {
-  font-size: 1em;
-  margin: 45px !important;
-}
+a {
+  color: $color-blue-dark;
 
-.page_lead-paragraph {
-  margin-bottom: 1em;
+  text-decoration-style: dotted;
+
+  &:hover {
+    text-decoration-style: solid;
+  }
 }
 
 p > em {
-  font-family: 'Courier New', Courier, monospace;
-  color: #188038;
+  font-family: 'Fira Code', Courier, monospace;
+  color: $color-blue;
   font-style: normal;
-  font-weight: 600;
+  font-weight: $weight-bold;
 }
 
 a > em {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Fira Code', Courier, monospace;
   font-style: normal;
-  font-weight: 600;
+  font-weight: $weight-bold;
 }
 
 /* Small only */
