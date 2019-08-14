@@ -1,34 +1,33 @@
 <template>
-  <header>
-    <nav-section :showNavSearch="showNavSearch" :navSearchPlaceholder="navSearchPlaceholder"/>
-     <slot></slot>
-  </header>
+  <div>
+    <Header color="blue"
+            shade="dark"
+            title="Search">
+      <nav-section :showNavSearch="showNavSearch"/>
+    </Header>
+    <!-- @slot Content goes here -->
+    <slot/>
+  </div>
 </template>
 
 <script>
+import {
+  Header,
+} from '@creativecommons/vocabulary';
+
 import NavSection from '@/components/NavSection';
 
 export default {
   name: 'header-section',
   components: {
+    Header,
     NavSection,
   },
-  props: ['showHero', 'showNavSearch', 'isHeaderFixed', 'navSearchPlaceholder'],
+  props: {
+    showNavSearch: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
-  @import '../../node_modules/foundation-sites/scss/foundation';
-
-  .header {
-    position: relative;
-    z-index: 200;
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .header nav {
-    z-index: 10;
-  }
-</style>

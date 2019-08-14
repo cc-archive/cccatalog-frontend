@@ -1,0 +1,26 @@
+{
+  "en": {
+    "panel": {
+      "credits": "Credits",
+      "iconsby": "Icons by {0} and {2}.",
+      "thenounproject": "The Noun Project",
+      "fontawesome": "Font Awesome",
+      "websiteby": "Website by {0}.",
+      "creativecommons": "Creative Commons",
+      "poweredby": "Powered by {0}.",
+      "vocabulary": "Vocabulary"
+    }
+  },
+  "hi": {
+    "panel": {
+      "credits": "श्रेय",
+      "iconsby": "चिह्न {0} और {1} द्वारा।",
+      "thenounproject": "थ नाउँन प्रोजेक्ट",
+      "fontawesome": "फॉन्ट ऑसम",
+      "websiteby": "वेबसाइट {0} द्वारा।",
+      "creativecommons": "क्रिएटिव कॉमन्स",
+      "poweredby": "{0} द्वारा संचालित।",
+      "vocabulary": "वोकैबुलरी"
+    }
+  }
+}

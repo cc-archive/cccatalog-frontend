@@ -1,0 +1,24 @@
+{
+  "en": {
+    "links": {
+      "about": "About",
+      "browse": "Collections",
+      "guide": "Guide",
+      "feedback": "Feedback"
+    },
+    "search": {
+      "placeholder": "Search all images..."
+    }
+  },
+  "hi": {
+    "links": {
+      "about": "जानकारी",
+      "browse": "संग्रह",
+      "guide": "गाइड",
+      "feedback": "प्रतिक्रिया"
+    },
+    "search": {
+      "placeholder":  "सभी चित्रों को खोजें..."
+    }
+  }
+}
