@@ -1,21 +1,34 @@
 <template>
-  <button :id="id"
+  <Button class="attribution-copy-button"
+          :id="id"
+          color="blue"
+          shade="dark"
+          :icon="success ? 'check': 'copy'"
           type="button"
-          class="button photo_copy-btn"
           :data-clipboard-target="el">
-    <slot v-if="!success" default />
-    <template v-else>Copied!</template>
-  </button>
+    <slot v-if="!success" default/>
+    <template v-else>
+      {{ $t('copied') }}!
+    </template>
+  </Button>
 </template>
 
 <script>
+import {
+  Button,
+} from '@creativecommons/vocabulary';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCopy } from '@fortawesome/free-solid-svg-icons';
+
 import Clipboard from 'clipboard';
 
+library.add(faCopy);
+
 export default {
-  data: () => ({
-    success: false,
-    clipboard: null,
-  }),
+  components: {
+    Button,
+  },
   props: {
     el: {
       required: true,
@@ -24,6 +37,10 @@ export default {
       required: true,
     },
   },
+  data: () => ({
+    success: false,
+    clipboard: null,
+  }),
   methods: {
     onCopySuccess(e) {
       this.success = true;
@@ -51,10 +68,17 @@ export default {
 };
 </script>
 
-<style scoped>
-  .photo_copy-btn {
-    width: 10rem;
-    display: block;
-    margin-top: 1rem;
+<style lang="scss" scoped>
+  @import "~@creativecommons/vocabulary/tokens";
+
+  .attribution-copy-button {
+    display: flex;
+
+    min-width: 12em;
+
+    margin: $space-normal $space-zero;
   }
 </style>
+
+<i18n src="../locales/components/CopyButton.json">
+</i18n>
