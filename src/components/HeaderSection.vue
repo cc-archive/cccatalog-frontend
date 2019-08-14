@@ -2,7 +2,7 @@
   <div>
     <Header color="blue"
             shade="dark"
-            title="Search">
+            :title="$t('search')">
       <nav-section :showNavSearch="showNavSearch"/>
     </Header>
     <!-- @slot Content goes here -->
@@ -31,3 +31,6 @@ export default {
   },
 };
 </script>
+
+<i18n src="../locales/components/HeaderSection.json">
+</i18n>
