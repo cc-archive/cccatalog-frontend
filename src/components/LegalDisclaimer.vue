@@ -1,27 +1,90 @@
 <template>
-  <div>
-    <a :href="sourceURL">Verify at the source: {{ source }}</a>
-    <p class="legal-disclaimer">
-      CC Search aggregates data from publicly available repositories of open content.
-      CC does not host the content and does not verify that the content is properly CC-licensed
-      or that the attribution information is accurate or complete. Please follow the link to the
-      source of the content to independently verify before reuse.
-    </p>
+  <div class="disclaimer">
+    <header>
+      <i18n path="verifyat" tag="h3">
+        {{ $t('source') }}
+      </i18n>
+    </header>
+
+    <Button class="verify"
+            color="blue"
+            shade="dark"
+            icon="certificate"
+            @click="window.location.href = sourceURL">
+      <i18n path="verifyat" tag="span">
+        {{ source }}
+      </i18n>
+    </Button>
+
+    <Section indication="probably" color-side="left">
+        CC Search aggregates data from publicly available repositories of open
+        content. CC does not host the content and does not verify that the
+        content is properly CC-licensed or that the attribution information is
+        accurate or complete. Please follow the link to the source of the
+        content to independently verify before reuse.
+    </Section>
   </div>
 </template>
 
 <script>
+import {
+  Button,
+  Heading,
+  Section,
+} from '@creativecommons/vocabulary';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCertificate } from '@fortawesome/free-solid-svg-icons';
+
 import Tooltip from '@/components/Tooltip';
+
+library.add(faCertificate);
 
 export default {
   name: 'legal-disclaimer',
-  props: ['source', 'sourceURL'],
+  props: {
+    source: {
+      type: String,
+      required: true,
+    },
+    sourceURL: {
+      type: String,
+      required: true,
+    },
+  },
   components: {
+    Button,
+    Heading,
+    Section,
+
     Tooltip,
   },
 };
 </script>
 
 <style lang="scss" scoped>
-  @import '../styles/photodetails.scss';
+  @import "~@creativecommons/vocabulary/tokens";
+
+  .disclaimer {
+    a {
+      color: inherit;
+
+      text-decoration-style: dotted;
+
+      &:hover {
+        text-decoration-style: solid;
+      }
+    }
+
+    .button {
+      display: flex;
+
+      min-width: 12em;
+
+      margin: $space-normal $space-zero;
+    }
+  }
 </style>
+
+<i18n src="../locales/components/LegalDisclaimer.json">
+</i18n>

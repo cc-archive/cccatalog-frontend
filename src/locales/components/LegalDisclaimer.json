@@ -1,0 +1,10 @@
+{
+  "en": {
+    "verifyat": "Verify at {0}",
+    "source": "the source"
+  },
+  "hi": {
+    "verifyat": "{0} पर सत्यापित करें",
+    "source": "स्रोत"
+  }
+}
