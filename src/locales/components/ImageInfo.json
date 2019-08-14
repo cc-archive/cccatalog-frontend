@@ -1,0 +1,28 @@
+{
+  "en": {
+    "imageinformation": "Image information",
+    "table": {
+      "attribute": "Attribute",
+      "value": "Value",
+      "title": "Title",
+      "creator": "Creator",
+      "license": "License",
+      "source": "Source",
+      "dimensions": "Dimensions",
+      "pixels": "pixels"
+    }
+  },
+  "hi": {
+    "imageinformation": "छवि की जानकारी",
+    "table": {
+      "attribute": "गुण",
+      "value": "मूल्य",
+      "title": "शीर्षक",
+      "creator": "निर्माता",
+      "license": "लाइसेंस",
+      "source": "स्रोत",
+      "dimensions": "आयाम",
+      "pixels": "पिक्सल"
+    }
+  }
+}

@@ -1,53 +1,83 @@
 <template>
-  <section class="sidebar_section">
-    <header class="sidebar_section-header">
-      <h2>
-        Image Info
-      </h2>
+  <div class="information">
+    <header>
+      <h3>{{ $t('imageinformation') }}</h3>
     </header>
-    <ul>
-      <li>
-        <h3>Title</h3>
-        <span>{{ image.title }}</span>
-      </li>
-      <li>
-        <h3>Creator</h3>
-        <span v-if="image.creator">
+
+    <Table class="info"
+           color="blue"
+           shade="dark"
+           is-striped>
+      <template #head>
+        <tr>
+          <TableCell is-heading>{{ $t('table.attribute') }}</TableCell>
+          <TableCell is-heading>{{ $t('table.value') }}</TableCell>
+        </tr>
+      </template>
+
+      <template #default>
+        <tr>
+          <TableCell is-heading>{{ $t('table.title') }}</TableCell>
+          <TableCell>{{ image.title }}</TableCell>
+        </tr>
+
+        <tr>
+          <TableCell is-heading>{{ $t('table.creator') }}</TableCell>
+          <TableCell>
+            <span v-if="image.creator">
           <a v-if="image.creator_url" :href="image.creator_url">{{ image.creator }}</a>
           <span v-else>{{ image.creator }}</span>
         </span>
-        <span v-else>
+            <span v-else>
           Not Available
         </span>
-      </li>
-      <li>
-        <h3>License</h3>
-        <a class="photo_license" :href="ccLicenseURL">
-        {{ fullLicenseName }}
-        </a>
-        <license-icons :image="image"></license-icons>
-      </li>
-      <li>
-        <h3>Source</h3>
-        <a class="photo_provider"
-          :href="image.foreign_landing_url"
-          target="blank"
-          rel="noopener noreferrer">
-          <img class="provider-logo"
-               :alt="image.provider"
-               :src="getProviderLogo(image.provider_code)" />
-          {{ image.provider }}
-        </a>
-      </li>
-      <li>
-        <h3>Dimensions</h3>
-        <span> {{ imageWidth }} <span> &times; </span> {{ imageHeight }} pixels</span>
-      </li>
-    </ul>
-  </section>
+          </TableCell>
+        </tr>
+
+        <tr>
+          <TableCell is-heading>{{ $t('table.license') }}</TableCell>
+          <TableCell>
+            <a class="photo_license" :href="ccLicenseURL">
+              {{ fullLicenseName }}
+            </a>
+            <license-icons :image="image"></license-icons>
+          </TableCell>
+        </tr>
+
+        <tr>
+          <TableCell is-heading>{{ $t('table.source') }}</TableCell>
+          <TableCell>
+            <a class="photo_provider"
+               :href="image.foreign_landing_url"
+               target="blank"
+               rel="noopener noreferrer">
+              <ImageView :alternate-text="image.provider"
+                         :source="providerLogo"
+                         size="small"
+                         is-centered/>
+              {{ image.provider }}
+            </a>
+          </TableCell>
+        </tr>
+
+        <tr>
+          <TableCell is-heading>{{ $t('table.dimensions') }}</TableCell>
+          <TableCell>
+            {{ imageWidth }} &times; {{ imageHeight }} {{ $t('table.pixels') }}
+          </TableCell>
+        </tr>
+      </template>
+    </Table>
+  </div>
 </template>
 
 <script>
+import {
+  ImageView,
+  Table,
+  TableCell,
+} from '@creativecommons/vocabulary';
+
 import LicenseIcons from '@/components/LicenseIcons';
 import getProviderLogo from '@/utils/getProviderLogo';
 
@@ -55,16 +85,35 @@ export default {
   name: 'image-info',
   props: ['image', 'ccLicenseURL', 'fullLicenseName', 'imageWidth', 'imageHeight'],
   components: {
+    ImageView,
+    Table,
+    TableCell,
+
     LicenseIcons,
   },
-  methods: {
-    getProviderLogo(providerName) {
-      return getProviderLogo(providerName);
+  computed: {
+    providerLogo() {
+      return getProviderLogo(this.image.provider_code);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-  @import '../styles/photodetails.scss';
+  @import '~@creativecommons/vocabulary/tokens';
+
+  .information {
+    a {
+      color: inherit;
+
+      text-decoration-style: dotted;
+
+      &:hover {
+        text-decoration-style: solid;
+      }
+    }
+  }
 </style>
+
+<i18n src="../locales/components/ImageInfo.json">
+</i18n>

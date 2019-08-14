@@ -1,0 +1,16 @@
+{
+  "en": {
+    "imageattribution": "Image attribution",
+    "copy": {
+      "richtext": "Copy rich text",
+      "html": "Copy HTML"
+    }
+  },
+  "hi": {
+    "imageattribution": "छवि आरोपण",
+    "copy": {
+      "richtext": "रिच टेक्स्ट कॉपी करें",
+      "html": "HTML कॉपी करें"
+    }
+  }
+}

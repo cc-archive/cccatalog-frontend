@@ -1,13 +1,11 @@
 <template>
-  <section class="sidebar_section">
-    <!-- TODO: try to centralize contents in photo details page) -->
-    <header class="sidebar_section-header">
-      <h2>
-        Image Attribution
-      </h2>
+  <div class="attribution">
+    <header>
+      <h3>{{ $t('imageattribution') }}</h3>
     </header>
-    <div >
-      <div class="photo-attribution">
+
+    <div class="photo-attribution">
+      <Quote>
         <span id="attribution" class="photo_usage-attribution" ref="photoAttribution">
           <a :href="image.foreign_landing_url">"{{ image.title }}"</a>
           <span v-if="image.creator">
@@ -19,38 +17,45 @@
           <a class="photo_license" :href="licenseURL">
           {{ fullLicenseName.toUpperCase() }}
           </a>
+          <license-icons :image="image"></license-icons>
         </span>
-        <license-icons :image="image"></license-icons>
-        <CopyButton id="copy-attribution-btn"
-                    el="#attribution"
-                    title="Copy the attribution to paste into your blog or document"
-                    @copied="onCopyAttribution">
-          Copy rich text
-        </CopyButton>
-      </div>
-      <div class="embed-attribution">
-        <span>
-          Copy the HTML below to embed the attribution with license icons in your web page
-        </span>
-        <textarea id="attribution-html"
-                  :value="attributionHtml"
-                  cols="30" rows="4"
-                  readonly="readonly">
-        </textarea>
-        <CopyButton id="embed-attribution-btn"
+      </Quote>
+      <CopyButton id="copy-attribution-btn"
+                  el="#attribution"
+                  title="Copy the attribution to paste into your blog or document"
+                  @copied="onCopyAttribution">
+        {{ $t('copy.richtext') }}
+      </CopyButton>
+    </div>
+
+    <div class="embed-attribution">
+      <span>
+        Copy the HTML below to embed the attribution with license icons in your web page:
+      </span>
+      <textarea class="attribution-code"
+                id="attribution-html"
+                :value="attributionHtml"
+                readonly="readonly">
+      </textarea>
+      <CopyButton id="embed-attribution-btn"
                   el="#attribution-html"
                   title="Copy the HTML to embed the attribution with license icons in your web page"
                   @copied="onEmbedAttribution">
-          Copy HTML
-        </CopyButton>
-      </div>
-      <reuse-survey />
-      <legal-disclaimer :source="image.provider" :sourceURL="image.foreign_landing_url" />
+        {{ $t('copy.html') }}
+      </CopyButton>
     </div>
-  </section>
+
+    <reuse-survey/>
+
+    <legal-disclaimer :source="image.provider" :sourceURL="image.foreign_landing_url"/>
+  </div>
 </template>
 
 <script>
+import {
+  Quote,
+} from '@creativecommons/vocabulary';
+
 import LicenseIcons from '@/components/LicenseIcons';
 import CopyButton from '@/components/CopyButton';
 import LegalDisclaimer from '@/components/LegalDisclaimer';
@@ -61,6 +66,7 @@ export default {
   name: 'image-attribution',
   props: ['id', 'image', 'ccLicenseURL', 'fullLicenseName', 'attributionHtml'],
   components: {
+    Quote,
     LicenseIcons,
     CopyButton,
     LegalDisclaimer,
@@ -85,5 +91,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../styles/photodetails.scss';
+  @import '~@creativecommons/vocabulary/tokens';
+
+  .attribution {
+    a {
+      color: inherit;
+
+      text-decoration-style: dotted;
+
+      &:hover {
+        text-decoration-style: solid;
+      }
+    }
+
+    .attribution-code {
+      display: block;
+
+      font-family: monospace;
+      font-size: $size-small;
+
+      background-color: $color-tone-near-white;
+
+      padding: $space-normal;
+
+      border: 1px solid $color-blue-dark;
+
+      margin: $space-normal $space-zero;
+
+      width: calc(100% - 17px);
+      height: 8em;
+    }
+  }
 </style>
+
+<i18n src="../locales/components/ImageAttribution.json">
+</i18n>
