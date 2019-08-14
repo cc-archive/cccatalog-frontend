@@ -8,9 +8,14 @@ localVue.use(Vuex);
 
 const render = (Component, options = { localVue }) => {
   if (!options.store) {
-    const store = new Vuex.Store(sampleStore);
-    options.store = store;
+    options.store = new Vuex.Store(sampleStore);
   }
+
+  if (!options.mocks) {
+    options.mocks = {};
+  }
+  options.mocks.$t = key => key;
+  options.mocks.$tc = key => key;
 
   return shallowMount(Component, options);
 };
