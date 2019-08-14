@@ -1,25 +1,32 @@
 <template>
   <tooltip :tooltip="tooltip" tooltipPosition="top">
     <span title="tooltip">
-      <img class='help-icon'
-            src='../assets/help_icon.svg'
-            alt='tooltip' />
+      <FontAwesomeIcon :icon="['fas', 'question-circle']"/>
     </span>
   </tooltip>
 </template>
 
 <script>
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 import Tooltip from '@/components/Tooltip';
+
+library.add(faQuestionCircle);
 
 export default {
   name: 'help-tooltip',
-  props: ['tooltip'],
+  props: {
+    tooltip: {
+      type: String,
+      required: true,
+    },
+  },
   components: {
+    FontAwesomeIcon,
+
     Tooltip,
   },
 };
 </script>
-
-<style lang="scss" scoped>
-  @import '../styles/photodetails.scss';
-</style>
