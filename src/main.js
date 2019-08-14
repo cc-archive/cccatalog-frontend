@@ -4,6 +4,8 @@
 import Vue from 'vue';
 import ApiService from '@/api/ApiService';
 import App from './App';
+
+import i18n from './i18n';
 import store from './store';
 import GoogleAnalytics from './analytics/GoogleAnalytics';
 
@@ -30,6 +32,7 @@ function createApp(router, __INITIAL_STATE__) {
   const app = new Vue({
     el: '#app',
     store: appStore,
+    i18n,
     router,
     render: h => h(App),
   });
