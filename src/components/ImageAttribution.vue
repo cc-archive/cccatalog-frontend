@@ -7,22 +7,28 @@
     <div class="photo-attribution">
       <Quote>
         <span id="attribution" class="photo_usage-attribution" ref="photoAttribution">
-          <a :href="image.foreign_landing_url">"{{ image.title }}"</a>
+          <a :href="image.foreign_landing_url">"
+            {{ image.title }}"
+          </a>
           <span v-if="image.creator">
             by
-            <a v-if="image.creator_url" :href="image.creator_url">{{ image.creator }}</a>
-            <span v-else>{{ image.creator }}</span>
+            <a v-if="image.creator_url" :href="image.creator_url">
+              {{ image.creator }}
+            </a>
+            <span v-else>
+              {{ image.creator }}
+            </span>
           </span>
           is licensed under
           <a class="photo_license" :href="licenseURL">
-          {{ fullLicenseName.toUpperCase() }}
+            {{ fullLicenseName.toUpperCase() }}
           </a>
           <license-icons :image="image"></license-icons>
         </span>
       </Quote>
       <CopyButton id="copy-attribution-btn"
                   el="#attribution"
-                  title="Copy the attribution to paste into your blog or document"
+                  title="RTF to embed attribution in blog or document"
                   @copied="onCopyAttribution">
         {{ $t('copy.richtext') }}
       </CopyButton>
@@ -39,7 +45,7 @@
       </textarea>
       <CopyButton id="embed-attribution-btn"
                   el="#attribution-html"
-                  title="Copy the HTML to embed the attribution with license icons in your web page"
+                  title="HTML to embed attribution on web page"
                   @copied="onEmbedAttribution">
         {{ $t('copy.html') }}
       </CopyButton>
@@ -47,7 +53,8 @@
 
     <reuse-survey/>
 
-    <legal-disclaimer :source="image.provider" :sourceURL="image.foreign_landing_url"/>
+    <legal-disclaimer :source="image.provider"
+                      :sourceURL="image.foreign_landing_url"/>
   </div>
 </template>
 
@@ -60,6 +67,7 @@ import LicenseIcons from '@/components/LicenseIcons';
 import CopyButton from '@/components/CopyButton';
 import LegalDisclaimer from '@/components/LegalDisclaimer';
 import ReuseSurvey from '@/components/ReuseSurvey';
+
 import { COPY_ATTRIBUTION, EMBED_ATTRIBUTION } from '@/store/action-types';
 
 export default {
