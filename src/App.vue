@@ -5,6 +5,9 @@
 </template>
 
 <script>
+import '@creativecommons/vocabulary/root.css';
+import '@creativecommons/vocabulary/vocabulary.css';
+
 import { FETCH_IMAGE_PROVIDERS } from '@/store/action-types';
 
 export default {
@@ -24,18 +27,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-@import './styles/app';
-
-body {
-  margin: 0;
-}
-
-#app {
-  font-family: source sans pro,sans-serif !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-</style>
