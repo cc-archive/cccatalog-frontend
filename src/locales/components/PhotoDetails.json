@@ -1,0 +1,20 @@
+{
+  "en": {
+    "details":  "Details",
+    "tabs": {
+      "attribution": "Attribution",
+      "information": "Information",
+      "download": "Download",
+      "share": "Share"
+    }
+  },
+  "hi": {
+    "details": "विवरण",
+    "tabs": {
+      "attribution": "आरोपण",
+      "information": "जानकारी",
+      "download": "ग्रहण",
+      "share": "साझा"
+    }
+  }
+}

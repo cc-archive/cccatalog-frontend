@@ -1,86 +1,119 @@
 <template>
-  <div class="photo">
-    <div class="photo_image-ctr">
-      <a class="photo_breadcrumb"
-          :href="breadCrumbURL"
-          @click.prevent="onGoBackToSearchResults"
-          v-if="shouldShowBreadcrumb">&#171; Back to search results</a>
+  <div class="details">
+    <Section class="image-viewer"
+             color="blue"
+             shade="dark">
+      <Trail class="trail"
+             color="blue"
+             shade="dark">
+        <TrailCrumb icon="search"
+                    :link="breadCrumbURL"
+                    @click.native.prevent="onGoBackToSearchResults">
+          Search results
+        </TrailCrumb>
+        <TrailCrumb>
+          {{ image.title }}
+        </TrailCrumb>
+      </Trail>
       <img @load="onImageLoad"
-            class="photo_image"
-            :src="image.url"
-            :alt="image.title">
-    </div>
-    <section class="tab-section">
-      <ul class="tabs" data-tabs id="example-tabs">
-        <li :class="tabClass(0, 'tabs-title')">
-          <a href="#panel0" :aria-selected="activeTab == 0" @click.prevent="setActiveTab(0)">
-            <img class='tab-icon'
-                 src='../assets/cc-by-icon_large.png'
-                 alt='Image Attribution'>
-            Attribution
-          </a>
-        </li>
-        <li :class="tabClass(1, 'tabs-title')">
-          <a href="#panel1" :aria-selected="activeTab == 1" @click.prevent="setActiveTab(1)">
-            <img class='tab-icon'
-                 src='../assets/info-icon.svg'
-                 alt='Image Info' />
-            Info
-          </a>
-        </li>
-        <li :class="tabClass(2, 'tabs-title')" v-if="watermarkEnabled">
-          <a href="#panel2" :aria-selected="activeTab == 2" @click.prevent="setActiveTab(2)">
-            <img class='tab-icon'
-                 src='../assets/download-icon.svg'
-                 alt='Image Download' />
-            Download
-          </a>
-        </li>
-        <li :class="tabClass(3, 'tabs-title')" v-if="socialSharingEnabled">
-          <a href="#panel3" :aria-selected="activeTab == 3" @click.prevent="setActiveTab(3)">
-            <img class='tab-icon'
-                 src='../assets/share-icon.svg'
-                 alt='Share Image' />
-            Share
-          </a>
-        </li>
-      </ul>
-    </section>
-    <section class="photo_info-ctr tabs-content">
-      <div :class="tabClass(0, 'tabs-panel')">
-        <image-attribution :image="image"
-                            :ccLicenseURL="ccLicenseURL"
-                            :fullLicenseName="fullLicenseName"
-                            :attributionHtml="attributionHtml()" />
-      </div>
-      <div :class="tabClass(1, 'tabs-panel')">
-        <image-info :image="image"
-                    :ccLicenseURL="ccLicenseURL"
-                    :fullLicenseName="fullLicenseName"
-                    :imageWidth="imageWidth"
-                    :imageHeight="imageHeight" />
-      </div>
-      <div :class="tabClass(2, 'tabs-panel')">
-        <watermark v-if="watermarkEnabled" :image="image" />
-      </div>
-      <div :class="tabClass(3, 'tabs-panel')">
-        <image-social-share v-if="socialSharingEnabled" :image="image" />
-      </div>
-    </section>
+           class="image-demo"
+           :src="image.url"
+           :alt="image.title">
+    </Section>
+
+    <header>
+      <h2>{{ $t('details') }}</h2>
+    </header>
+
+    <Tabbed class="tabs"
+            color="blue"
+            shade="dark">
+      <TabbedPane>
+        <template #tab>
+          <LicenseIconography :icon-list="['by']"/>
+          {{ $t('tabs.attribution') }}
+        </template>
+        <template #default>
+          <image-attribution :image="image"
+                             :ccLicenseURL="ccLicenseURL"
+                             :fullLicenseName="fullLicenseName"
+                             :attributionHtml="processedAttributionHtml"/>
+        </template>
+      </TabbedPane>
+      <TabbedPane>
+        <template #tab>
+          <FontAwesomeIcon :icon="['fas', 'info-circle']"/>
+          {{ $t('tabs.information') }}
+        </template>
+        <template #default>
+          <image-info :image="image"
+                      :ccLicenseURL="ccLicenseURL"
+                      :fullLicenseName="fullLicenseName"
+                      :imageWidth="imageWidth"
+                      :imageHeight="imageHeight"/>
+        </template>
+      </TabbedPane>
+      <TabbedPane>
+        <template #tab>
+          <FontAwesomeIcon :icon="['fas', 'download']"/>
+          {{ $t('tabs.download') }}
+        </template>
+        <template #default>
+          <watermark v-if="watermarkEnabled" :image="image"/>
+        </template>
+      </TabbedPane>
+      <TabbedPane>
+        <template #tab>
+          <FontAwesomeIcon :icon="['fas', 'share-square']"/>
+          {{ $t('tabs.share') }}
+        </template>
+        <template #default>
+          <image-social-share v-if="socialSharingEnabled" :image="image"/>
+        </template>
+      </TabbedPane>
+    </Tabbed>
   </div>
 </template>
 
 <script>
+import {
+  LicenseIconography,
+  Section,
+  Tabbed,
+  TabbedPane,
+  Trail,
+  TrailCrumb,
+} from '@creativecommons/vocabulary';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faDownload,
+  faInfoCircle,
+  faShareSquare,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 import ImageInfo from '@/components/ImageInfo';
 import Watermark from '@/components/Watermark';
 import ImageAttribution from '@/components/ImageAttribution';
 import ImageSocialShare from '@/components/ImageSocialShare';
+
 import attributionHtml from '@/utils/attributionHtml';
+
+library.add(faDownload, faInfoCircle, faShareSquare);
 
 export default {
   name: 'photo-details',
   props: ['image', 'breadCrumbURL', 'shouldShowBreadcrumb', 'query', 'imageWidth', 'imageHeight', 'watermarkEnabled', 'socialSharingEnabled'],
   components: {
+    LicenseIconography,
+    Section,
+    Tabbed,
+    TabbedPane,
+    Trail,
+    TrailCrumb,
+    FontAwesomeIcon,
+
     ImageInfo,
     Watermark,
     ImageAttribution,
@@ -104,6 +137,10 @@ export default {
     ccLicenseURL() {
       return `${this.image.license_url}?ref=ccsearch`;
     },
+    processedAttributionHtml() {
+      const licenseURL = `${this.ccLicenseURL}&atype=html`;
+      return attributionHtml(this.image, licenseURL, this.fullLicenseName);
+    },
   },
   methods: {
     onGoBackToSearchResults() {
@@ -112,24 +149,32 @@ export default {
     onImageLoad(event) {
       this.$emit('onImageLoaded', event);
     },
-    tabClass(tabIdx, tabClass) {
-      return {
-        [tabClass]: true,
-        'is-active': tabIdx === this.activeTab,
-      };
-    },
-    setActiveTab(tabIdx) {
-      this.activeTab = tabIdx;
-    },
-    attributionHtml() {
-      const licenseURL = `${this.ccLicenseURL}&atype=html`;
-      return attributionHtml(this.image, licenseURL, this.fullLicenseName);
-    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-  @import '../styles/photodetails.scss';
+  @import "~@creativecommons/vocabulary/tokens";
+
+  .details {
+    margin-top: $space-large;
+
+    width: 100%;
+
+    .trail {
+      margin: $space-normal $space-zero $space-large;
+    }
+
+    .image-viewer {
+      text-align: center;
+
+      .image-demo {
+        margin: $space-normal $space-zero;
+      }
+    }
+  }
 </style>
+
+<i18n src="../locales/components/PhotoDetails.json">
+</i18n>
 
