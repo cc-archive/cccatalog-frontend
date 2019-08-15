@@ -1,16 +1,15 @@
 <template>
-  <section class="sidebar_section social-sharing">
-    <header class="sidebar_section-header">
-      <h2>
-        Share
-      </h2>
+  <div class="social-sharing">
+    <header>
+      <h3>{{ $t('shareimage') }}</h3>
     </header>
+
     <social-share-buttons
       :shareURL="shareURL"
       :imageURL="imageURL"
       :shareText="shareText">
     </social-share-buttons>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -41,6 +40,5 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-  @import '../styles/photodetails.scss';
-</style>
+<i18n src="../locales/components/ImageSocialShare.json">
+</i18n>

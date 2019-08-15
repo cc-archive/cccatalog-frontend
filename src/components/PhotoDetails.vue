@@ -3,10 +3,12 @@
     <Section class="image-viewer"
              color="blue"
              shade="dark">
-      <Trail class="trail"
+      <Trail v-if="shouldShowBreadcrumb"
+             class="trail"
              color="blue"
              shade="dark">
-        <TrailCrumb icon="search"
+        <TrailCrumb class="back-link"
+                    icon="search"
                     :link="breadCrumbURL"
                     @click.native.prevent="onGoBackToSearchResults">
           Search results
@@ -53,22 +55,22 @@
                       :imageHeight="imageHeight"/>
         </template>
       </TabbedPane>
-      <TabbedPane>
+      <TabbedPane v-if="watermarkEnabled">
         <template #tab>
           <FontAwesomeIcon :icon="['fas', 'download']"/>
           {{ $t('tabs.download') }}
         </template>
         <template #default>
-          <watermark v-if="watermarkEnabled" :image="image"/>
+          <watermark :image="image"/>
         </template>
       </TabbedPane>
-      <TabbedPane>
+      <TabbedPane v-if="socialSharingEnabled">
         <template #tab>
           <FontAwesomeIcon :icon="['fas', 'share-square']"/>
           {{ $t('tabs.share') }}
         </template>
         <template #default>
-          <image-social-share v-if="socialSharingEnabled" :image="image"/>
+          <image-social-share :image="image"/>
         </template>
       </TabbedPane>
     </Tabbed>

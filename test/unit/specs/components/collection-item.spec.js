@@ -12,8 +12,8 @@ describe('CollectionItem', () => {
       propsData: {
         provider,
       },
-    });
-    expect(wrapper.find('a').element.href).toBe('/collections/met');
+    }, false);
+    expect(wrapper.find({ name: 'Card' })).toBeDefined();
   });
 
   it('should format provider count', () => {

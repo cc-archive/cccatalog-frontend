@@ -5,7 +5,7 @@ import render from '../../test-utils/render';
 describe('NavSection', () => {
   it('should render correct contents', () => {
     const wrapper = render(NavSection);
-    expect(wrapper.find('nav').vm).toBeDefined();
+    expect(wrapper.find({ name: 'Navigation' })).toBeDefined();
   });
 
   it('commits a mutation when the form is submitted', () => {
@@ -21,7 +21,7 @@ describe('NavSection', () => {
     const opts = {
       propsData: {
         fixedNav: null,
-        showNavSearch: 'true',
+        showNavSearch: true,
       },
       mocks: {
         $store: storeMock,
@@ -29,7 +29,7 @@ describe('NavSection', () => {
     };
     const wrapper = render(NavSection, opts);
     wrapper.setData({ form: { searchTerm: 'foo' } });
-    wrapper.find('.hero_search-form').trigger('submit');
+    wrapper.find('.navform').trigger('submit');
     expect(storeMock.commit).toHaveBeenCalledWith(SET_QUERY, { query: { q: 'foo' }, shouldNavigate: true });
   });
 });

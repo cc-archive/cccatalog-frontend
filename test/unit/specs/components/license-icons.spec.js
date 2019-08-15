@@ -25,8 +25,7 @@ describe('LicenseIcons', () => {
 
   it('should generate CC BY icons', () => {
     const wrapper = render(LicenseIcons, options);
-    expect(wrapper.findAll('.photo-license-icon').at(0)).toBeDefined();
-    expect(wrapper.findAll('.photo-license-icon').at(1)).toBeDefined();
+    expect(wrapper.find({ name: 'LicenseIconography' })).toBeDefined();
   });
 
   it('should generate license URL', () => {

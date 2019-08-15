@@ -1,47 +1,74 @@
 <template>
-  <div class="photo_tags grid-x full" v-if="tags && tags.length">
+  <div class="tags" v-if="tags.length !== 0">
     <header>
-      <h2>Tags</h2>
+      <h2>{{ $t('tags') }}</h2>
     </header>
-    <div class="photo_tags-ctr cell large-12">
-      <template v-for="(tag, index) in getValidTags()">
-        <span class="photo_tag button hollow secondary"
-              :key="index"
-              @click="searchByTagName(tag.name)">
-          <span class="photo_tag-label">
-            <span>{{ tag.name }}</span>
-          </span>
-        </span>
-      </template>
-    </div>
+
+    <Button v-for="(tag, index) in validTags"
+            :key="index"
+            class="tag"
+            color="blue"
+            shade="dark"
+            :icon="showIcon ? 'hashtag' : null"
+            is-basic
+            @click="searchByTagName(tag.name)">
+      <span class="text">
+        {{ tag.name }}
+      </span>
+    </Button>
   </div>
 </template>
 
 <script>
+import {
+  Button,
+} from '@creativecommons/vocabulary';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHashtag } from '@fortawesome/free-solid-svg-icons';
+
 import { SET_QUERY } from '@/store/mutation-types';
+
+library.add(faHashtag);
 
 export default {
   name: 'photo-tags',
-  props: ['tags'],
+  props: {
+    tags: {
+      type: Array,
+      default: () => [],
+    },
+    showIcon: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  components: {
+    Button,
+  },
   computed: {
     hasClarifaiTags() {
-      return this.$props.tags.some(tag => tag.provider === 'clarifai');
+      return this.tags.some(tag => tag.provider === 'clarifai');
+    },
+    validTags() {
+      return this.tags.filter(tag => !!tag.name);
     },
   },
   methods: {
-    isClarifaiTag(provider) {
-      return provider === 'clarifai';
-    },
     searchByTagName(query) {
-      this.$store.commit(SET_QUERY, { query: { q: query }, shouldNavigate: true });
-    },
-    getValidTags() {
-      return this.$props.tags.filter(tag => !!tag.name);
+      this.$store.commit(
+        SET_QUERY,
+        {
+          query: {
+            q: query,
+          },
+          shouldNavigate: true,
+        },
+      );
     },
   },
 };
 </script>
 
-<style lang="scss" scoped>
-  @import '../styles/photodetails.scss';
-</style>
+<i18n src="../locales/components/PhotoTags.json">
+</i18n>

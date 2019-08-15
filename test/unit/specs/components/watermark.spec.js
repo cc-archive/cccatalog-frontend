@@ -30,35 +30,37 @@ describe('Watermark', () => {
 
   it('should render watermark link', () => {
     const wrapper = render(Watermark, options);
-    expect(wrapper.find('.download-watermark').element).toBeDefined();
+    expect(wrapper.find('.watermark').element).toBeDefined();
+    expect(wrapper.find({ name: 'ChoiceField' })).toBeDefined();
+    expect(wrapper.find({ name: 'Button' })).toBeDefined();
   });
 
   it('should generate watermark url', () => {
     const wrapper = render(Watermark, options);
-    expect(wrapper.vm.watermarkURL).toContain(`https://watermark.test/watermark/${props.image.id}`);
+    expect(wrapper.vm.watermarkUrl).toContain(`https://watermark.test/watermark/${props.image.id}`);
   });
 
   it('should generate watermark url with embed_metadata set to true', () => {
     const wrapper = render(Watermark, options);
-    wrapper.setData({ shouldEmbedMetadata: true });
-    expect(wrapper.vm.watermarkURL).toContain('embed_metadata=true');
+    wrapper.setData({ customisations: ['embedMetadata'] });
+    expect(wrapper.vm.watermarkUrl).toContain('embed_metadata=true');
   });
 
   it('should generate watermark url with embed_metadata set to false', () => {
     const wrapper = render(Watermark, options);
-    wrapper.setData({ shouldEmbedMetadata: false });
-    expect(wrapper.vm.watermarkURL).toContain('embed_metadata=false');
+    wrapper.setData({ customisations: [] });
+    expect(wrapper.vm.watermarkUrl).toContain('embed_metadata=false');
   });
 
   it('should generate watermark url with watermark set to true', () => {
     const wrapper = render(Watermark, options);
-    wrapper.setData({ shouldWatermark: true });
-    expect(wrapper.vm.watermarkURL).toContain('watermark=true');
+    wrapper.setData({ customisations: ['watermark'] });
+    expect(wrapper.vm.watermarkUrl).toContain('watermark=true');
   });
 
   it('should generate watermark url with watermark set to false', () => {
     const wrapper = render(Watermark, options);
-    wrapper.setData({ shouldWatermark: false });
-    expect(wrapper.vm.watermarkURL).toContain('watermark=false');
+    wrapper.setData({ customisations: [] });
+    expect(wrapper.vm.watermarkUrl).toContain('watermark=false');
   });
 });

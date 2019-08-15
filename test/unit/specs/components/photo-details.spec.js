@@ -29,29 +29,41 @@ describe('PhotoDetails', () => {
   });
 
   it('should render correct contents', () => {
-    const wrapper = render(PhotoDetails, options);
-    expect(wrapper.find('.photo_image').element).toBeDefined();
+    const wrapper = render(PhotoDetails, options, false);
+    expect(wrapper.find('.details').element).toBeDefined();
+    expect(wrapper.find('.image-viewer').element).toBeDefined();
+    expect(wrapper.find('.image-demo').element).toBeDefined();
     expect(wrapper.find({ name: 'watermark' }).exists()).toBe(true);
     expect(wrapper.find({ name: 'image-info' }).exists()).toBe(true);
     expect(wrapper.find({ name: 'image-attribution' }).exists()).toBe(true);
     expect(wrapper.find({ name: 'image-social-share' }).exists()).toBe(true);
   });
 
-  it('should not render watermark link when watermark is disabled', () => {
-    options.propsData.watermarkEnabled = false;
-    const wrapper = render(PhotoDetails, options);
-    expect(wrapper.find({ name: 'watermark' }).element).not.toBeDefined();
+  it('should be prepped for rendering', () => {
+    try {
+      render(PhotoDetails, options, false);
+    }
+    catch (e) {
+      // Do nothing.
+    }
+    expect(true).toBe(true);
   });
 
   it('should render social sharing buttons', () => {
-    const wrapper = render(PhotoDetails, options);
+    const wrapper = render(PhotoDetails, options, false);
     expect(wrapper.find({ name: 'image-social-share' }).exists()).toBe(true);
   });
 
   it('should not render social sharing buttons when social sharing is disabled', () => {
     options.propsData.socialSharingEnabled = false;
-    const wrapper = render(PhotoDetails, options);
+    const wrapper = render(PhotoDetails, options, false);
     expect(wrapper.find({ name: 'image-social-share' }).exists()).toBe(false);
+  });
+
+  it('should not render watermark link when watermark is disabled', () => {
+    options.propsData.watermarkEnabled = false;
+    const wrapper = render(PhotoDetails, options, false);
+    expect(wrapper.find({ name: 'watermark' }).exists()).toBe(false);
   });
 
   it('should generate license name', () => {
@@ -78,7 +90,7 @@ describe('PhotoDetails', () => {
         shouldShowBreadcrumb: true,
       },
     });
-    expect(wrapper.find('.photo_breadcrumb').element).toBeDefined();
+    expect(wrapper.find({ name: 'Trail' }).exists()).toBe(true);
   });
 
   it('doesnt render link back to search results if disabled', () => {
@@ -88,7 +100,7 @@ describe('PhotoDetails', () => {
         shouldShowBreadcrumb: false,
       },
     });
-    expect(wrapper.find('.photo_breadcrumb').element).toBeUndefined();
+    expect(wrapper.find({ name: 'Trail' }).exists()).toBe(false);
   });
 
   it('redirects back when clicking on the back to results link', () => {
@@ -108,7 +120,7 @@ describe('PhotoDetails', () => {
       },
     };
     const wrapper = render(PhotoDetails, opts);
-    const link = wrapper.find('.photo_breadcrumb');
+    const link = wrapper.find('.back-link');
     link.trigger('click');
     expect(routerMock.push).toHaveBeenCalledWith({ name: 'browse-page', query: opts.propsData.query });
   });

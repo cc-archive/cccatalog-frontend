@@ -20,8 +20,8 @@ describe('CopyButton', () => {
   });
 
   it('should render correct contents', () => {
-    const wrapper = render(CopyButton, options);
-    expect(wrapper.find('button').vm).toBeDefined();
+    const wrapper = render(CopyButton, options, false);
+    expect(wrapper.find({ name: 'Button' })).toBeDefined();
   });
 
   it('data.success should be false by default', () => {

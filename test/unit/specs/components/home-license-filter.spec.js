@@ -16,13 +16,13 @@ describe('HomeLicenseFilter', () => {
   });
 
   it('renders checkboxes', () => {
-    const wrapper = render(HomeLicenseFilter, options);
+    const wrapper = render(HomeLicenseFilter, options, false);
     expect(wrapper.find('#commercial').element).toBeDefined();
     expect(wrapper.find('#modification').element).toBeDefined();
   });
 
   it('renders checkboxes', () => {
-    const wrapper = render(HomeLicenseFilter, options);
+    const wrapper = render(HomeLicenseFilter, options, false);
     const commercialChk = wrapper.find('#commercial');
     const modificationChk = wrapper.find('#modification');
 

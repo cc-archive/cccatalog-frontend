@@ -29,14 +29,14 @@ describe('PhotoTags', () => {
 
   it('should render correct contents when tags array is not empty', () => {
     const wrapper = render(PhotoTags, options);
-    expect(wrapper.find('.photo_tags').element).toBeDefined();
-    expect(wrapper.findAll('.photo_tag').length).toBe(2);
+    expect(wrapper.find('.tags').element).toBeDefined();
+    expect(wrapper.findAll({ name: 'Button' }).length).toBe(2);
   });
 
   it('should render nothing when tags array is empty', () => {
     options.propsData.tags = [];
     const wrapper = render(PhotoTags, options);
-    expect(wrapper.find('.photo_tags').element).toBeUndefined();
+    expect(wrapper.find('.tags').element).toBeUndefined();
   });
 
   it('commits a mutation when a tag is clicked', () => {
@@ -51,9 +51,9 @@ describe('PhotoTags', () => {
         $store: storeMock,
       },
     };
-    const wrapper = render(PhotoTags, opts);
-    wrapper.find('.photo_tag').trigger('click');
-    const tagName = wrapper.find('.photo_tag').text();
+    const wrapper = render(PhotoTags, opts, false);
+    wrapper.find('.tag').trigger('click');
+    const tagName = wrapper.find('.tag').text();
     expect(storeMock.commit).toHaveBeenCalledWith(SET_QUERY, {
       query: { q: tagName },
       shouldNavigate: true,

@@ -1,12 +1,12 @@
 /* eslint-disable no-param-reassign */
 import Vuex from 'vuex';
-import { shallowMount, createLocalVue } from '@vue/test-utils';
+import { mount, shallowMount, createLocalVue } from '@vue/test-utils';
 import sampleStore from '../sampleStore/';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
-const render = (Component, options = { localVue }) => {
+const render = (Component, options = { localVue }, isShallow = true) => {
   if (!options.store) {
     options.store = new Vuex.Store(sampleStore);
   }
@@ -17,7 +17,10 @@ const render = (Component, options = { localVue }) => {
   options.mocks.$t = key => key;
   options.mocks.$tc = key => key;
 
-  return shallowMount(Component, options);
+  if (isShallow) {
+    return shallowMount(Component, options);
+  }
+  return mount(Component, options);
 };
 
 export default render;

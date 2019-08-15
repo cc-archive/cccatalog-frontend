@@ -1,5 +1,5 @@
 <template>
-  <section class="watermark">
+  <div class="watermark">
     <header>
       <h3>{{ $t('downloadimage' )}}</h3>
     </header>
@@ -37,7 +37,7 @@
             @click="onDownloadWatermark(image, $event)">
       {{ $t('download') }}
     </Button>
-  </section>
+  </div>
 </template>
 
 <script>

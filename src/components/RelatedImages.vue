@@ -1,8 +1,9 @@
 <template>
   <div class="photo_related-images grid-x full" v-if="relatedImages && relatedImages.length > 0">
     <header>
-      <h2>Related Images</h2>
+      <h2>{{ $t('relatedimages') }}</h2>
     </header>
+
     <search-grid
       :imagesCount="imagesCount"
       :images="relatedImages"
@@ -28,6 +29,5 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-  @import '../styles/photodetails.scss';
-</style>
+<i18n src="../locales/components/RelatedImages.json">
+</i18n>

@@ -62,7 +62,7 @@ const LicenseIcons = {
       }
       return [
         '',
-        ...license.split('-'),
+        ...license.split('-').map(attribute => attribute.toLowerCase()),
       ];
     },
   },
