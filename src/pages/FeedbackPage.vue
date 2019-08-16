@@ -1,6 +1,6 @@
 <template>
   <div class="feedback page">
-    <header-section showNavSearch="true"></header-section>
+    <header-section :showNavSearch="true"></header-section>
 
     <div class="content">
       <Container>

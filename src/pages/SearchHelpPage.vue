@@ -1,6 +1,6 @@
 <template>
   <div class="guide page">
-    <header-section showNavSearch="true"></header-section>
+    <header-section :showNavSearch="true"></header-section>
 
     <div class="content">
       <Container>
