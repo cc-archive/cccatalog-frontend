@@ -1,35 +1,40 @@
 <template>
-  <div>
-    <figure class="search-grid_item">
-      <a
-        :href="'/photos/' + image.id"
-        @click="onGotoDetailPage($event, image)"
-        class="search-grid_image-ctr">
-        <img
-          :class="{'search-grid_image': true, 'search-grid_image__fill': !shouldContainImage}"
-          :alt="image.title" :src="getImageUrl(image)"
-          @error="onImageLoadError($event, image)">
-      </a>
-      <figcaption class="search-grid_item-overlay search-grid_item-overlay__top">
-        <license-icons :image="image"></license-icons>
-      </figcaption>
-      <figcaption class="search-grid_item-overlay search-grid_item-overlay__bottom">
-        <a class="search-grid_overlay-provider"
-            :title="image.title"
-            :href="getImageForeignUrl(image)"
-            @click.stop="() => false"
-            target="new">
-            <img class="search-grid_overlay-provider-logo" :alt="image.provider"
-                :src="getProviderLogo(image.provider)">
-            {{ image.title }}
-        </a>
-      </figcaption>
-    </figure>
+  <div class="cell">
+    <a class="link"
+       :href="'/photos/' + image.id"
+       @click="onGotoDetailPage($event, image)">
+      <ImageView :source="imageUrl"
+                 :alternate-text="image.title"
+                 primary-dimension="width"
+                 is-hoverable
+                 @error="onImageLoadError($event, image)">
+        <template #topAddons>
+          <LicenseIcons :image="image"/>
+        </template>
+        <template #bottomAddons>
+          <a class="search-grid_overlay-provider"
+             :title="image.title"
+             :href="foreignUrl"
+             @click.stop="() => false"
+             target="new">
+            <img class="search-grid_overlay-provider-logo"
+                 :src="providerLogo"
+                 :alt="image.provider"/>
+            {{ croppedTitle }}
+          </a>
+        </template>
+      </ImageView>
+    </a>
   </div>
 </template>
 
 <script>
+import {
+  ImageView,
+} from '@creativecommons/vocabulary';
+
 import LicenseIcons from '@/components/LicenseIcons';
+
 import getProviderLogo from '@/utils/getProviderLogo';
 
 const errorImage = require('@/assets/image_not_available_placeholder.png');
@@ -43,24 +48,35 @@ const toAbsolutePath = (url, prefix = 'https://') => {
 
 export default {
   name: 'masonry-search-grid-cell',
-  props: ['image', 'shouldContainImage'],
+  props: {
+    image: {
+      type: Object,
+      required: true,
+    },
+  },
   components: {
+    ImageView,
     LicenseIcons,
   },
-  methods: {
-    getImageUrl(image) {
-      if (!image) {
-        return '';
+  computed: {
+    croppedTitle() {
+      if (this.image.title.length > 32) {
+        return `${this.image.title.slice(0, 32)}...`;
       }
-      const url = image.thumbnail || image.url;
+      return this.image.title;
+    },
+    imageUrl() {
+      const url = this.image.thumbnail || this.image.url;
       return toAbsolutePath(url);
     },
-    getImageForeignUrl(image) {
-      return toAbsolutePath(image.foreign_landing_url);
+    foreignUrl() {
+      return toAbsolutePath(this.image.foreign_landing_url);
     },
-    getProviderLogo(providerName) {
-      return getProviderLogo(providerName);
+    providerLogo() {
+      return getProviderLogo(this.image.provider);
     },
+  },
+  methods: {
     onGotoDetailPage(event, image) {
       // doesn't use router to redirect to photo details page in case the user
       // has the Command (Mac) or Ctrl Key (Windows) pressed, so that they can
@@ -86,114 +102,33 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-  .search-grid_image-ctr {
-    background: #EBECE4;
-    display: block;
-    width: 100%;
-  }
+  @import "~@creativecommons/vocabulary/tokens";
 
-  .search-grid_item {
-    overflow: hidden;
+  .cell {
+    margin-bottom: $space-large;
 
-    &:hover .search-grid_item-overlay {
-      opacity: 1;
-      bottom: 0;
-    }
+    .link {
+      display: block;
 
-    &:hover .search-grid_item-overlay__top {
-      top: 0;
-    }
-  }
+      .image-view {
+        --image-view-width: 320px;
 
-  .search-grid_item-overlay {
-    position: absolute;
-    opacity: 0;
-    transition: all .4s ease;
-    width: 100%;
-    height: 30px;
-    color: #fff;
-    padding: 0 10px;
-    display: block;
-    top: -100%;
+        a {
+          color: inherit;
 
-    &__top {
-      transition: all .5s ease;
-      background: linear-gradient(to bottom,
-                  rgba(0,0,0,.5)
-                  0,
-                  rgba(0,0,0,0) 100%);
-      top: 0;
-    }
+          text-decoration-style: dotted;
 
-    &__bottom {
-      height: 30px;
-      background: linear-gradient(to top,
-                  rgba(0,0,0,.5)
-                  0,
-                  rgba(0,0,0,0) 100%);
-      bottom: -100%;
-      top: auto;
-    }
-  }
+          &:hover {
+            text-decoration-style: solid;
+          }
+        }
 
-  .search-grid_overlay-provider {
-    width: calc( 100% - 30px );
-    display: block;
-    bottom: 10px;
-    left: 10px;
-    z-index: 100;
-    color: #fff;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+        .search-grid_overlay-provider-logo {
+          vertical-align: middle;
 
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  .search-grid_overlay-provider-logo {
-    max-height: 30px;
-    max-width: 40px;
-    margin-right: 5px;
-    padding-bottom: 3px;
-  }
-
-  .search-grid_item {
-    width: 100%;
-    position: relative;
-    display: block;
-    float: left;
-    flex: 0 0 auto;
-    flex-grow: 1;
-    cursor: pointer;
-  }
-
-  .search-grid_image {
-    margin: auto;
-    display: block;
-  }
-
-  .search-grid_image__fill {
-    width: 100%;
-  }
-
-  @media screen and (max-width: 600px) {
-    .search-grid_item-overlay {
-      position: absolute;
-      opacity: 1;
-      bottom: 0;
-    }
-
-    .search-grid_overlay-add {
-      position: absolute;
-      width:  44px;
-      height: 44px;
-      bottom: 0;
-    }
-
-     .search-grid_layout-control {
-      text-align: left !important;
+          height: 1.5em;
+        }
+      }
     }
   }
 </style>
