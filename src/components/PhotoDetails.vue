@@ -17,10 +17,12 @@
           {{ image.title }}
         </TrailCrumb>
       </Trail>
-      <img @load="onImageLoad"
-           class="image-demo"
-           :src="image.url"
-           :alt="image.title">
+      <div class="image-wrapper">
+        <img @load="onImageLoad"
+             class="image-demo"
+             :src="image.url"
+             :alt="image.title">
+      </div>
     </Section>
 
     <header>
@@ -168,10 +170,13 @@ export default {
     }
 
     .image-viewer {
-      text-align: center;
+      .image-wrapper {
+        text-align: center;
 
-      .image-demo {
-        margin: $space-normal $space-zero;
+        .image-demo {
+          margin: $space-normal $space-zero $space-zero;
+          max-width: 100%;
+        }
       }
     }
   }
