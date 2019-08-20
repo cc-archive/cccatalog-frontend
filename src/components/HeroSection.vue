@@ -42,20 +42,26 @@
         <GridCell class="info"
                   :span-set="[12, 12, 4, 4, 4]">
           <FontAwesomeIcon :icon="['fas', 'info-circle']"/>
-          Learn more about CC licenses
-          <a href="https://creativecommons.org/share-your-work/licensing-types-examples/"
-             target="_blank"
-             rel="noopener">here</a>.
+          <i18n path="links.learn" tag="span">
+            <a href="https://creativecommons.org/share-your-work/licensing-types-examples/"
+               target="_blank"
+               rel="noopener">{{ $t('links.here') }}</a>.
+          </i18n>
         </GridCell>
         <GridCell class="history"
                   :span-set="[12, 6, 4, 4, 4]">
           <FontAwesomeIcon :icon="['fas', 'history']"/>
-          Looking for the old CC Search portal? Go <a href="https://oldsearch.creativecommons.org/">here</a>.
+          <i18n path="links.old" tag="span">
+            <a href="https://oldsearch.creativecommons.org/"
+               target="_blank">{{ $t('links.here') }}</a>.
+          </i18n>
         </GridCell>
         <GridCell class="question"
                   :span-set="[12, 6, 4, 4, 4]">
           <FontAwesomeIcon :icon="['fas', 'question-circle']"/>
-          See the CC Search syntax guide <a href="/search-help">here</a>.
+          <i18n path="links.guide" tag="span">
+            <a href="/search-help">{{ $t('links.here') }}</a>.
+          </i18n>
         </GridCell>
       </Grid>
     </Container>

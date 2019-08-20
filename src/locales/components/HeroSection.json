@@ -1,10 +1,22 @@
 {
   "en": {
     "search": "Search all images...",
-    "description": " Search for free content in the public domain and under Creative Commons licenses."
+    "description": " Search for free content in the public domain and under Creative Commons licenses.",
+    "links": {
+      "learn": "Learn more about CC licenses {0}.",
+      "old": "Looking for the old CC Search portal? Go {0}.",
+      "guide": "See the CC Search syntax guide {0}.",
+      "here": "here"
+    }
   },
   "hi": {
     "search": "सभी चित्रों को खोजें...",
-    "description": "सार्वजनिक डोमेन में और क्रिएटिव कॉमन्स लाइसेंस के तहत मुफ्त सामग्री खोजें।"
+    "description": "सार्वजनिक डोमेन में और क्रिएटिव कॉमन्स लाइसेंस के तहत मुफ्त सामग्री खोजें।",
+    "links": {
+      "learn": "CC लाइसेंस के बारे में अधिक जानें {0}।",
+      "old": "पुराने CC खोज पोर्टल की तलाश है? {0} जाओ।",
+      "guide": "CC खोज सिंटैक्स गाइड देखें {0}।",
+      "here": "यहां"
+    }
   }
 }
