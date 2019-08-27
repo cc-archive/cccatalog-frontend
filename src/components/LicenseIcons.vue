@@ -38,12 +38,12 @@ const LicenseIcons = {
       let licenseVersion = image.license_version;
       let category = 'licenses';
 
-      if (license === 'cc0') {
+      if (license.toLowerCase() === 'cc0') {
         license = 'zero';
         licenseVersion = '1.0';
         category = 'publicdomain';
       }
-      else if (license === 'pdm') {
+      else if (license.toLowerCase() === 'pdm') {
         license = 'mark';
         licenseVersion = '1.0';
         category = 'publicdomain';
@@ -54,10 +54,10 @@ const LicenseIcons = {
     },
     licenseIcons() {
       const license = this.image.license;
-      if (license === 'cc0') {
-        return ['zero'];
+      if (license.toLowerCase() === 'cc0') {
+        return ['', 'zero'];
       }
-      if (license === 'pdm') {
+      if (license.toLowerCase() === 'pdm') {
         return ['pd'];
       }
       return [
