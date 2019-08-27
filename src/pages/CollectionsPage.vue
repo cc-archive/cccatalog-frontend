@@ -7,7 +7,7 @@
         <h1>{{ $t('browse') }}</h1>
         <h2>{{ $t('museum') }}</h2>
         <Grid density="sparse">
-          <GridCell :span-set="[12, 6, 3, 3, 3]"
+          <GridCell :span-set="[12, 6, 6, 3, 2]"
                     v-for="(provider, index) in museumProviders"
                     :key="index">
             <collection-item class="card provider-card cell small"
@@ -16,7 +16,7 @@
         </Grid>
         <h2>{{ $t('other') }}</h2>
         <Grid density="sparse">
-          <GridCell :span-set="[12, 6, 3, 3, 3]"
+          <GridCell :span-set="[12, 6, 6, 3, 2]"
                     v-for="(provider, index) in otherProviders"
                     :key="index">
             <collection-item class="card provider-card cell small"

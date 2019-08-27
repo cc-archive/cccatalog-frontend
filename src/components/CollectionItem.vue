@@ -1,10 +1,8 @@
 <template>
   <Card class="individual"
-        color="blue"
-        shade="dark"
         :heading="provider.display_name"
         is-decked
-        is-rounded
+        is-raised
         @click.native="goToProvider(provider.provider_name)">
     <template #feature>
       <div class="featured-content">
@@ -60,6 +58,8 @@ export default CollectionItem;
 
   .individual {
     cursor: pointer;
+
+    --card-foot-background-color: var(--card-body-background-color);
   }
 
   .featured-content {
@@ -67,13 +67,13 @@ export default CollectionItem;
     align-items: center;
     justify-content: center;
 
-    height: 5em;
+    height: 6em;
 
     padding: 1em;
 
     .provider-logo {
       max-width: 100%;
-      max-height: 4em;
+      max-height: 6em;
 
       a {
         position: absolute;
