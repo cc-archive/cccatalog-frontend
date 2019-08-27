@@ -30,7 +30,7 @@ describe('PhotoTags', () => {
   it('should render correct contents when tags array is not empty', () => {
     const wrapper = render(PhotoTags, options);
     expect(wrapper.find('.tags').element).toBeDefined();
-    expect(wrapper.findAll({ name: 'Button' }).length).toBe(2);
+    expect(wrapper.findAll({ name: 'Section' }).length).toBe(2);
   });
 
   it('should render nothing when tags array is empty', () => {
