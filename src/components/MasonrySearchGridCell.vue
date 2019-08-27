@@ -116,10 +116,10 @@ export default {
         a {
           color: inherit;
 
-          text-decoration-style: dotted;
+          text-decoration: none;
 
           &:hover {
-            text-decoration-style: solid;
+            text-decoration: underline;
           }
         }
 

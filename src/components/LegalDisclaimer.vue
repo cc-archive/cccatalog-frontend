@@ -66,22 +66,16 @@ export default {
   @import "~@creativecommons/vocabulary/tokens";
 
   .disclaimer {
-    a {
-      color: inherit;
-
-      text-decoration-style: dotted;
-
-      &:hover {
-        text-decoration-style: solid;
-      }
-    }
-
     .button {
       display: flex;
 
       min-width: 12em;
 
       margin: $space-normal $space-zero;
+    }
+
+    .section {
+      font-size: $size-small;
     }
   }
 </style>

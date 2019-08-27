@@ -104,12 +104,10 @@ export default {
 
   .information {
     a {
-      color: inherit;
-
-      text-decoration-style: dotted;
+      color: $color-blue-dark;
 
       &:hover {
-        text-decoration-style: solid;
+        color: $color-blue-darker;
       }
     }
   }

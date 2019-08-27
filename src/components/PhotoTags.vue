@@ -4,24 +4,22 @@
       <h2>{{ $t('tags') }}</h2>
     </header>
 
-    <Button v-for="(tag, index) in validTags"
+    <Section v-for="(tag, index) in validTags"
             :key="index"
             class="tag"
-            color="blue"
-            shade="dark"
             :icon="showIcon ? 'hashtag' : null"
-            is-basic
-            @click="searchByTagName(tag.name)">
+            is-compact
+            @click.native="searchByTagName(tag.name)">
       <span class="text">
         {{ tag.name }}
       </span>
-    </Button>
+    </Section>
   </div>
 </template>
 
 <script>
 import {
-  Button,
+  Section,
 } from '@creativecommons/vocabulary';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -44,7 +42,7 @@ export default {
     },
   },
   components: {
-    Button,
+    Section,
   },
   computed: {
     hasClarifaiTags() {
@@ -69,6 +67,33 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  @import "~@creativecommons/vocabulary/tokens";
+
+  .tags {
+    .tag {
+      color: $color-tone-grey-dark;
+
+      cursor: pointer;
+
+      border-radius: $radius-normal;
+
+      transition-property: color, border-color;
+      transition-duration: $duration-shortest;
+
+      &:hover {
+        color: $color-tone-black;
+
+        border-color: $color-tone-black;
+      }
+
+      &:not(:last-of-type) {
+        margin-right: $space-normal;
+      }
+    }
+  }
+</style>
 
 <i18n src="../locales/components/PhotoTags.json">
 </i18n>

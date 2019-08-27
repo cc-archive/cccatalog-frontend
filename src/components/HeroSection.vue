@@ -131,10 +131,8 @@ export default {
     a {
       color: $color-blue-dark;
 
-      text-decoration-style: dotted;
-
       &:hover {
-        text-decoration-style: solid;
+        color: $color-blue-darker;
       }
     }
 

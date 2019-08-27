@@ -5,27 +5,21 @@
     </header>
 
     <div class="photo-attribution">
-      <Quote>
+      <Section color="blue" shade="light" color-side="left" is-basic>
         <span id="attribution" class="photo_usage-attribution" ref="photoAttribution">
-          <a :href="image.foreign_landing_url">"
-            {{ image.title }}"
-          </a>
+          <a :href="image.foreign_landing_url">"{{ image.title }}"</a>
           <span v-if="image.creator">
             by
-            <a v-if="image.creator_url" :href="image.creator_url">
-              {{ image.creator }}
-            </a>
+            <a v-if="image.creator_url" :href="image.creator_url">{{ image.creator }}</a>
             <span v-else>
               {{ image.creator }}
             </span>
           </span>
           is licensed under
-          <a class="photo_license" :href="licenseURL">
-            {{ fullLicenseName.toUpperCase() }}
-          </a>
+          <a class="photo_license" :href="licenseURL">{{ fullLicenseName.toUpperCase() }}</a>
           <license-icons :image="image"></license-icons>
         </span>
-      </Quote>
+      </Section>
       <CopyButton id="copy-attribution-btn"
                   el="#attribution"
                   title="RTF to embed attribution in blog or document"
@@ -60,7 +54,7 @@
 
 <script>
 import {
-  Quote,
+  Section,
 } from '@creativecommons/vocabulary';
 
 import LicenseIcons from '@/components/LicenseIcons';
@@ -74,7 +68,8 @@ export default {
   name: 'image-attribution',
   props: ['id', 'image', 'ccLicenseURL', 'fullLicenseName', 'attributionHtml'],
   components: {
-    Quote,
+    Section,
+
     LicenseIcons,
     CopyButton,
     LegalDisclaimer,
@@ -103,12 +98,20 @@ export default {
 
   .attribution {
     a {
-      color: inherit;
-
-      text-decoration-style: dotted;
+      color: $color-blue-dark;
 
       &:hover {
-        text-decoration-style: solid;
+        color: $color-blue-darker;
+      }
+    }
+
+    .photo-attribution {
+      .quote {
+        .blockquote {
+          .icon {
+            display: none;
+          }
+        }
       }
     }
 
@@ -116,18 +119,27 @@ export default {
       display: block;
 
       font-family: monospace;
-      font-size: $size-small;
+      font-size: 14px;
+      line-height: 1.5;
 
-      background-color: $color-tone-near-white;
+      background-color: scale_color($color-tone-near-white, $lightness: 50%);
 
       padding: $space-normal;
 
-      border: 1px solid $color-blue-dark;
+      border: 1px solid $color-tone-grey-lighter;
 
       margin: $space-normal $space-zero;
 
       width: calc(100% - 17px);
-      height: 8em;
+      height: 5em;
+
+      transition: box-shadow $duration-short;
+
+      &:focus {
+        box-shadow: unquote($shadow-normal) $color-tone-grey-lighter;
+
+        outline: none;
+      }
     }
   }
 </style>
