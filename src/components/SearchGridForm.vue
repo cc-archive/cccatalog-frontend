@@ -10,7 +10,7 @@
                     color="blue"
                     size="large"
                     type="text"
-                    placeholder="Search"
+                    :placeholder="searchBoxPlaceholder"
                     is-ghost
                     autofocus="autofocus"
                     autocapitalize="none"
