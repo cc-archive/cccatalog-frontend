@@ -60,9 +60,6 @@ export default {
   },
   computed: {
     croppedTitle() {
-      if (this.image.title.length > 32) {
-        return `${this.image.title.slice(0, 32)}...`;
-      }
       return this.image.title;
     },
     imageUrl() {
@@ -123,10 +120,19 @@ export default {
           }
         }
 
-        .search-grid_overlay-provider-logo {
-          vertical-align: middle;
+        .search-grid_overlay-provider {
+          display: block;
+          max-width: 100%;
 
-          height: 1.5em;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          .search-grid_overlay-provider-logo {
+            vertical-align: middle;
+
+            height: 1.5em;
+          }
         }
       }
     }
