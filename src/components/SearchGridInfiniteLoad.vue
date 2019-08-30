@@ -6,6 +6,10 @@
       <div class="search-grid_ctr" ref="gridItems">
         <div v-show="showGrid && includeAnalytics"
              class="search-grid_analytics">
+          <h2 v-if="searchTerm"
+              class="search-term">
+            {{ searchTerm }}
+          </h2>
           <span>
             <strong>{{ _imagesCount }}</strong> photos
           </span>
@@ -181,6 +185,10 @@ export default {
   .search-grid_ctr {
     .search-grid_analytics {
       margin-bottom: $space-normal;
+
+      .search-term {
+        margin-top: $space-zero;
+      }
     }
 
     .masonry-layout {
