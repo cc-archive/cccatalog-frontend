@@ -10,18 +10,18 @@
             color="blue"
             shade="dark"
             icon="certificate"
-            @click="window.location.href = sourceURL">
+            @click="redirectToSource">
       <i18n path="verifyat" tag="span">
         {{ source }}
       </i18n>
     </Button>
 
     <Section indication="probably" color-side="left">
-        CC Search aggregates data from publicly available repositories of open
-        content. CC does not host the content and does not verify that the
-        content is properly CC-licensed or that the attribution information is
-        accurate or complete. Please follow the link to the source of the
-        content to independently verify before reuse.
+      CC Search aggregates data from publicly available repositories of open
+      content. CC does not host the content and does not verify that the
+      content is properly CC-licensed or that the attribution information is
+      accurate or complete. Please follow the link to the source of the
+      content to independently verify before reuse.
     </Section>
   </div>
 </template>
@@ -58,6 +58,11 @@ export default {
     Section,
 
     Tooltip,
+  },
+  methods: {
+    redirectToSource() {
+      window.location.href = this.sourceURL;
+    },
   },
 };
 </script>
