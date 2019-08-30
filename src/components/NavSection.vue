@@ -79,6 +79,8 @@ export default {
     flex-wrap: wrap-reverse;
     align-items: center;
 
+    min-height: 2.5em;
+
     .navform {
       display: flex;
       flex-direction: row;
