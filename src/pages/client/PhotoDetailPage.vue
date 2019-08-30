@@ -1,9 +1,8 @@
 <template>
-  <div class="photo-detail-page grid-x">
-    <div class="cell">
-      <header-section showNavSearch="true" />
-    </div>
-    <div class="container cell large-11">
+  <div class="photo-detail page">
+    <header-section :showNavSearch="true"/>
+
+    <Container>
       <photo-details :image="image"
                     :breadCrumbURL="breadCrumbURL"
                     :shouldShowBreadcrumb="shouldShowBreadcrumb"
@@ -13,18 +12,26 @@
                     :watermarkEnabled="watermarkEnabled"
                     :socialSharingEnabled="socialSharingEnabled"
                     @onImageLoaded="onImageLoaded" />
-      <photo-tags :tags="tags" />
+
+      <!-- Choose whether to show the # icon with the tags -->
+      <photo-tags :tags="tags" :show-icon="false"/>
+
       <related-images :relatedImages="relatedImages"
                       :imagesCount="imagesCount"
                       :query="query"
                       :filter="filter"
                       :isPrimaryImageLoaded="isPrimaryImageLoaded" />
-    </div>
+    </Container>
+
     <footer-section></footer-section>
   </div>
 </template>
 
 <script>
+import {
+  Container,
+} from '@creativecommons/vocabulary';
+
 import PhotoDetails from '@/components/PhotoDetails';
 import PhotoTags from '@/components/PhotoTags';
 import RelatedImages from '@/components/RelatedImages';
@@ -34,6 +41,8 @@ import PhotoDetailMixin from '@/pages/mixins/PhotoDetailMixin';
 
 const PhotoDetailPage = {
   components: {
+    Container,
+
     HeaderSection,
     RelatedImages,
     FooterSection,
@@ -45,13 +54,3 @@ const PhotoDetailPage = {
 
 export default PhotoDetailPage;
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-  .container {
-    margin-left: 4vw;
-    @media screen and (max-width: 1050px) {
-      margin-left: 0;
-    }
-  }
-</style>
