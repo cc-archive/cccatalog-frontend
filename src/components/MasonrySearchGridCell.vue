@@ -108,7 +108,11 @@ export default {
       display: block;
 
       .image-view {
-        --image-view-width: 320px;
+        --image-view-width: 256px;
+
+        @media (max-width: 599px) {
+          --image-view-width: 320px;
+        }
 
         a {
           color: inherit;
