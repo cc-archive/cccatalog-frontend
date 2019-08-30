@@ -1,7 +1,6 @@
 <template>
-  <div :class="{ 'search-filters': true,
-                 'search-filters__visible': isFilterVisible, }">
-    <div class="grid-x">
+  <div class="search-filters" :class="searchFiltersClasses">
+    <div class="filter-group">
       <div class="filter-option search-filters_license-types">
         <multiselect
           v-model="filter.lt"
@@ -49,29 +48,39 @@
           :showLabels="false">
         </multiselect>
       </div>
+    </div>
+    <div class="filter-group">
       <div class="filter-option search-filters_search-by">
         <input type="checkbox" id="creator-chk"
                v-model="filter.searchBy.creator"
                @change="onUpdateFilter">
-        <label for="creator-chk">Search by Creator</label>
+        <label for="creator-chk">Search by creator</label>
       </div>
-      <div class="clear-filters"
+      <div class="filter-option search-filters_clear"
            v-if="isFilterApplied">
-        <a class="button primary medium search-filters_clear-btn"
+        <Button icon="times"
+                is-ghost
+                indication="negative"
                 @click="onClearFilters">
           Clear filters
-        </a>
+        </Button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import {
+  Button,
+  SwitchField,
+} from '@creativecommons/vocabulary';
+
 import Multiselect from 'vue-multiselect';
 
 const transformFilterValue = (filter, key) => {
   if (Array.isArray(filter[key])) {
-    return filter[key].map(filterItem => filterItem.code).join(',');
+    return filter[key].map(filterItem => filterItem.code)
+      .join(',');
   }
   else if (key === 'searchBy') {
     return filter.searchBy.creator ? 'creator' : null;
@@ -83,12 +92,22 @@ export default {
   name: 'search-grid-filter',
   props: ['showProvidersFilter'],
   components: {
+    Button,
+    SwitchField,
+
     Multiselect,
   },
   mounted() {
     this.parseQueryFilters();
   },
   computed: {
+    searchFiltersClasses() {
+      return [
+        {
+          'search-filters__visible': this.isFilterVisible,
+        },
+      ];
+    },
     isFilterApplied() {
       return this.$store.state.isFilterApplied;
     },
@@ -179,58 +198,54 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/app';
+  @import "~@creativecommons/vocabulary/tokens";
 
-.search-filters {
-  background: #fafafa;
-  display: none;
-  padding: 10px ;
-  width: 100%;
+  .search-filters {
+    display: none;
 
-  label {
-    font-size: 1em;
-    color: #35495e;
-    span {
-      margin-bottom: 1.07142857em;
-      font-size: .85em;
-      letter-spacing: 1px;
-      line-height: 1.25;
-      display: inline-block;
-      padding-top: .28571429em;
-      border-top: 5px solid #373737;
-      margin-top: -3px;
+    width: 100%;
+    margin-bottom: $space-normal;
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+
+      @media (max-width: 900px) {
+        flex-direction: row;
+      }
+
+      @media (max-width: 899px) {
+        flex-direction: column;
+      }
+
+      .filter-option {
+        flex-grow: 1;
+        flex-shrink: 0;
+
+        margin: $space-normal $space-normal $space-zero;
+
+        min-width: 15em;
+        min-height: 2.5em;
+
+        &.search-filters_search-by {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          .switch-field {
+            margin-right: $space-normal;
+          }
+        }
+
+        &.search-filters_clear {
+          text-align: right;
+        }
+      }
+    }
+
+    &__visible {
+      border-top: 1px solid #e8e8e8;
+      display: block;
     }
   }
-
-  &__visible {
-    border-top: 1px solid #e8e8e8;
-    display: block;
-  }
-}
-
-.filter-option {
-  margin-right: 1vw;
-  min-width: 17vw;
-  padding-bottom: 0.5vh;
-  padding-top: 0.5vh;
-}
-
-.grid-x {
-  /* Small only */
-  @media screen and (max-width: 39.9375em) {
-    display: block;
-  }
-}
-
-.search-filters_search-by,
-.clear-filters {
-  margin-top: 0.4em;
-  min-width: 10vw;
-}
-
-.search-filters_clear-btn {
-  height: auto;
-  border-radius: 2px;
-  margin: auto;
-}
 </style>
