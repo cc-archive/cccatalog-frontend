@@ -90,8 +90,6 @@ export default {
     }
 
     @media (max-width: 899px) {
-      justify-content: center;
-
       .navform {
         margin-top: $space-normal;
       }
@@ -100,7 +98,11 @@ export default {
         width: 100%;
         margin-top: $space-normal;
       }
-    };
+    }
+
+    @media (max-width: 1199px) {
+      justify-content: center;
+    }
   }
 </style>
 
