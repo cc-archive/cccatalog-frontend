@@ -91,6 +91,7 @@ export default {
       &:not(:last-of-type) {
         margin-right: $space-normal;
       }
+      margin-bottom: $space-normal;
     }
   }
 </style>
