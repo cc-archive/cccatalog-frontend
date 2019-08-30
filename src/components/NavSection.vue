@@ -79,19 +79,28 @@ export default {
     flex-wrap: wrap-reverse;
     align-items: center;
 
-    @media (max-width: 599px) {
-      justify-content: center;
-
-      .navigation {
-        width: 100%;
-      }
-    };
-
     .navform {
       display: flex;
       flex-direction: row;
       align-items: center;
+
+      .query-field {
+        width: 15em;
+      }
     }
+
+    @media (max-width: 899px) {
+      justify-content: center;
+
+      .navform {
+        margin-top: $space-normal;
+      }
+
+      .navigation {
+        width: 100%;
+        margin-top: $space-normal;
+      }
+    };
   }
 </style>
 
