@@ -1,54 +1,75 @@
 <template>
-  <section :class="{ 'search-grid': true, 'search-grid__contain-images': shouldContainImages }"
-           ref="searchGrid">
-    <div class="search-grid_ctr" ref="gridItems">
-      <div v-show="!isFetchingImages && includeAnalytics" class="search-grid_analytics" >
-        <h2>{{ searchTerm }}</h2>
-        <span>{{ _imagesCount }} photos</span>
+  <Container>
+    <section class="search-grid"
+             :class="sectionClasses"
+             ref="searchGrid">
+      <div class="search-grid_ctr" ref="gridItems">
+        <div v-show="!isFetchingImages && includeAnalytics"
+             class="search-grid_analytics">
+          <span>
+            <strong>{{ _imagesCount }}</strong> photos
+          </span>
+        </div>
+        <div class="masonry-layout"
+             v-masonry
+             transition-duration="0s"
+             item-selector=".item"
+             :fit-width="true"
+             :gutter="20">
+          <masonry-search-grid-cell v-for="(image) in _images"
+                                    v-masonry-tile class="item"
+                                    :key="image.id"
+                                    :image="image"
+                                    :shouldContainImage="shouldContainImages"/>
+        </div>
+        <div class="load-more">
+          <Button v-show="!isFetchingImages && includeAnalytics"
+                  color="blue"
+                  shade="dark"
+                  icon="angle-double-down"
+                  type="button"
+                  @click="onLoadMoreImages">
+            Load more
+          </Button>
+        </div>
+        <div class="search-grid_notification callout alert" v-if="isFetchingImagesError">
+          <h5>Error fetching images</h5>
+        </div>
       </div>
-      <div
-        class="masonry-layout"
-        v-masonry transition-duration="0s"
-        item-selector=".item"
-        :fit-width="true"
-        :gutter="20">
-        <masonry-search-grid-cell v-for="(image) in _images"
-          v-masonry-tile class="item"
-          :key="image.id"
-          :image="image"
-          :shouldContainImage="shouldContainImages" />
-      </div>
-      <div class="load-more">
-        <button v-show="!isFetchingImages && includeAnalytics"
-                class="clear button"
-                type="button"
-                @click="onLoadMoreImages">
-          Load more
-        </button>
-      </div>
-      <div class="search-grid_notification callout alert" v-if="isFetchingImagesError">
-        <h5>Error fetching images</h5>
-      </div>
-    </div>
-  </section>
+    </section>
+  </Container>
 </template>
 
 <script>
 import Vue from 'vue';
-import { SET_IMAGES } from '@/store/mutation-types';
-import InfiniteLoading from 'vue-infinite-loading';
-import MasonrySearchGridCell from '@/components/MasonrySearchGridCell';
-import SearchGridFilter from '@/components/SearchGridFilter';
+
+import {
+  Button,
+  Container,
+} from '@creativecommons/vocabulary';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faAngleDoubleDown } from '@fortawesome/free-solid-svg-icons';
+
 import { VueMasonryPlugin } from 'vue-masonry';
 
+import MasonrySearchGridCell from '@/components/MasonrySearchGridCell';
+import SearchGridFilter from '@/components/SearchGridFilter';
+
+import { SET_IMAGES } from '@/store/mutation-types';
+
 Vue.use(VueMasonryPlugin);
+
+library.add(faAngleDoubleDown);
 
 const DEFAULT_PAGE_SIZE = 20;
 
 export default {
   name: 'search-grid-manual-load',
   components: {
-    InfiniteLoading,
+    Button,
+    Container,
+
     SearchGridFilter,
     MasonrySearchGridCell,
   },
@@ -77,6 +98,13 @@ export default {
     },
   },
   computed: {
+    sectionClasses() {
+      return [
+        {
+          'search-grid__contain-images': this.shouldContainImages,
+        },
+      ];
+    },
     imagePage() {
       return this.$store.state.imagePage;
     },
@@ -144,41 +172,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-
-  .search-grid_analytics h5,
-  .search-grid_layout-control h5 {
-    padding-top: 1.36vh;
-    font-size: 1rem;
-    display: inline-block;
-  }
-
-  .search-grid_layout-control h5 {
-    margin-right: 10px;
-  }
-
-  .search-grid_layout-control {
-    text-align: right;
-
-    fieldset {
-      display: inline;
-      margin-right: 5px;
-    }
-  }
-
-  .infinite-loading-container {
-    margin-top: 30px;
-    width: 100%;
-  }
+  @import "~@creativecommons/vocabulary/tokens";
 
   .search-grid_ctr {
-    .masonry-layout {
-      margin: auto;
-      margin-top: 1rem;
+    .search-grid_analytics {
+      margin-bottom: $space-normal;
     }
 
-    .item {
-      width: 320px;
-      margin-bottom: 20px;
+    .masonry-layout {
+      margin: auto;
     }
   }
 
@@ -189,25 +191,16 @@ export default {
   }
 
   .search-grid_notification {
-    width: 50%;
-    margin: auto;
-    font-weight: 500;
     text-align: center;
-  }
 
-  label {
-    color: #2c3e50;
-  }
+    font-weight: $weight-bold;
 
-  h2 {
-    font-size: 2rem;
+    width: 50%;
+
+    margin: auto;
   }
 
   .load-more {
     text-align: center;
-
-    button {
-      font-size: 1.2em;
-    }
   }
 </style>
