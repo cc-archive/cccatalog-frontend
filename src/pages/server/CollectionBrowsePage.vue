@@ -1,14 +1,12 @@
 <template>
   <div class="browse-page">
-    <div class="search grid-x flexible">
-      <div class="cell">
-        <header-section showNavSearch="true" />
-      </div>
-      <div class="cell">
-        <search-grid-form @onSearchFormSubmit="onSearchFormSubmit"
-                          searchBoxPlaceholder="Search this collection" />
-      </div>
-      <div :class="{ 'cell search-grid-ctr': true }">
+    <header-section :showNavSearch="true">
+      <search-grid-form @onSearchFormSubmit="onSearchFormSubmit"
+                        searchBoxPlaceholder="Search this collection" />
+    </header-section>
+
+    <div class="search">
+      <div class="search-grid-ctr">
       </div>
     </div>
 
@@ -38,18 +36,17 @@ export default CollectionBrowsePage;
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style lang="scss">
-  .search-grid {
-    margin: 30px 30px 60px 30px;
-  }
+  @import "~@creativecommons/vocabulary/tokens";
 
-  .search-grid-ctr {
-    background: #e9ebee;
-    min-height: 600px;
-    margin: 0;
-    transition: margin .7s ease-in-out;
-  }
+  .search {
+    background: $color-tone-near-white;
 
-  .search-grid-ctr__filter-visible {
-    margin-top: 30px;
+    padding-top: $space-large;
+    padding-bottom: $space-large;
+
+    .search-grid-ctr {
+      min-height: 600px;
+      transition: margin .7s ease-in-out;
+    }
   }
 </style>
