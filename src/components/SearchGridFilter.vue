@@ -51,9 +51,13 @@
     </div>
     <div class="filter-group">
       <div class="filter-option search-filters_search-by">
-        <input type="checkbox" id="creator-chk"
-               v-model="filter.searchBy.creator"
-               @change="onUpdateFilter">
+        <SwitchField :value="this.filter.searchBy.includes('creator')"
+                     :key="this.filter.searchBy.includes('creator')"
+                     id="creator-chk"
+                     color="blue"
+                     shade="dark"
+                     size="small"
+                     @click.native="toggleSearchByCreator"/>
         <label for="creator-chk">Search by creator</label>
       </div>
       <div class="filter-option search-filters_clear"
@@ -76,17 +80,6 @@ import {
 } from '@creativecommons/vocabulary';
 
 import Multiselect from 'vue-multiselect';
-
-const transformFilterValue = (filter, key) => {
-  if (Array.isArray(filter[key])) {
-    return filter[key].map(filterItem => filterItem.code)
-      .join(',');
-  }
-  else if (key === 'searchBy') {
-    return filter.searchBy.creator ? 'creator' : null;
-  }
-  return null;
-};
 
 export default {
   name: 'search-grid-filter',
@@ -127,19 +120,6 @@ export default {
     },
   },
   methods: {
-    onUpdateFilter() {
-      const filter = Object.assign({}, this.filter);
-      Object.keys(this.filter).forEach((key) => {
-        filter[key] = transformFilterValue(filter, key);
-      });
-      this.$emit('onSearchFilterChanged', { query: filter, shouldNavigate: true });
-    },
-    onClearFilters() {
-      const filter = Object.assign({}, this.filter);
-      Object.keys(this.filter).forEach((key) => { filter[key] = []; });
-      this.filter = filter;
-      this.$emit('onSearchFilterChanged', { query: filter, shouldNavigate: true });
-    },
     parseQueryFilters() {
       const filterLookup = {
         provider: 'providers',
@@ -165,9 +145,41 @@ export default {
         if (this.query.searchBy) {
           // searchBy query string term can be "creator" for example
           const searchByKey = this.query.searchBy;
-          this.filter.searchBy[searchByKey] = true;
+          this.filter.searchBy.push(searchByKey);
         }
       }
+    },
+    transformFilterValue(filter, key) {
+      if (key === 'searchBy') {
+        return filter[key].join(',');
+      }
+      if (Array.isArray(filter[key])) {
+        return filter[key].map(filterItem => filterItem.code)
+          .join(',');
+      }
+      return null;
+    },
+    onUpdateFilter() {
+      const filter = Object.assign({}, this.filter);
+      Object.keys(this.filter).forEach((key) => {
+        filter[key] = this.transformFilterValue(filter, key);
+      });
+      this.$emit('onSearchFilterChanged', { query: filter, shouldNavigate: true });
+    },
+    toggleSearchByCreator() {
+      if (!this.filter.searchBy.includes('creator')) {
+        this.filter.searchBy.push('creator');
+      }
+      else {
+        this.filter.searchBy = this.filter.searchBy.filter(val => val !== 'creator');
+      }
+      this.onUpdateFilter();
+    },
+    onClearFilters() {
+      Object.keys(this.filter).forEach((key) => {
+        this.filter[key] = [];
+      });
+      this.onUpdateFilter();
     },
   },
   data: () => ({
@@ -189,10 +201,9 @@ export default {
       provider: [],
       li: [],
       lt: [],
-      searchBy: {
-        creator: false,
-      },
+      searchBy: [],
     },
+    isSearchByCreator: false,
   }),
 };
 </script>
