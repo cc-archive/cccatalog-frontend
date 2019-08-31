@@ -64,7 +64,7 @@ export default {
   .home-license-filter {
     display: inline-block;
 
-    text-align: center;
+    text-align: left;
 
     margin-top: $space-normal;
 
@@ -76,6 +76,11 @@ export default {
       display: inline-block;
 
       margin: $space-zero $space-normal;
+
+      .choice-field {
+        margin-left: $space-zero;
+        margin-right: $space-zero;
+      }
     }
   }
 </style>

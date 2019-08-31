@@ -29,13 +29,13 @@
                   size="large"
                   type="submit"
                   title="Search"
+                  is-basic
                   @click="onSubmit"/>
         </div>
         <home-license-filter/>
       </form>
 
-      <div class="description">
-        {{ $t('description') }}
+      <div class="description" v-html="$t('description')">
       </div>
 
       <Grid class="links">
@@ -49,7 +49,7 @@
           </i18n>
         </GridCell>
         <GridCell class="history"
-                  :span-set="[12, 6, 4, 4, 4]">
+                  :span-set="[12, 12, 4, 4, 4]">
           <FontAwesomeIcon :icon="['fas', 'history']"/>
           <i18n path="links.old" tag="span">
             <a href="https://oldsearch.creativecommons.org/"
@@ -57,7 +57,7 @@
           </i18n>
         </GridCell>
         <GridCell class="question"
-                  :span-set="[12, 6, 4, 4, 4]">
+                  :span-set="[12, 12, 4, 4, 4]">
           <FontAwesomeIcon :icon="['fas', 'question-circle']"/>
           <i18n path="links.guide" tag="span">
             <a href="/search-help">{{ $t('links.here') }}</a>.
@@ -158,6 +158,8 @@ export default {
         margin-top: $space-larger;
         margin-bottom: $space-larger;
 
+        text-align: left;
+
         .search-field {
           display: flex;
           flex-direction: row;
@@ -169,12 +171,20 @@ export default {
             flex-grow: 1;
             flex-shrink: 0;
 
+            height: 2.5em;
             width: unset;
           }
 
           .search-button {
             flex-grow: 0;
             flex-shrink: 0;
+
+            height: 2.5em;
+            box-sizing: content-box;
+
+            &:not(:hover) {
+              background-color: $color-tone-white;
+            }
           }
         }
       }
@@ -191,14 +201,14 @@ export default {
 
         padding-bottom: $space-normal;
 
-        @media (max-width: 599px) {
+        @media (max-width: 899px) {
           .info,
           .history,
           .question {
             text-align: left;
           }
         }
-        @media (min-width: 600px) {
+        @media (min-width: 900px) {
           .info {
             text-align: left;
           }
