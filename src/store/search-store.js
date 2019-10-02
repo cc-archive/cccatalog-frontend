@@ -46,6 +46,7 @@ const initialState = (searchParams) => {
     query,
     relatedImages: [],
     relatedImagesCount: 0,
+    errorMessage: '',
   };
 };
 
@@ -107,7 +108,7 @@ const actions = ImageService => ({
         );
       })
       .catch((error) => {
-        commit(FETCH_IMAGES_ERROR);
+        commit(FETCH_IMAGES_ERROR, { errorMessage: error.message });
         throw new Error(error);
       });
   },
@@ -131,7 +132,7 @@ const actions = ImageService => ({
           commit(IMAGE_NOT_FOUND);
         }
         else {
-          commit(FETCH_IMAGES_ERROR);
+          commit(FETCH_IMAGES_ERROR, { errorMessage: error.message });
           throw new Error(error);
         }
       });
@@ -148,7 +149,7 @@ const actions = ImageService => ({
         );
       })
       .catch((error) => {
-        commit(FETCH_IMAGES_ERROR);
+        commit(FETCH_IMAGES_ERROR, { errorMessage: error.message });
         throw new Error(error);
       });
   },
@@ -166,7 +167,7 @@ const actions = ImageService => ({
         );
       })
       .catch((error) => {
-        commit(FETCH_IMAGES_ERROR);
+        commit(FETCH_IMAGES_ERROR, { errorMessage: error.message });
         throw new Error(error);
       });
   },
@@ -194,9 +195,10 @@ const mutations = redirect => ({
   [FETCH_END_IMAGES](_state) {
     _state.isFetchingImages = false;
   },
-  [FETCH_IMAGES_ERROR](_state) {
+  [FETCH_IMAGES_ERROR](_state, params) {
     _state.isFetchingImagesError = true;
     _state.isFetchingImages = false;
+    _state.errorMessage = params.errorMessage;
   },
   [SET_IMAGE](_state, params) {
     _state.image = decodeImageData(params.image);

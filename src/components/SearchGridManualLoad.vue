@@ -28,7 +28,7 @@
         <loading-icon v-show="isFetchingImages" />
       </div>
       <div class="search-grid_notification callout alert" v-if="isFetchingImagesError">
-        <h5>Error fetching images</h5>
+        <h5>Error fetching images: {{ _errorMessage }}</h5>
       </div>
     </div>
   </section>
@@ -93,6 +93,9 @@ export default {
     _imagesCount() {
       const count = this.useInfiniteScroll ? this.$store.state.imagesCount : this.imagesCount;
       return count.toLocaleString('en');
+    },
+    _errorMessage() {
+      return this.$store.state.errorMessage;
     },
     _query() {
       return this.$props.query;
