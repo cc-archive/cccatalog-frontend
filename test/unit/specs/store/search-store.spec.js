@@ -99,7 +99,7 @@ describe('Search Store', () => {
     });
 
     it('FETCH_IMAGES_ERROR updates state', () => {
-      mutations[FETCH_IMAGES_ERROR](state);
+      mutations[FETCH_IMAGES_ERROR](state, { errorMessage: undefined });
 
       expect(state.isFetchingImages).toBeFalsy();
       expect(state.isFetchingImagesError).toBeTruthy();
@@ -372,7 +372,7 @@ describe('Search Store', () => {
       const action = store.actions(failedMock)[FETCH_IMAGES];
       action({ commit, dispatch, state }, params).catch(() => {
         expect(commit).toBeCalledWith(FETCH_START_IMAGES);
-        expect(commit).toBeCalledWith(FETCH_IMAGES_ERROR);
+        expect(commit).toBeCalledWith(FETCH_IMAGES_ERROR, { errorMessage: undefined });
         done();
       });
     });
@@ -386,7 +386,7 @@ describe('Search Store', () => {
       const action = store.actions(failedMock)[FETCH_COLLECTION_IMAGES];
       action({ commit }, params).catch(() => {
         expect(commit).toBeCalledWith(FETCH_START_IMAGES);
-        expect(commit).toBeCalledWith(FETCH_IMAGES_ERROR);
+        expect(commit).toBeCalledWith(FETCH_IMAGES_ERROR, { errorMessage: undefined });
         done();
       });
     });
@@ -443,7 +443,7 @@ describe('Search Store', () => {
       const action = store.actions(failedMock)[FETCH_IMAGE];
       action({ commit, dispatch, state }, params).catch(() => {
         expect(commit).toBeCalledWith(FETCH_START_IMAGES);
-        expect(commit).toBeCalledWith(FETCH_IMAGES_ERROR);
+        expect(commit).toBeCalledWith(FETCH_IMAGES_ERROR, { errorMessage: undefined });
 
         done();
       });
@@ -488,7 +488,7 @@ describe('Search Store', () => {
       const action = store.actions(failedMock)[FETCH_RELATED_IMAGES];
       action({ commit }, params).catch(() => {
         expect(commit).toBeCalledWith(FETCH_START_IMAGES);
-        expect(commit).toBeCalledWith(FETCH_IMAGES_ERROR);
+        expect(commit).toBeCalledWith(FETCH_IMAGES_ERROR, { errorMessage: undefined });
 
         done();
       });
