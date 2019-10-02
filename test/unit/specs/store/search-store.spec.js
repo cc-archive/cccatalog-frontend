@@ -99,10 +99,11 @@ describe('Search Store', () => {
     });
 
     it('FETCH_IMAGES_ERROR updates state', () => {
-      mutations[FETCH_IMAGES_ERROR](state, { errorMessage: undefined });
+      mutations[FETCH_IMAGES_ERROR](state, { errorMessage: 'network error' });
 
       expect(state.isFetchingImages).toBeFalsy();
       expect(state.isFetchingImagesError).toBeTruthy();
+      expect(state.errorMessage).toBe('network error');
     });
 
     it('SET_IMAGE updates state', () => {
