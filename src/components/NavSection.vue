@@ -1,10 +1,10 @@
 <template>
   <nav class="header nav">
     <a class="logo" href="/">
-      <img src="../assets/cc-search-logo-white.png">
+      <img src="../assets/cc-search-logo-white.png" alt="logo">
     </a>
     <input class="menu-btn" type="checkbox" id="menu-btn" />
-    <label class="menu_icon" for="menu-btn"><span class="navicon"></span></label>
+    <label class="menu_icon" for="menu-btn"><span class="navicon" aria-hidden="true" role="presentation"></span></label>
     <ul class="menu">
       <li><a href="/about">About</a></li>
       <li><a href="/collections">Browse by Collection</a></li>
