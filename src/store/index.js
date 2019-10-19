@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VuexPersistence from 'vuex-persist';
 import redirectTo from '@/router/redirectTo';
 import ImageProviderService from '@/api/ImageProviderService';
 import ImageService from '@/api/ImageService';
@@ -16,6 +17,12 @@ import UsageDataStore from './usage-data-store';
 
 
 Vue.use(Vuex);
+
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+  reducer: state => ({ isFilterVisible: state.isFilterVisible,
+    isFilterApplied: state.isFilterApplied }),
+});
 
 const queryParams = !(typeof window === 'undefined') ? window.location.search : '';
 
@@ -42,6 +49,7 @@ const store = (GoogleAnalytics, router) => (new Vuex.Store({
     BugReportStore.mutations,
     ABTestStore.mutations,
   ),
+  plugins: [vuexLocal.plugin],
 }));
 
 export default store;
