@@ -139,12 +139,10 @@ export default {
   },
   methods: {
     onUpdateFilter() {
-      console.log('here');
       const filter = Object.assign({}, this.filter);
       Object.keys(this.filter).forEach((key) => {
         filter[key] = transformFilterValue(filter, key);
       });
-      localStorage.setItem('filter', JSON.stringify(this.filter));
       this.$emit('onSearchFilterChanged', { query: filter, shouldNavigate: true });
     },
     onClearFilters() {
@@ -153,7 +151,6 @@ export default {
       Object.keys(this.filter).forEach((key) => {
         filter[key] = transformFilterValue(this.filter, key);
       });
-      localStorage.setItem('filter', this.filter);
       this.$emit('onSearchFilterChanged', { query: filter, shouldNavigate: true });
     },
     parseQueryFilters() {

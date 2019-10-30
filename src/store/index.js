@@ -20,8 +20,9 @@ Vue.use(Vuex);
 
 const vuexLocal = new VuexPersistence({
   storage: window.localStorage,
-  reducer: state => ({ isFilterVisible: state.isFilterVisible,
-    isFilterApplied: state.isFilterApplied }),
+  reducer: state => ({
+    isFilterVisible: state.isFilterVisible,
+  }),
 });
 
 const queryParams = !(typeof window === 'undefined') ? window.location.search : '';
