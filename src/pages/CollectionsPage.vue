@@ -76,6 +76,6 @@ export default CollectionsPage;
   }
 
   .collections-page {
-    margin: 45px !important;
+    margin: 70px !important;
   }
 </style>
