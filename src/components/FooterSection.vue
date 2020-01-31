@@ -104,7 +104,7 @@ export default {
     font-weight: 500;
 
     &:hover {
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid white;
     }
   }
 }
@@ -120,7 +120,9 @@ address {
 p {
   color: #999;
 }
-
+#menu-footer-links .menu-item:hover{
+border-bottom: 1px solid white;
+}
 .footer_disclaimer {
   font-weight: 500;
   margin: 0 -15px;
