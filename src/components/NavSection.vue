@@ -210,7 +210,7 @@ li {
   border-left: 1px solid white;
   border-radius: 2px;
   &:hover {
-    background-color: #eee;
+    background-color: #fb7729;
   }
 }
 
