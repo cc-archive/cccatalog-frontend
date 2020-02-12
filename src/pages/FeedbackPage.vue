@@ -22,20 +22,16 @@
               title="feedback form">
               Loading...
       </iframe>
-
-      <div>
         <h2><a id="report"></a>Report a bug</h2>
-        <p>
-          If you would like to report a bug you are encountering when using the tool, please email
-          <a href="mailto:support-search@creativecommons.org">
-            support-search@creativecommons.org
-          </a>
-          or
-          <a href="https://github.com/creativecommons/cccatalog-frontend/issues">
-            log the issue directly at Github
-          </a>.
-        </p>
-      </div>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfb_6yq2Md0v6S-XzsyT7p1QVhqr7MWHqInKdyYh4ReaWn4FQ/viewform?embedded=true"
+              width="100%"
+              height="998"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+              title="feedback form">
+              Loading...
+      </iframe>
     </div>
     <footer-section></footer-section>
   </div>
