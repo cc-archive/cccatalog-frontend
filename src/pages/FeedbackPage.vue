@@ -23,7 +23,7 @@
               Loading...
       </iframe>
         <h2><a id="report"></a>Report a bug</h2>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfb_6yq2Md0v6S-XzsyT7p1QVhqr7MWHqInKdyYh4ReaWn4FQ/viewform?embedded=true"
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeSN1AIG8LrdgIdKpBj4IlPDhu6T5ndZ7z_QcISBu-ITCU0Yw/viewform?embedded=true"
               width="100%"
               height="998"
               frameborder="0"
