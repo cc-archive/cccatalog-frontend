@@ -117,7 +117,9 @@ export default {
 .search-filters {
   background: #fafafa;
   display: none;
-  height: 100%;
+  height: auto;
+  position: sticky;
+  top: 0px;
 
   label {
     color: #333333;
