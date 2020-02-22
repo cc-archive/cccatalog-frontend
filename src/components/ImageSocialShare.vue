@@ -35,7 +35,7 @@ export default {
       return this.image.url;
     },
     shareText() {
-      return encodeURI(`I found an image through CC Search @creativecommons: ${this.image_URL}`);
+      return encodeURI(`I found an image through CC Search @creativecommons: ${this.imageURL}`);
     },
   },
   mounted() {
