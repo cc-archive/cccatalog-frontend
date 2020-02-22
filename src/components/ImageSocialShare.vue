@@ -29,6 +29,9 @@ export default {
   }),
   computed: {
     imageURL() {
+      return this.image.foreign_landing_url;
+    },
+    image_URL() {
       return this.image.url;
     },
     shareText() {
