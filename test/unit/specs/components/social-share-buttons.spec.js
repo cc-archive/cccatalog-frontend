@@ -34,7 +34,7 @@ describe('SocialShareButtons', () => {
     const wrapper = render(SocialShareButtons, options);
     expect(wrapper.find('.social-button.facebook').html()).toContain('?u=http://share.url&amp;t==share');
     expect(wrapper.find('.social-button.twitter').html()).toContain('?text=share text');
-    expect(wrapper.find('.social-button.pinterest').html()).toContain('?media=http://image.url&amp;description=share text');
+    expect(wrapper.find('.social-button.pinterest').html()).toContain('?media=http://description=share text');
   });
 
   it('dispatches social media share event when facebook link is clicked', () => {
