@@ -40,7 +40,7 @@ export default {
       this.$store.dispatch(SOCIAL_MEDIA_SHARE, { site });
       this.$store.dispatch(SEND_DETAIL_PAGE_EVENT, {
         eventType: DETAIL_PAGE_EVENTS.SHARED_SOCIAL,
-        resultUuid: this.props.image.id,
+        resultUuid: this.$props.image.id,
       });
     },
   },
