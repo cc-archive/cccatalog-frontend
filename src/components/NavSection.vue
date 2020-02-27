@@ -13,15 +13,18 @@
       <li class="nav_search" v-if="showNavSearch ==='true'">
         <form class="hero_search-form"
               role="search"
-              method="post"
+              method="get" 
+              action="/search"
               v-on:submit.prevent="onSubmit">
           <div class="input-group input-group-rounded">
-            <input class="input input-group-field"
+            <input class="hero_search-input input"
                   type="search"
+                  name="q"
                   :placeholder="navSearchPlaceholder"
+                  id="searchTerm"
                   v-model.lazy="form.searchTerm">
             <div class="input-group-button">
-              <button type="submit" class="button secondary" value="Search"></button>
+              <button type="submit" class="button secondary" title="Search"></button>
             </div>
           </div>
         </form>
@@ -32,23 +35,31 @@
 
 <script>
 import { SET_QUERY } from '@/store/mutation-types';
+import HomeLicenseFilter from './HomeLicenseFilter';
 
 export default {
+  name: 'nav-section',
   props: {
     showNavSearch: {
       default: false,
+    },
+    components: {
+      HomeLicenseFilter,
     },
     navSearchPlaceholder: {
       default: 'Search all images',
     },
   },
-  name: 'nav-section',
   data: () => ({ form: { searchTerm: '' } }),
   methods: {
     onSubmit() {
+      // console.log(searchTerm);
       this.$store.commit(SET_QUERY, { query: { q: this.form.searchTerm }, shouldNavigate: true });
+      this.form.searchTerm = '';
+      history.go(0);
     },
   },
+
 };
 </script>
 
