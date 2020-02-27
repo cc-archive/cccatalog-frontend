@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { SET_QUERY } from '@/store/mutation-types';
+import { SET_QUERY, SET_IMAGES } from '@/store/mutation-types';
 import HomeLicenseFilter from './HomeLicenseFilter';
 
 
@@ -74,6 +74,8 @@ export default {
   methods: {
     onSubmit() {
       this.$store.commit(SET_QUERY, { query: { q: this.form.searchTerm }, shouldNavigate: true });
+      this.$store.commit(SET_IMAGES, { images: [] });
+      
     },
   },
 };
