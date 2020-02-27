@@ -4,6 +4,7 @@ const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const baseConfig = require('./webpack-base-conf.js');
 
 module.exports = merge(baseConfig, {
+  mode: 'development',
   // Point entry to your app's server entry file
   entry: {
     app: './src/serverEntry.js'
