@@ -9,8 +9,7 @@
       </div>
       <div class="cell search-grid-ctr">
         <search-grid-form @onSearchFormSubmit="onSearchFormSubmit" />
-        <search-grid v-if="query.q"
-                     :query="query"
+        <search-grid :query="query"
                      searchTerm=""
                      @onLoadMoreImages="onLoadMoreImages"></search-grid>
       </div>

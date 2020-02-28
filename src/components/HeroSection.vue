@@ -71,6 +71,16 @@ export default {
     HomeLicenseFilter,
   },
   data: () => ({ form: { searchTerm: '' } }),
+  watch: {
+    'form.searchTerm': {
+      handler: (value) => {
+        localStorage.setItem('search-term', value);
+      },
+    },
+  },
+  mounted() {
+    this.form.searchTerm = localStorage.getItem('search-term');
+  },
   methods: {
     onSubmit() {
       this.$store.commit(SET_QUERY, { query: { q: this.form.searchTerm }, shouldNavigate: true });
