@@ -53,6 +53,9 @@
     .sidebar_section-header {
       margin-left: 0px;
     }
+    @media screen and (max-width: 39.9375em) {
+      padding: 15px;
+    }
   }
 
   h4 {
@@ -116,6 +119,7 @@
   width: 100%;
 
   header h2 {
+    margin-left: 15px;
     margin-bottom: 1.07142857em;
     width: 100%;
     font-size: 1em;
@@ -131,11 +135,12 @@
 
   /* Small only */
   @media screen and (max-width: 39.9375em) {
-    margin: 15px;
+    padding: 5px;
   }
 }
 
 .photo_tag {
+  margin-left: 15px;
   margin-right: 15px;
   border-radius: 3px;
   padding: 10px 10px;
