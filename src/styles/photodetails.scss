@@ -41,11 +41,6 @@
     max-width: 100%;
     margin-bottom: 4rem;
   }
-
-  /* Small only */
-  @media screen and (max-width: 39.9375em) {
-    padding: 30px 15px;
-  }
 }
 
 .photo_info-ctr {
@@ -175,6 +170,9 @@ label {
 }
 
 .tabs {
+  @media screen and (min-width: 22em) {
+    display: flex;
+  }
   border-bottom: none;
   border-right: none;
 }
@@ -185,6 +183,10 @@ label {
 
 .tabs-content {
   border: none;
+  /* Small only */
+  @media screen and (max-width: 64em) {
+    padding: 30px 15px;
+  }
 }
 
 .tab-icon {
