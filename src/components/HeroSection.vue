@@ -20,7 +20,6 @@
       </div>
       <div class="is-hidden-desktop">
         <input required="required"
-                v-focus
                 class="hero_search-input input"
                 type="search"
                 name="q"
