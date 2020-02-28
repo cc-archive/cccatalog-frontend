@@ -8,7 +8,7 @@
           v-on:submit.prevent="onSubmit">
       <div class="is-hidden-touch">
         <input required="required"
-                autofocus="true"
+                v-focus
                 class="hero_search-input input is-large"
                 type="search"
                 name="q"
@@ -20,7 +20,7 @@
       </div>
       <div class="is-hidden-desktop">
         <input required="required"
-                autofocus="true"
+                v-focus
                 class="hero_search-input input"
                 type="search"
                 name="q"
@@ -76,6 +76,15 @@ export default {
       this.$store.commit(SET_QUERY, { query: { q: this.form.searchTerm }, shouldNavigate: true });
     },
   },
+  directives: {
+  //directive to add autofocus
+  focus: {
+    // directive definition
+    inserted: function (el) {
+      el.focus()
+    }
+  }
+}
 };
 </script>
 
