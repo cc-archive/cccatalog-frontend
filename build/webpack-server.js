@@ -1,7 +1,7 @@
 const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
-const baseConfig = require('./webpack-base-conf.js');
+const baseConfig = require('./webpack-base.js');
 
 module.exports = merge(baseConfig, {
   mode: 'development',

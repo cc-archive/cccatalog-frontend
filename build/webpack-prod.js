@@ -1,26 +1,20 @@
 'use strict'
-const path = require('path')
-const utils = require('./utils')
-const webpack = require('webpack')
-const config = require('../config')
-const merge = require('webpack-merge')
-const baseWebpackConfig = require('./webpack-base-conf')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path');
+const utils = require('./utils');
+const webpack = require('webpack');
+const config = require('../config');
+const merge = require('webpack-merge');
+const webpackBaseConfig = require('./webpack-base');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 
-const webpackConfig = merge(baseWebpackConfig, {
+const webpackProdConfig = merge(webpackBaseConfig, {
   mode: 'production',
-  module: {
-    rules: utils.styleLoaders({
-      sourceMap: config.build.productionSourceMap,
-      extract: true,
-      usePostCSS: true
-    })
-  },
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
     path: config.build.assetsRoot,
@@ -29,6 +23,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [
     new UglifyJsPlugin({
+      cache: true,
       uglifyOptions: {
         compress: {
           warnings: false
@@ -48,7 +43,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
-    new OptimizeCSSPlugin({
+    new OptimizeCSSAssetsPlugin({
       cssProcessorOptions: config.build.productionSourceMap
         ? { safe: true, map: { inline: false } }
         : { safe: true }
@@ -86,6 +81,13 @@ const webpackConfig = merge(baseWebpackConfig, {
     new VueSSRClientPlugin()
   ],
   optimization: {
+    minimizer: [
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorPluginOptions: {
+          preset: ['defult', { discardComments: { removeAll: true } }]
+        }
+      })
+    ],
     splitChunks: {
       cacheGroups: {
         // split vendor js into its own file
@@ -118,8 +120,6 @@ const webpackConfig = merge(baseWebpackConfig, {
 })
 
 if (config.build.productionGzip) {
-  const CompressionWebpackPlugin = require('compression-webpack-plugin')
-
   webpackConfig.plugins.push(
     new CompressionWebpackPlugin({
       asset: '[path].gz[query]',
@@ -136,8 +136,8 @@ if (config.build.productionGzip) {
 }
 
 if (config.build.bundleAnalyzerReport) {
-  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+  webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 }
 
-module.exports = webpackConfig
+module.exports = webpackProdConfig;
