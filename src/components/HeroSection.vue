@@ -77,14 +77,14 @@ export default {
     },
   },
   directives: {
-  //directive to add autofocus
-  focus: {
-    // directive definition
-    inserted: function (el) {
-      el.focus()
-    }
-  }
-}
+    //directive to add autofocus
+    focus: {
+      // directive definition
+      inserted: function (el) {
+        el.focus();
+      }
+    },
+  },
 };
 </script>
 
