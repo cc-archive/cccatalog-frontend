@@ -53,7 +53,6 @@ export default {
   data: () => ({ form: { searchTerm: '' } }),
   methods: {
     onSubmit() {
-      // console.log(searchTerm);
       this.$store.commit(SET_QUERY, { query: { q: this.form.searchTerm }, shouldNavigate: true });
       this.form.searchTerm = '';
       history.go(0);

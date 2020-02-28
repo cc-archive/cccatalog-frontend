@@ -17,7 +17,7 @@
         class="social-button pinterest"
         target="_blank"
         @click="onSocialMediaLinkClick('Pinterest')"
-        :href="`https://www.pinterest.com/pin/create/bookmarklet/?media=${imageURL}&is_video=false&description=${shareText}`">
+        :href="`https://www.pinterest.com/pin/create/bookmarklet/?media=${imageURL}&description=${shareText}`">
       </a>
     </div>
   </div>
