@@ -16,7 +16,7 @@
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue . test/unit",
     "build": "node build/build.js && npm run build-server",
-    "build-server": "webpack -p --config build/webpack-server-conf.js --progress"
+    "build-server": "webpack -p --config build/webpack-server.js --progress"
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.3",
