@@ -1,7 +1,6 @@
 'use strict';
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlPlugin = require('html-webpack-plugin');
-const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const helpers = require('./helpers');
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
@@ -28,6 +27,13 @@ const createLintingRule = () => ({
 const webpackConfig = {
   entry: {
     app: helpers.root('src', 'clientEntry')
+  },
+  output: {
+    path: config.build.assetsRoot,
+    filename: '[name].js',
+    publicPath: process.env.NODE_ENV === 'production'
+      ? config.build.assetsPublicPath
+      : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -109,18 +115,18 @@ const webpackConfig = {
       systemvars: true, // load from system env vars instead of .env file
     })
   ],
-  // node: {
-  //   // prevent webpack from injecting useless setImmediate polyfill because Vue
-  //   // source contains it (although only uses it if it's native).
-  //   setImmediate: false,
-  //   // prevent webpack from injecting mocks to Node native modules
-  //   // that does not make sense for the client
-  //   dgram: 'empty',
-  //   fs: 'empty',
-  //   net: 'empty',
-  //   tls: 'empty',
-  //   child_process: 'empty'
-  // }
+  node: {
+    // prevent webpack from injecting useless setImmediate polyfill because Vue
+    // source contains it (although only uses it if it's native).
+    setImmediate: false,
+    // prevent webpack from injecting mocks to Node native modules
+    // that does not make sense for the client
+    dgram: 'empty',
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
+    child_process: 'empty'
+  }
 }
 
 module.exports = webpackConfig;
