@@ -13,7 +13,7 @@
       <li class="nav_search" v-if="showNavSearch ==='true'">
         <form class="hero_search-form"
               role="search"
-              method="get" 
+              method="get"
               action="/search"
               v-on:submit.prevent="onSubmit">
           <div class="input-group input-group-rounded">
