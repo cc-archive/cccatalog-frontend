@@ -1,7 +1,14 @@
 'use strict';
-const VueLoaderPlugin      = require('vue-loader/lib/plugin');
-const HtmlPlugin           = require('html-webpack-plugin');
-const helpers              = require('./helpers');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const HtmlPlugin = require('html-webpack-plugin');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const helpers = require('./helpers');
+const path = require('path');
+const Dotenv = require('dotenv-webpack');
+const utils = require('./utils');
+const config = require('../config');
+const vueLoaderConfig = require('./vue-loader.conf');
+const isDev = process.env.NODE_ENV === 'development';
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -20,7 +27,6 @@ const createLintingRule = () => ({
 
 const webpackConfig = {
   entry: {
-    polyfill: '@babel/polyfill',
     app: helpers.root('src', 'clientEntry')
   },
   resolve: {
@@ -32,7 +38,7 @@ const webpackConfig = {
   },
   module: {
     rules: [
-      ...(config.dev.useEslint ? [createLintingRule()] : []),
+      // ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -66,6 +72,29 @@ const webpackConfig = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          { loader: 'css-loader', options: { sourceMap: isDev } },
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'vue-style-loader',
+          { loader: 'css-loader', options: { sourceMap: isDev } },
+          { loader: 'sass-loader', options: { sourceMap: isDev } }
+        ]
+      },
+      {
+        test: /\.sass$/,
+        use: [
+          'vue-style-loader',
+          { loader: 'css-loader', options: { sourceMap: isDev } },
+          { loader: 'sass-loader', options: { sourceMap: isDev } }
+        ]
       }
     ]
   },
@@ -80,20 +109,18 @@ const webpackConfig = {
       systemvars: true, // load from system env vars instead of .env file
     })
   ],
-  node: {
-    // prevent webpack from injecting useless setImmediate polyfill because Vue
-    // source contains it (although only uses it if it's native).
-    setImmediate: false,
-    // prevent webpack from injecting mocks to Node native modules
-    // that does not make sense for the client
-    dgram: 'empty',
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
-    child_process: 'empty'
-  }
+  // node: {
+  //   // prevent webpack from injecting useless setImmediate polyfill because Vue
+  //   // source contains it (although only uses it if it's native).
+  //   setImmediate: false,
+  //   // prevent webpack from injecting mocks to Node native modules
+  //   // that does not make sense for the client
+  //   dgram: 'empty',
+  //   fs: 'empty',
+  //   net: 'empty',
+  //   tls: 'empty',
+  //   child_process: 'empty'
+  // }
 }
 
 module.exports = webpackConfig;
-
-
