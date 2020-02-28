@@ -80,7 +80,7 @@ export default {
     // directive to add autofocus
     focus: {
       // directive definition
-      inserted: el => {
+      inserted: (el) => {
         el.focus();
       },
     },
