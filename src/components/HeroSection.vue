@@ -147,4 +147,8 @@ $hero-height: 71vh;
 .is-large {
   height: 70px;
 }
+
+.is-hidden-desktop {
+  margin-left:.85rem;
+}
 </style>

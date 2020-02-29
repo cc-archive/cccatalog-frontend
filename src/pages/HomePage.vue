@@ -86,4 +86,5 @@ $vert-seperate: 4rem;
     position: relative;
   }
 }
+
 </style>
