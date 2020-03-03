@@ -19,9 +19,6 @@ const HomePage = {
     HeroSection,
     FooterSection,
   },
-  mounted() {
-    this.$store.commit(RESET_QUERY);
-  },
 };
 
 export default HomePage;
