@@ -43,7 +43,8 @@ export default {
   @import '../styles/photodetails.scss';
 
   .reuse-survey {
-    margin: 2rem 0 2rem;
+    width: 96vw;
+    margin: 1rem auto;
 
     span:first-child {
       font-size: 1.1rem;

@@ -1,5 +1,5 @@
 <template>
-  <div class="photo-detail-page grid-x">
+  <div class="photo-detail-page">
     <div class="cell">
       <header-section showNavSearch="true" />
     </div>
@@ -49,9 +49,10 @@ export default PhotoDetailPage;
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
   .container {
-    margin-left: 4vw;
+    margin: 0 auto;
+    overflow-x: hidden;
     @media screen and (max-width: 1050px) {
-      margin-left: 0;
+      margin: 0 auto;
     }
   }
 </style>

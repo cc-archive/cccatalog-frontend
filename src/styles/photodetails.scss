@@ -8,8 +8,9 @@
 }
 
 .search-grid {
-  margin: 0;
-  width: 100%;
+  margin: 0 auto;
+  margin-left: -0.5rem;
+  width: 96vw;
 }
 
 .photo {
@@ -35,6 +36,7 @@
 
   img {
     position: relative;
+    border-radius: 5px;
     width: auto;
     height: auto;
     max-height: 750px;
@@ -51,7 +53,7 @@
 .photo_info-ctr {
   .sidebar_section {
     .sidebar_section-header {
-      margin-left: 0px;
+      margin: 0.5rem;
     }
   }
 
@@ -100,18 +102,21 @@
 }
 
 .photo-attribution {
-  margin-top: 1rem;
+  width: 96vw;
+  margin: 1rem auto;
   font-style: italic;
 }
 
 .photo_usage-attribution {
+  width: 96vw;
+  margin: 1rem auto;
   border-left: 1px solid #e7e8e9;;
   padding-left: 10px;
 }
 
 .photo_related-images,
 .photo_tags {
-  margin-top: 30px;
+  margin-left: 1rem;
   border-top: 1px solid #e7e8e9;
   width: 100%;
 
@@ -222,7 +227,8 @@ label {
 }
 
 .embed-attribution {
-  margin: 1rem 0 1rem;
+  width: 96vw;
+  margin: 1rem auto;
 }
 
 .legal-disclaimer {
@@ -240,6 +246,10 @@ label {
 }
 
 .provider-container {
+
+  width: 96vw;
+  margin: 1rem auto;
+
   div {
     display: flex;
     align-items: center;
