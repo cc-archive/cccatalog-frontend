@@ -247,7 +247,7 @@ export default {
   }
 
   .search-grid_image__fill {
-    max-width: 100%;
+    width: 100%;
   }
 
   @media screen and (max-width: 600px) {
