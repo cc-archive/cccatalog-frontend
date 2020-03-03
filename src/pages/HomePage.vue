@@ -10,7 +10,6 @@
 import HeaderSection from '@/components/HeaderSection';
 import HeroSection from '@/components/HeroSection';
 import FooterSection from '@/components/FooterSection';
-import { RESET_QUERY } from '@/store/mutation-types';
 
 const HomePage = {
   name: 'home-page',
