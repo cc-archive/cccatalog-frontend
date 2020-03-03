@@ -151,4 +151,9 @@ $hero-height: 71vh;
 .is-hidden-desktop {
   margin-left:.85rem;
 }
+@media (min-device-width:768px) and (max-device-width:1024px){
+  .is-hidden-desktop {
+    margin-left: 6rem;
+  }
+}
 </style>
