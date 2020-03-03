@@ -43,12 +43,18 @@ export default {
 <style lang="scss" scoped>
   .provider-card {
     width: 18em;
-    background-color: #dedede;
+    background-color: #f0f0f0;
     margin: 0.5em;
+    border-radius: 3px;
   }
 
   .provider-name {
     font-weight: 800;
+    margin: 0 auto;
+  }
+
+  .card-section {
+    margin: 0 auto;
   }
 
   .provider-logo {

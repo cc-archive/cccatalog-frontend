@@ -68,6 +68,9 @@ const ImageProviderService = {
       sketchfab: {
         logo: 'sketchfab_logo.png',
       },
+      smithsonian: {
+        logo: 'smithsonian_institution_logo.png',
+      },
       svgsilh: {
         logo: 'svg-silh_logo.png',
       },
