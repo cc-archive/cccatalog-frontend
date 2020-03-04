@@ -12,7 +12,7 @@ describe('HeroSection', () => {
           commit: commitMock,
           state: {
             query: {
-              q: 'foo'
+              q: 'foo',
             },
           },
         },
