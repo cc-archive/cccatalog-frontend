@@ -19,7 +19,5 @@ describe('Homepage', () => {
       },
     };
     render(Homepage, options);
-
-    expect(options.mocks.$store.commit).toHaveBeenCalledWith('RESET_QUERY');
   });
 });

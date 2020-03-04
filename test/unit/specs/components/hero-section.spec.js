@@ -10,6 +10,11 @@ describe('HeroSection', () => {
       mocks: {
         $store: {
           commit: commitMock,
+          state: {
+            query: {
+              q: 'foo'
+            },
+          },
         },
       },
     };
