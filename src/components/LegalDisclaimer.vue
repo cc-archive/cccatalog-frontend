@@ -39,4 +39,9 @@ export default {
 
 <style lang="scss" scoped>
   @import '../styles/photodetails.scss';
+  .legal-disclaimer {
+    margin: 0px 20px;
+    font-size: .9em;
+    font-style: italic;
+}
 </style>
