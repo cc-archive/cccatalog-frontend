@@ -84,12 +84,11 @@
   }
 
   ul {
-    margin: 0;
-    list-style-type: none;
+    margin: 0.3125rem 1.25rem;
+    list-style-type: disc;
 
     li {
-      margin-left: 0;
-      margin-bottom: 10px;
+      margin-bottom: 0.15625rem;
     }
   }
 
@@ -111,7 +110,6 @@
 
 .photo_related-images,
 .photo_tags {
-  margin-top: 30px;
   border-top: 1px solid #e7e8e9;
   width: 100%;
 
@@ -127,11 +125,6 @@
     padding-top: .28571429em;
     border-top: 5px solid rgba(29, 31, 39, 0.8);
     margin-top: -3px;
-  }
-
-  /* Small only */
-  @media screen and (max-width: 39.9375em) {
-    margin: 15px;
   }
 }
 
@@ -174,6 +167,9 @@ label {
 .tabs {
   border-bottom: none;
   border-right: none;
+  @media screen and (min-width: 22em) {
+    display: flex;
+  }
 }
 
 .tabs-panel {
