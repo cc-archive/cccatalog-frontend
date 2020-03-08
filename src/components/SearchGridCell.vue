@@ -26,6 +26,7 @@
             target="new">
             <img class="search-grid_overlay-provider-logo"
               :alt="image.source"
+                :title="logoTitle(image)"
               :src="getProviderLogo(image.source)">
             {{ image.title }}
         </a>
@@ -107,6 +108,9 @@ export default {
     },
     getProviderLogo(providerName) {
       return getProviderLogo(providerName);
+    },
+    logoTitle(image){
+      return image.title+" at "+image.source_name;
     },
     onGotoDetailPage(event, image) {
       // doesn't use router to redirect to photo details page in case the user
