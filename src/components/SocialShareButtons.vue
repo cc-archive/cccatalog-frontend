@@ -17,7 +17,7 @@
         class="social-button pinterest"
         target="_blank"
         @click="onSocialMediaLinkClick('Pinterest')"
-        :href="`https://www.pinterest.com/pin/create/bookmarklet/?media=${imageURL}&description=${shareText}`">
+        :href="`https://www.pinterest.com/pin/create/bookmarklet/?media=${newprop}&description=${shareText}`">
       </a>
     </div>
   </div>
@@ -33,6 +33,7 @@ export default {
     shareURL: '',
     shareText: '',
     imageURL: '',
+    newprop: '',
     image: {},
   },
   methods: {

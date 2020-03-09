@@ -8,6 +8,7 @@
     <social-share-buttons
       :shareURL="shareURL"
       :imageURL="imageURL"
+      :newprop="image_URL"
       :shareText="shareText"
       :image="image">
     </social-share-buttons>
@@ -30,6 +31,9 @@ export default {
   computed: {
     imageURL() {
       return this.image.foreign_landing_url;
+    },
+    image_URL() {
+      return this.image.url;
     },
     shareText() {
       return encodeURI(`I found an image through CC Search @creativecommons: ${this.imageURL}`);
