@@ -35,7 +35,7 @@
               rel="noopener noreferrer">
             <img class="provider-logo"
                 :alt="image.source"
-                :title="image.source"
+                :title="getProviderName(image.source)"
                 :src="getProviderLogo(image.source)" />
           </a>
       </div>
@@ -61,6 +61,11 @@ export default {
   methods: {
     getProviderLogo(providerName) {
       return getProviderLogo(providerName);
+    },
+    getProviderName(source)
+    { const providers = this.$store.state.imageProviders;
+      const provider = providers.filter(p => p.source_name === source)[0];
+        return provider.display_name;
     },
   },
 };
