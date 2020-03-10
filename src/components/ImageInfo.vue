@@ -62,10 +62,10 @@ export default {
     getProviderLogo(providerName) {
       return getProviderLogo(providerName);
     },
-    getProviderName(source)
-    { const providers = this.$store.state.imageProviders;
+    getProviderName(source){
+      const providers = this.$store.state.imageProviders;
       const provider = providers.filter(p => p.source_name === source)[0];
-        return provider.display_name;
+      return provider.display_name;
     },
   },
 };
