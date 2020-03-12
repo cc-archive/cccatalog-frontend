@@ -37,10 +37,10 @@ const CollectionBrowsePage = {
     query: {
       handler(newQuery) {
         this.getImages(newQuery);
+      },
+      Immediate: true,
     },
-    Immediate:true,
   },
- },
 };
 
 export default CollectionBrowsePage;
