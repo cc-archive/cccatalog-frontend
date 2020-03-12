@@ -33,18 +33,14 @@ const CollectionBrowsePage = {
       });
     },
   },
-  created() {
-    if (this.query.provider) {
-      this.getImages(this.query);
-    }
-  },
   watch: {
-    query(newQuery) {
-      if (newQuery) {
+    query: {
+      handler(newQuery) {
         this.getImages(newQuery);
-      }
     },
+    Immediate:true,
   },
+ },
 };
 
 export default CollectionBrowsePage;
