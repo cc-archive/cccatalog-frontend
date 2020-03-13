@@ -47,15 +47,23 @@ const PhotoDetailPage = {
     },
   },
   beforeRouteUpdate(to, from, next) {
+    // called when the route that renders this component has changed,
+    // but this component is reused in the new route.
     this.resetImageOnRouteChanged();
     this.loadImage(to.params.id);
     next();
   },
   beforeRouteLeave(to, from, next) {
+    // called when the route that renders this component is about to
+    // be navigated away from.
+    // has access to `this` component instance.
     this.resetImageOnRouteChanged();
     next();
   },
   beforeRouteEnter(to, previousPage, nextPage) {
+    // called before the route that renders this component is confirmed.
+    // does NOT have access to `this` component instance,
+    // because it has not been created yet when this guard is called!
     nextPage((_this) => {
       if (previousPage.name === 'browse-page') {
         _this.shouldShowBreadcrumb = true; // eslint-disable-line no-param-reassign
