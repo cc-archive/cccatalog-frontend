@@ -116,7 +116,7 @@ $hero-height: 71vh;
   top: 1rem;
   right: 2rem;
 
-  @media screen and (max-width: 40em) {
+  @media screen and (max-width: 80em) {
     display: none;
   }
 }
@@ -126,7 +126,7 @@ $hero-height: 71vh;
   bottom: 2rem;
   right: 2rem;
 
-  @media screen and (max-width: 40em) {
+  @media screen and (max-width: 80em) {
     display: none;
   }
 }
