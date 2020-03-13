@@ -100,16 +100,14 @@ export default {
         SET_FILTER_IS_VISIBLE,
         { isFilterVisible: !this.isFilterVisible },
       );
-      const filter_scroll = window.matchMedia('(max-width:768px)');
-      if (filter_scroll.matches)
-        {
-         window.scrollTo({
-         top: 0,
-         left: 0,
-         behavior: 'smooth',
-      }); 
-        }
-
+      const filterScroll = window.matchMedia('(max-width:768px)');
+      if (filterScroll.matches) {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        });
+      }
     },
     onSearchFilterChanged(query) {
       this.$emit('onSearchFormSubmit', query);
