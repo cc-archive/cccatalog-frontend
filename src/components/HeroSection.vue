@@ -123,7 +123,7 @@ $hero-height: 71vh;
 
 .search-help-link {
   position: absolute;
-  bottom: 2rem;
+  bottom: 4.5rem;
   right: 2rem;
 
   @media screen and (max-width: 40em) {
