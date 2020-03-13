@@ -100,6 +100,16 @@ export default {
         SET_FILTER_IS_VISIBLE,
         { isFilterVisible: !this.isFilterVisible },
       );
+      const filter_scroll = window.matchMedia('(max-width:768px)');
+      if (filter_scroll.matches)
+        {
+         window.scrollTo({
+         top: 0,
+         left: 0,
+         behavior: 'smooth',
+      }); 
+        }
+
     },
     onSearchFilterChanged(query) {
       this.$emit('onSearchFormSubmit', query);
@@ -117,6 +127,7 @@ export default {
     this.setFormInput();
   },
 };
+
 </script>
 
 <style lang="scss" scoped>
