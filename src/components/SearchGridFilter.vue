@@ -1,7 +1,8 @@
 <template>
   <div :class="{ 'search-filters': true,
                  'search-filters__visible': isFilterVisible, }">
-    <form class="filters-form" role="filter">
+    <simplebar v-bind:style="{height: scrollHeight}" data-simplebar-auto-hide = "true">
+    <form class="filters-form" role="filter" id = 'filter'>
       <filter-check-list :options="filters.licenseTypes"
                          :disabled="licenseTypesDisabled"
                          title="I want something that I can"
@@ -34,13 +35,13 @@
                          filterType="sizes"
                          @filterChanged="onUpdateFilter" />
     </form>
-
     <div class="filter-option small-filter search-filters_search-by">
       <input type="checkbox" id="creator-chk"
               :checked="filters.searchBy.creator"
               @change="onUpdateSearchByCreator">
       <label for="creator-chk">Search by Creator</label>
     </div>
+    </simplebar>
     <div class="clear-filters"
           v-if="isFilterApplied">
       <a class="button primary medium search-filters_clear-btn"
@@ -50,8 +51,9 @@
     </div>
   </div>
 </template>
-
 <script>
+import simplebar from 'simplebar-vue';
+import 'simplebar/dist/simplebar.min.css';
 import { TOGGLE_FILTER } from '@/store/action-types';
 import { CLEAR_FILTERS } from '@/store/mutation-types';
 import FilterCheckList from './FilterChecklist';
@@ -59,8 +61,14 @@ import FilterCheckList from './FilterChecklist';
 export default {
   name: 'search-grid-filter',
   props: ['isCollectionsPage', 'provider'],
+  data() {
+    if (window.outerWidth < 784) {
+      return { scrollHeight: 'auto' };
+    }
+    return { scrollHeight: '800px' };
+  },
   components: {
-    FilterCheckList,
+    FilterCheckList, simplebar,
   },
   computed: {
     isFilterApplied() {
@@ -109,6 +117,7 @@ export default {
     },
   },
 };
+
 </script>
 
 <style lang="scss" scoped>
@@ -140,4 +149,5 @@ export default {
   border-radius: 2px;
   margin: auto;
 }
+
 </style>
