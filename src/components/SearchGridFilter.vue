@@ -65,7 +65,7 @@ export default {
     if (window.outerWidth < 784) {
       return { scrollHeight: 'auto' };
     }
-    return { scrollHeight: '800px' };
+    return { scrollHeight: '700px' };
   },
   components: {
     FilterCheckList, simplebar,
