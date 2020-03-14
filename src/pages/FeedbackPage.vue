@@ -32,8 +32,8 @@
           </a>
           or
           <a href="https://github.com/creativecommons/cccatalog-frontend/issues">
-            log the issue directly at Github
-          </a>.
+            log the issue directly at Github.
+          </a>
         </p>
       </div>
     </div>

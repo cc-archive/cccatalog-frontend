@@ -13,11 +13,11 @@
         CC Search searches across more than 300 million images from open APIs and the
         <a href="http://commoncrawl.org/">Common Crawl</a> dataset.
         It goes beyond simple search to aggregate results across multiple public repositories
-         into a single catalog, and facilitates reuse through features like machine-generated tags
+         into a single catalog and facilitates reuse through features like machine-generated tags
          and one-click attribution.
       </p>
       <p>
-        Currently CC Search only searches images, but we plan to add additional media types such as
+        Currently, CC Search only searches images, but we plan to add additional media types such as
         open texts and audio, with the ultimate goal of providing access to all 1.4 billion CC
         licensed and public domain works on the web. Learn more about CC’s
         <a href="https://creativecommons.org/2019/03/19/cc-search/">2019 vision, strategy</a> and
