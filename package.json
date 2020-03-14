@@ -34,6 +34,8 @@
     "masonry-layout": "^4.2.2",
     "packery": "^2.1.2",
     "route-cache": "^0.4.4",
+    "simplebar": "^5.1.0",
+    "simplebar-vue": "^1.4.0",
     "sixpack-client": "^2.1.0",
     "smoothscroll-polyfill": "^0.4.4",
     "uuid": "^3.3.2",
@@ -120,5 +122,19 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/satyaom/cccatalog-frontend.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/satyaom/cccatalog-frontend/issues"
+  },
+  "homepage": "https://github.com/satyaom/cccatalog-frontend#readme"
 }
