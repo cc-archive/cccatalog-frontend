@@ -1,7 +1,7 @@
 <template>
   <div :class="{ 'search-filters': true,
                  'search-filters__visible': isFilterVisible, }">
-    <simplebar v-bind:style="{height: scrollHeight}" data-simplebar-auto-hide = "true">
+    <simplebar v-bind:style="{height: scrollHeight}" data-simplebar-auto-hide = "false">
     <form class="filters-form" role="filter" id = 'filter'>
       <filter-check-list :options="filters.licenseTypes"
                          :disabled="licenseTypesDisabled"
@@ -44,6 +44,7 @@
     </simplebar>
     <div class="clear-filters"
           v-if="isFilterApplied">
+      <br>
       <a class="button primary medium search-filters_clear-btn"
               @click="onClearFilters">
         Clear filters
