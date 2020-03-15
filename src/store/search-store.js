@@ -236,7 +236,7 @@ const mutations = redirect => ({
   },
   [SET_QUERY](_state, params) {
     setQuery(_state, params, '/search', redirect);
-    let images = params.images;
+    const images = params.images;
     _state.images = images.map(image => decodeImageData(image));
     _state.pageCount = params.pageCount;
     _state.imagesCount = params.imagesCount || 0;
