@@ -73,7 +73,7 @@ export default {
   data: () => ({ form: { searchTerm: '' } }),
   methods: {
     onSubmit() {
-      this.$store.commit(SET_QUERY, { query: { q: this.form.searchTerm }, shouldNavigate: true });
+      this.$store.commit(SET_QUERY, { query: { q: this.form.searchTerm }, shouldNavigate: true , images: [] });
     },
   },
 };
