@@ -31,4 +31,7 @@ module.exports = {
   transformIgnorePatterns: [
     '/node_modules/(?!vue-masonry)',
   ],
+  moduleNameMapper: {
+    "\\.(css|less|scss)$": "identity-obj-proxy"
+  }
 };
