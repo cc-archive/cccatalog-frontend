@@ -236,6 +236,14 @@ const mutations = redirect => ({
   },
   [SET_QUERY](_state, params) {
     setQuery(_state, params, '/search', redirect);
+    let images = null;
+    let images = null;
+    params.shouldPersistImages;
+    images = params.images;
+    _state.images = images.map(image => decodeImageData(image));
+    _state.pageCount = params.pageCount;
+    _state.imagesCount = params.imagesCount || 0;
+    _state.imagePage = params.page || 1;
   },
   [SET_COLLECTION_QUERY](_state, params) {
     setQuery(_state, params, `/collections/${params.provider}`, redirect);
