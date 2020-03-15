@@ -33,6 +33,7 @@
     "lodash.isempty": "^4.4.0",
     "masonry-layout": "^4.2.2",
     "packery": "^2.1.2",
+    "remove": "^0.1.5",
     "route-cache": "^0.4.4",
     "simplebar": "^5.1.0",
     "simplebar-vue": "^1.4.0",
