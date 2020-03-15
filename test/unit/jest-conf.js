@@ -31,4 +31,6 @@ module.exports = {
   transformIgnorePatterns: [
     '/node_modules/(?!vue-masonry)',
   ],
+  "verbose": true,
+  "testURL": "http://localhost/"
 };

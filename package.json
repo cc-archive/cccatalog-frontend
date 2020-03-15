@@ -27,6 +27,7 @@
     "clipboard": "^2.0.4",
     "express": "^4.17.1",
     "foundation-sites": "^6.5.0-rc.3",
+    "identity-obj-proxy": "^3.0.0",
     "js-cookie": "^2.2.0",
     "lodash.clonedeep": "^4.5.0",
     "lodash.findindex": "^4.6.0",
@@ -85,7 +86,6 @@
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
-    "identity-obj-proxy": "^3.0.0",
     "jest": "^22.0.4",
     "jest-serializer-vue": "^0.3.0",
     "jest-transform-stub": "^1.0.0",
@@ -138,10 +138,5 @@
   "bugs": {
     "url": "https://github.com/satyaom/cccatalog-frontend/issues"
   },
-  "homepage": "https://github.com/satyaom/cccatalog-frontend#readme",
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(css|less)$": "identity-obj-proxy"
-    }
-  }
+  "homepage": "https://github.com/satyaom/cccatalog-frontend#readme"
 }
