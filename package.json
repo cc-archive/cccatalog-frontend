@@ -138,5 +138,10 @@
   "bugs": {
     "url": "https://github.com/satyaom/cccatalog-frontend/issues"
   },
-  "homepage": "https://github.com/satyaom/cccatalog-frontend#readme"
+  "homepage": "https://github.com/satyaom/cccatalog-frontend#readme",
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
+  }
 }
