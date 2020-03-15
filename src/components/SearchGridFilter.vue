@@ -53,7 +53,7 @@
 </template>
 <script>
 import simplebar from 'simplebar-vue';
-import 'simplebar/dist/simplebar.min.css';
+
 import { TOGGLE_FILTER } from '@/store/action-types';
 import { CLEAR_FILTERS } from '@/store/mutation-types';
 import FilterCheckList from './FilterChecklist';
