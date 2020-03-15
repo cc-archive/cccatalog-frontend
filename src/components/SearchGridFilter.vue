@@ -57,6 +57,8 @@ import { TOGGLE_FILTER } from '@/store/action-types';
 import { CLEAR_FILTERS } from '@/store/mutation-types';
 import FilterCheckList from './FilterChecklist';
 
+require('@/styles/simplebar.scss');
+
 export default {
   name: 'search-grid-filter',
   props: ['isCollectionsPage', 'provider'],
