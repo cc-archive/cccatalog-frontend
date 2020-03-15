@@ -121,8 +121,6 @@ export default {
 
 <style lang="scss" scoped>
 
-
-
 .search-filters {
   display: none;
   height: auto;
