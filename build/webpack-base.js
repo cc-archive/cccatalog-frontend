@@ -7,6 +7,7 @@ const Dotenv = require('dotenv-webpack');
 const utils = require('./utils');
 const config = require('../config');
 const vueLoaderConfig = require('./vue-loader.conf');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 
 function resolve (dir) {
@@ -82,14 +83,14 @@ const webpackConfig = {
       {
         test: /\.css$/,
         use: [
-          'vue-style-loader',
+          isDev ? 'vue-style-loader' : MiniCSSExtractPlugin.loader,
           { loader: 'css-loader', options: { sourceMap: isDev } },
         ]
       },
       {
         test: /\.scss$/,
         use: [
-          'vue-style-loader',
+          isDev ? 'vue-style-loader' : MiniCSSExtractPlugin.loader,
           { loader: 'css-loader', options: { sourceMap: isDev } },
           { loader: 'sass-loader', options: { sourceMap: isDev } }
         ]
@@ -97,7 +98,7 @@ const webpackConfig = {
       {
         test: /\.sass$/,
         use: [
-          'vue-style-loader',
+          isDev ? 'vue-style-loader' : MiniCSSExtractPlugin.loader,
           { loader: 'css-loader', options: { sourceMap: isDev } },
           { loader: 'sass-loader', options: { sourceMap: isDev } }
         ]
@@ -110,6 +111,10 @@ const webpackConfig = {
       template: 'index.html',
       chunksSortMode: 'dependency'
     }),
+    new MiniCSSExtractPlugin({
+      filename: 'public/styles_bundle.css',
+      chunkFilename: "public/styles/[id].css"
+  }),
     new Dotenv({
       path: './config/.env',
       systemvars: true, // load from system env vars instead of .env file
