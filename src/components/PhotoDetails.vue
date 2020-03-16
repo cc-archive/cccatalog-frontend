@@ -131,10 +131,5 @@ export default {
 
 <style lang="scss" scoped>
   @import '../styles/photodetails.scss';
-    @media only screen and (max-width: 600px) {
-    .photo_breadcrumb{
-      padding-left: 0rem;
-    }
-  }
 </style>
 
