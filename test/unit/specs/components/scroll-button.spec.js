@@ -30,6 +30,7 @@ describe('Scroll button', () => {
     const mockMethods = {
       scrollToTop: jest.fn(),
     };
+    global.scrollTo = mockMethods.scrollToTop;
     const opts = {
       propsData: {
         ...props,
@@ -44,5 +45,4 @@ describe('Scroll button', () => {
     button.trigger('click');
     expect(mockMethods.scrollToTop).toHaveBeenCalled();
   });
-})
-;
+});
