@@ -12,7 +12,7 @@
 import HeaderSection from '@/components/HeaderSection';
 import FooterSection from '@/components/FooterSection';
 
-const NotFoundPage = {
+const HomePage = {
   name: 'home-page',
   components: {
     HeaderSection,
@@ -20,7 +20,7 @@ const NotFoundPage = {
   },
 };
 
-export default NotFoundPage;
+export default HomePage;
 </script>
 
 <style lang="scss" scoped>
