@@ -118,5 +118,10 @@ export default {
     .search-form_input {
       font-size: 18px;
     }
+
+    i > img {
+    height : auto;
+    width: 5rem;
+  }
   }
 </style>
