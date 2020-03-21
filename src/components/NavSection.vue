@@ -212,6 +212,9 @@ li {
   &:hover {
     background-color: #eee;
   }
+  &:focus{
+    background-color: #eee;
+  }
 }
 
 .hero_search-form {
