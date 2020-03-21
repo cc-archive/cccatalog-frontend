@@ -69,11 +69,19 @@ export default {
 
 /* header */
 
+.logo {
+    height: 46px;
+    margin-left: .6rem;
+}
+
 .logo > img {
   height: 42px;
   padding-right: 11px;
 }
 
+.navbar-brand {
+  margin-right: 20px;
+}
 
 .hero_search-form {
   margin: 0 15px;
@@ -81,5 +89,6 @@ export default {
   input {
     width: 16rem;
   }
+
 }
 </style>
