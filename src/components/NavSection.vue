@@ -73,7 +73,9 @@ export default {
   height: 42px;
   padding-right: 11px;
 }
-
+.navbar-end a:focus{
+    background-color: #eee;
+  }
 
 .hero_search-form {
   margin: 0 15px;
