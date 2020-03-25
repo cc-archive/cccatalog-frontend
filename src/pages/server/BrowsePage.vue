@@ -1,4 +1,5 @@
 <template>
+hello
   <div class="browse-page">
     <div class="search grid-x flexible">
       <div class="cell">
