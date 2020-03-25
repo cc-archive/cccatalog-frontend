@@ -130,4 +130,8 @@ $hero-height: 71vh;
     padding: 0 .9375rem;
   }
 }
+a:hover {
+  text-decoration: underline;
+  color:#ed592f
+}
 </style>
