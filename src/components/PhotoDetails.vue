@@ -15,22 +15,22 @@
         <ul>
           <li :class="tabClass(0, 'a')">
             <a href="#panel0" :aria-selected="activeTab == 0" @click.prevent="setActiveTab(0)">
-              Attribution
+              Information
             </a>
           </li>
           <li :class="tabClass(1, 'a')">
             <a href="#panel1" :aria-selected="activeTab == 1" @click.prevent="setActiveTab(1)">
-              Info
+              Attribution
             </a>
           </li>
           <li :class="tabClass(2, 'a')" v-if="watermarkEnabled">
             <a href="#panel2" :aria-selected="activeTab == 2" @click.prevent="setActiveTab(2)">
-              Download
+              Share
             </a>
           </li>
           <li :class="tabClass(3, 'a')" v-if="socialSharingEnabled">
             <a href="#panel3" :aria-selected="activeTab == 3" @click.prevent="setActiveTab(3)">
-              Share
+              Download
             </a>
           </li>
         </ul>
