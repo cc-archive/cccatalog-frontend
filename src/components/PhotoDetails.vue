@@ -4,7 +4,13 @@
       <a class="photo_breadcrumb"
           :href="breadCrumbURL"
           @click.prevent="onGoBackToSearchResults"
-          v-if="shouldShowBreadcrumb"><strong><font color="grey">&olt; Back to search results</font></strong></a>
+          v-if="shouldShowBreadcrumb">
+          <strong>
+            <font color="grey">
+              &olt; Back to search results
+              </font>
+            </strong>
+            </a>
       <img @load="onImageLoad"
             class="photo_image"
             :src="image.url"
