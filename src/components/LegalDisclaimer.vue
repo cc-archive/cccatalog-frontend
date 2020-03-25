@@ -3,7 +3,7 @@
     <h4 class="b-header">Verify at the source</h4>
     <div class="margin-top-normal">
       <ul>
-        <li class="caption margin-bottom-normal">
+        <li class="caption margin-bottom-normal" >
           CC Search aggregates data from publicly available repositories of open content.
         </li>
         <li class="caption margin-bottom-normal">
@@ -35,3 +35,17 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  ul {
+   list-style: none;
+}
+
+  ul li::before {
+    content: "\2022";
+    color: grey;
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+}
+</style>
