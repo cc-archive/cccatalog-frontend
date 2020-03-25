@@ -113,6 +113,15 @@ export default {
 
 <style lang="scss" scoped>
 
+.button {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+button:hover {
+  background-color: #787878;
+  border-color: #787878;
+}
+
 .search-filters {
   display: none;
   height: auto;
