@@ -103,7 +103,13 @@ $hero-height: 71vh;
 
   .hero_search-input {
     width: 70%;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
   }
+}
+.button{
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
 .help-links {
