@@ -26,7 +26,8 @@
             target="new">
             <img class="search-grid_overlay-provider-logo"
               :alt="image.source"
-              :src="getProviderLogo(image.source)">
+              :src="getProviderLogo(image.source)"
+              style="display: none;">
             {{ image.title }}
         </a>
       </figcaption>
@@ -190,30 +191,29 @@ export default {
 
     &__top {
       transition: all .5s ease;
-      background: linear-gradient(to bottom,
-                  rgba(0,0,0,.5)
-                  0,
-                  rgba(0,0,0,0) 100%);
       top: 0;
     }
 
     &__bottom {
       height: 30px;
-      background: linear-gradient(to top,
-                  rgba(0,0,0,.5)
-                  0,
-                  rgba(0,0,0,0) 100%);
       bottom: -100%;
       top: auto;
     }
   }
 
   .search-grid_overlay-provider {
-    width: calc( 100% - 30px );
-    display: block;
-    bottom: 10px;
-    left: 10px;
+    display: inline-block;
+    max-width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 8px 16px;
+    background-color: #000;
     color: #fff;
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 19px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
