@@ -129,10 +129,16 @@ export default {
 }
 .input-box{
   width: 90%;
+  @media (max-width: 49em) {
+    width: 70%;
+  }
 }
 .icon-container{
   width: 10%;
   padding-left: 0.5em;
+  @media (max-width: 49em) {
+    width: 30%;
+  }
 }
 .input-icons-1 {
   color: red;
