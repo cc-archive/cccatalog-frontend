@@ -15,18 +15,18 @@
           </i>
         </div>
         <div class="input-box">
-        <input
-          :placeholder="searchBoxPlaceholder"
-          required="required"
-          autofocus="true"
-          class="input is-medium search-form_input"
-          type="search"
-          autocapitalize="none"
-          id="searchInput"
-          v-model="searchTermsModel"
-          ref="search"
-          @keyup.enter="onSubmit"
-        />
+          <input
+            :placeholder="searchBoxPlaceholder"
+            required="required"
+            autofocus="true"
+            class="input is-medium search-form_input"
+            type="search"
+            autocapitalize="none"
+            id="searchInput"
+            v-model="searchTermsModel"
+            ref="search"
+            @keyup.enter="onSubmit"
+          />
         </div>
       </div>
       <button class="button is-primary" @click.prevent="onSubmit">Search</button>
@@ -107,9 +107,9 @@ export default {
 }
 .search-form_input {
   width: 100%;
-  border:none;
-  height:95%;
-  padding-left:0;
+  border: none;
+  height: 95%;
+  padding-left: 0;
   @media (max-width: 49em) {
     width: 100%;
   }
@@ -122,18 +122,18 @@ export default {
 .input-container {
   width: 45%;
   height: 3.875rem;
-  padding:0;
+  padding: 0;
   @media (max-width: 49em) {
     width: 45%;
   }
 }
-.input-box{
+.input-box {
   width: 90%;
   @media (max-width: 49em) {
     width: 70%;
   }
 }
-.icon-container{
+.icon-container {
   width: 10%;
   padding-left: 0.5em;
   @media (max-width: 49em) {
@@ -142,16 +142,13 @@ export default {
 }
 .input-icons-1 {
   color: red;
-  flex: left;
   border: none;
 }
-
 .input-icons {
   width: 100%;
   min-width: 20px;
-  padding:15px;
+  padding: 15px;
 }
-
 .icon {
   color: green;
   min-width: 100%;
