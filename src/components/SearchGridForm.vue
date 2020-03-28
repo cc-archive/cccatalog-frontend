@@ -11,7 +11,7 @@
       <div class="input-container input margin-left-small">
         <div class="icon-container">
           <i class="search-icon">
-            <img width="20" src="../assets/search-icon_black.svg" />
+            <img width="20" src="../assets/search-icon.svg" />
           </i>
         </div>
         <div class="input-box">
@@ -40,7 +40,7 @@
       <div class="input-container-small input margin-left-small">
         <div class="icon-container">
           <i class="search-icon">
-            <img width="64" src="../assets/search-icon_black.svg" />
+            <img width="64" src="../assets/search-icon.svg" />
           </i>
         </div>
         <div class="input-box">
