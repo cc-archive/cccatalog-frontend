@@ -64,6 +64,7 @@
 <script>
 import SearchGridFilter from '@/components/SearchGridFilter';
 import { SET_FILTER_IS_VISIBLE } from '@/store/mutation-types';
+
 export default {
   name: 'search-grid-form',
   props: {
