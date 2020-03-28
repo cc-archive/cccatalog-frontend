@@ -62,18 +62,18 @@
 </template>
 
 <script>
-import SearchGridFilter from "@/components/SearchGridFilter";
-import { SET_FILTER_IS_VISIBLE } from "@/store/mutation-types";
+import SearchGridFilter from '@/components/SearchGridFilter';
+import { SET_FILTER_IS_VISIBLE } from '@/store/mutation-types';
 export default {
-  name: "search-grid-form",
+  name: 'search-grid-form',
   props: {
     searchBoxPlaceholder: {
-      default: "Search all images"
-    }
+      default: 'Search all images',
+    },
   },
   data: () => ({ searchTermsModel: null }),
   components: {
-    SearchGridFilter
+    SearchGridFilter,
   },
   computed: {
     searchTerms() {
@@ -84,39 +84,37 @@ export default {
     },
     isFilterApplied() {
       return this.$store.state.isFilterApplied;
-    }
+    },
   },
   methods: {
     onSubmit(e) {
       e.preventDefault();
       if (this.searchTermsModel) {
-        this.$emit("onSearchFormSubmit", {
-          query: { q: this.searchTermsModel },
-          shouldNavigate: true
-        });
+        this.$emit('onSearchFormSubmit', { query: { q: this.searchTermsModel }, shouldNavigate: true });
         this.$refs.search.blur();
       }
     },
     onToggleSearchGridFilter() {
-      this.$store.commit(SET_FILTER_IS_VISIBLE, {
-        isFilterVisible: !this.isFilterVisible
-      });
+      this.$store.commit(
+        SET_FILTER_IS_VISIBLE,
+        { isFilterVisible: !this.isFilterVisible },
+      );
     },
     onSearchFilterChanged(query) {
-      this.$emit("onSearchFormSubmit", query);
+      this.$emit('onSearchFormSubmit', query);
     },
     setFormInput() {
       this.searchTermsModel = this.searchTerms;
-    }
+    },
   },
   watch: {
     searchTerms: function handler() {
       this.setFormInput();
-    }
+    },
   },
   mounted: function handler() {
     this.setFormInput();
-  }
+  },
 };
 </script>
 
