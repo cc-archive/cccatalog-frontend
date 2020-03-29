@@ -4,11 +4,14 @@
     <transition name="modal" v-if="isMobile()">
         <div class="overlay">
           <div class="modal" ref="progressbar">
+          <div class="filter">
+          <div class="text"> Filter </div>
+          <button class="logo" @click.prevent="close()">Close <i class="fa fa-window-close" aria-hidden="true"></i></button>
+          </div>
          <div :class="{ 'search-filters': true,
                  'search-filters__visible': isFilterVisible, }">
     <slot>
     <form class="filters-form" role="filter">
-    <button @click.prevent="close()">Close </button>
       <filter-check-list :options="filters.licenseTypes"
                          :disabled="licenseTypesDisabled"
                          title="I want something that I can"
@@ -214,6 +217,12 @@ export default {
 
 <style lang="scss" scoped>
 
+.icon, .text {
+  display:inline;
+  font-size: 25px;
+  margin-left: 10px;
+}
+
 .modal {
   width: 500px;
   max-height: 600px;
@@ -241,7 +250,8 @@ export default {
 }
 button {
   padding: 7px;
-  margin-top: 5px;
+  margin-left: 200px;
+  margin-bottom: 10px;
   background-color: green;
   color: white;
   font-size: 1.1rem;
@@ -259,6 +269,25 @@ button {
   background: #00000094;
   z-index: 999;
   transition: opacity 0.2s ease;
+}
+
+.search-filters {
+  display: none;
+  height: auto;
+  top: 0;
+  position: sticky;
+  label {
+    color: #333333;
+  }
+  &__visible {
+    border-top: 1px solid #e8e8e8;
+    display: block;
+  }
+}
+.search-filters_search-by,
+.clear-filters {
+  margin-top: 0.4em;
+  margin-left: 24px;
 }
 
 </style>
