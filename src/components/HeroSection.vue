@@ -97,6 +97,11 @@ $hero-height: 71vh;
     padding: 0 0.5em 0 0.5em;
   }
 
+  a:hover{
+    color:#ff6933;
+    text-decoration: underline;
+  }
+
   .centered-search-box {
     justify-content: center;
   }
@@ -115,6 +120,8 @@ $hero-height: 71vh;
     display: none;
   }
 }
+
+
 
 .help-icon {
   height: 32px;
