@@ -37,23 +37,23 @@
       </section>
       <section class="photo_info-ctr tabs-content">
         <div :class="tabClass(0, 'tabs-panel')">
-          <image-attribution :image="image"
-                              :ccLicenseURL="ccLicenseURL"
-                              :fullLicenseName="fullLicenseName"
-                              :attributionHtml="attributionHtml()" />
-        </div>
-        <div :class="tabClass(1, 'tabs-panel')">
           <image-info :image="image"
                       :ccLicenseURL="ccLicenseURL"
                       :fullLicenseName="fullLicenseName"
                       :imageWidth="imageWidth"
                       :imageHeight="imageHeight" />
         </div>
+        <div :class="tabClass(1, 'tabs-panel')">
+          <image-attribution :image="image"
+                              :ccLicenseURL="ccLicenseURL"
+                              :fullLicenseName="fullLicenseName"
+                              :attributionHtml="attributionHtml()" />
+        </div>
         <div :class="tabClass(2, 'tabs-panel')">
-          <watermark v-if="watermarkEnabled" :image="image" />
+          <image-social-share v-if="socialSharingEnabled" :image="image" />
         </div>
         <div :class="tabClass(3, 'tabs-panel')">
-          <image-social-share v-if="socialSharingEnabled" :image="image" />
+          <watermark v-if="watermarkEnabled" :image="image" />
         </div>
       </section>
     </div>
