@@ -1,13 +1,8 @@
 <template>
   <section class="sidebar_section">
-    <!-- TODO: try to centralize contents in photo details page) -->
-    <header class="sidebar_section-header">
-      <h2>
-        Image Attribution
-      </h2>
-    </header>
-    <div >
+    <div>
       <div class="photo-attribution">
+        <h5 class="b-header margin-bottom-normal">Image attribution</h5>
         <span id="attribution" class="photo_usage-attribution" ref="photoAttribution">
           <a :href="image.foreign_landing_url"
              target="_blank"
@@ -36,11 +31,8 @@
         </CopyButton>
       </div>
       <div class="embed-attribution">
-        <span>
-          Copy the HTML below to embed the attribution with license icons in your web page
-        </span>
         <textarea id="attribution-html"
-                  class="is-family-code"
+                  class="textarea is-family-monospace"
                   :value="attributionHtml"
                   cols="30" rows="4"
                   readonly="readonly">
@@ -49,7 +41,7 @@
                   el="#attribution-html"
                   title="Copy the HTML to embed the attribution with license icons in your web page"
                   @copied="onEmbedAttribution">
-          Copy HTML
+          Copy html
         </CopyButton>
       </div>
       <reuse-survey :image="image" />
@@ -115,7 +107,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-  @import '../styles/photodetails.scss';
-</style>
