@@ -19,6 +19,9 @@ const router = new VueRouter({
       path: '/search',
       name: 'browse-page',
       component: BrowsePage,
+      meta: {
+        requireParams: true,
+      },
       props: route => ({ query: route.query.q }),
     },
     {
@@ -78,6 +81,25 @@ const router = new VueRouter({
     }
     return { x: 0, y: 0 };
   },
+});
+// search route guard
+router.beforeEach((to, _from, next) => {
+  // check to see if route needs any requireParams
+  if (to.matched.some(routeObject => routeObject.meta.requireParams)) {
+    // check if the query has the q
+    if (to.query.q) {
+      // if q is present then preceed
+      next();
+    }
+    else {
+      next({
+        name: 'home-page',
+      });
+    }
+  }
+  else {
+    next();
+  }
 });
 
 router.afterEach((to) => {
