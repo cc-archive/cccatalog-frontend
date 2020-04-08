@@ -46,19 +46,18 @@
                          filterType="sizes"
                          @filterChanged="onUpdateFilter" />
     </form>
-
-    <div class="filter-option small-filter search-filters_search-by">
-      <input type="checkbox" id="creator-chk"
-              :checked="filters.searchBy.creator"
-              @change="onUpdateSearchByCreator">
-      <label for="creator-chk">Search by Creator</label>
-    </div>
-    <div class="clear-filters"
-          v-if="isFilterApplied">
+    <div class="is-flex">
+    <div class="clear-filters">
       <button class="button tiny"
               @click="onClearFilters">
         Clear filters
       </button>
+    </div>
+    <div class="apply-filters">
+      <button class="button tiny">
+        Apply filters
+      </button>
+    </div>
     </div>
         </slot>
    </div>
@@ -252,10 +251,8 @@ export default {
   transform: scale(1.1);
 }
 button {
-  padding: 7px;
-  margin-left: 200px;
-  margin-bottom: 10px;
-  background-color: green;
+  margin-left: 60px;
+  background-color: grey;
   color: white;
   font-size: 1.1rem;
 }
@@ -290,7 +287,10 @@ button {
 .search-filters_search-by,
 .clear-filters {
   margin-top: 0.4em;
-  margin-left: 24px;
+}
+.search-filters_search-by,
+.apply-filters {
+  margin-top: 0.4em;
 }
 
 </style>
