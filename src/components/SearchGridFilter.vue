@@ -6,9 +6,9 @@
     <transition name="modal" v-if="isMobile()">
         <div class="overlay">
           <div class="modal" ref="progressbar">
-          <div class="filter">
+          <div class="is-flex">
           <div class="text"> Filter </div>
-          <button class="logo" @click.prevent="close()">Close</button>
+          <button class="button tiny" @click.prevent="close()">Close</button>
           </div>
          <div :class="{ 'search-filters': true,
                  'search-filters__visible': isFilterVisible, }">
@@ -46,7 +46,8 @@
                          filterType="sizes"
                          @filterChanged="onUpdateFilter" />
     </form>
-    <div class="is-flex">
+    </slot>
+    <div class="is-flex filter-down">
     <div class="clear-filters">
       <button class="button tiny"
               @click="onClearFilters">
@@ -59,7 +60,6 @@
       </button>
     </div>
     </div>
-        </slot>
    </div>
   </div>
 </div>
@@ -229,7 +229,6 @@ export default {
   width: 500px;
   max-height: 600px;
   margin: 0px auto;
-  padding: 20px;
   background-color: #fff;
   border-radius: 2px;
   overflow-y: scroll;
@@ -292,5 +291,19 @@ button {
 .apply-filters {
   margin-top: 0.4em;
 }
+
+.is-flex {
+  padding:15px;
+}
+
+.filter-down {
+  background: white;
+  position:sticky;
+  align-self:flex-end;
+  bottom:.1rem;
+  padding:10px;
+
+
+    }
 
 </style>
