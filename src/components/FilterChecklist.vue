@@ -1,4 +1,4 @@
-<template v-if="filters.aspectRatios">
+<template>
   <div class="filters padding-vertical-big padding-left-big padding-right-normal">
     <div class="filters-title" @click.prevent="toggleFilterVisibility">
       <span>{{ title }}</span>
