@@ -1,4 +1,4 @@
-<template>
+<template v-if="filters.aspectRatios">
   <div class="filters padding-vertical-big padding-left-big padding-right-normal">
     <div class="filters-title" @click.prevent="toggleFilterVisibility">
       <span>{{ title }}</span>
@@ -21,8 +21,11 @@
              :checked="item.checked"
              :disabled="disabled"
              @change="onValueChange" />
-        {{ item.name }}
+        {{ item.name }} 
       </label>
+
+        <img :src="item.img" /> 
+
     </div>
     </template>
   </div>
@@ -66,5 +69,10 @@ export default {
 }
 label {
   color: #333333;
+}
+img {
+ max-width: 11px;
+ float: right; 
+ margin-right: 8px;
 }
 </style>

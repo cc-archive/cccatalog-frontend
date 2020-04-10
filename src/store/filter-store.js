@@ -31,9 +31,9 @@ export const filterData = {
     { code: 'svg', name: 'SVGs', checked: false },
   ],
   aspectRatios: [
-    { code: 'tall', name: 'Tall', checked: false },
-    { code: 'wide', name: 'Wide', checked: false },
-    { code: 'square', name: 'Square', checked: false },
+    { code: 'tall', name: 'Tall', checked: false, img: require('@/assets/tall.png') },
+    { code: 'wide', name: 'Wide', checked: false, img: require('@/assets/wide.png') },
+    { code: 'square', name: 'Square', checked: false, img: require('@/assets/square.png') },
   ],
   sizes: [
     { code: 'small', name: 'Small', checked: false },
