@@ -8,12 +8,12 @@ export const filterData = {
   licenses: [
     { code: 'cc0', name: 'CC0', checked: false, img: require('@/assets/question.svg') },
     { code: 'pdm', name: 'Public Domain Mark', checked: false, img: require('@/assets/question.svg') },
-    { code: 'by', name: 'BY', checked: false, img: require('@/assets/question.svg')  },
-    { code: 'by-sa', name: 'BY-SA', checked: false, img: require('@/assets/question.svg')  },
-    { code: 'by-nc', name: 'BY-NC', checked: false, img: require('@/assets/question.svg') },
-    { code: 'by-nd', name: 'BY-ND', checked: false, img: require('@/assets/question.svg')  },
-    { code: 'by-nc-sa', name: 'BY-NC-SA', checked: false, img: require('@/assets/question.svg')  },
-    { code: 'by-nc-nd', name: 'BY-NC-ND', checked: false, img: require('@/assets/question.svg')  },
+    { code: 'by', name: 'CC BY', checked: false, img: require('@/assets/question.svg')  },
+    { code: 'by-sa', name: 'CC BY-SA', checked: false, img: require('@/assets/question.svg')  },
+    { code: 'by-nc', name: 'CC BY-NC', checked: false, img: require('@/assets/question.svg') },
+    { code: 'by-nd', name: 'CC BY-ND', checked: false, img: require('@/assets/question.svg')  },
+    { code: 'by-nc-sa', name: 'CC BY-NC-SA', checked: false, img: require('@/assets/question.svg')  },
+    { code: 'by-nc-nd', name: 'CC BY-NC-ND', checked: false, img: require('@/assets/question.svg')  },
   ],
   licenseTypes: [
     { code: 'commercial', name: 'Use for commercial purposes', checked: false },
