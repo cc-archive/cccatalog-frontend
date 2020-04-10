@@ -6,14 +6,14 @@ import { screenWidth } from '../utils/getBrowserInfo';
 
 export const filterData = {
   licenses: [
-    { code: 'cc0', name: 'CC0', checked: false, img: require('@/assets/question.svg') },
-    { code: 'pdm', name: 'Public Domain Mark', checked: false, img: require('@/assets/question.svg') },
-    { code: 'by', name: 'CC BY', checked: false, img: require('@/assets/question.svg')  },
-    { code: 'by-sa', name: 'CC BY-SA', checked: false, img: require('@/assets/question.svg')  },
-    { code: 'by-nc', name: 'CC BY-NC', checked: false, img: require('@/assets/question.svg') },
-    { code: 'by-nd', name: 'CC BY-ND', checked: false, img: require('@/assets/question.svg')  },
-    { code: 'by-nc-sa', name: 'CC BY-NC-SA', checked: false, img: require('@/assets/question.svg')  },
-    { code: 'by-nc-nd', name: 'CC BY-NC-ND', checked: false, img: require('@/assets/question.svg')  },
+    { code: 'cc0', name: 'CC0', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-logo'},
+    { code: 'pdm', name: 'Public Domain Mark', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-pd' },
+    { code: 'by', name: 'CC BY', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-logo', icon2: 'icon cc-by'  },
+    { code: 'by-sa', name: 'CC BY-SA', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-logo', icon2: 'icon cc-by', icon3:'icon cc-sa' },
+    { code: 'by-nc', name: 'CC BY-NC', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-logo', icon2: 'icon cc-by', icon3:'icon cc-nc' },
+    { code: 'by-nd', name: 'CC BY-ND', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-logo', icon2: 'icon cc-by', icon3:'icon cc-nd' },
+    { code: 'by-nc-sa', name: 'CC BY-NC-SA', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-logo', icon2: 'icon cc-by', icon3:'icon cc-nc', icon4:'icon cc-sa' },
+    { code: 'by-nc-nd', name: 'CC BY-NC-ND', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-logo', icon2: 'icon cc-by', icon3:'icon cc-nc', icon4:'icon cc-nd' },
   ],
   licenseTypes: [
     { code: 'commercial', name: 'Use for commercial purposes', checked: false },

@@ -9,7 +9,7 @@
                          @filterChanged="onUpdateFilter" />
       <filter-check-list :options="filters.licenses"
                          :disabled="licensesDisabled"
-                         title="Licenses"
+                         title="License Type"
                          filterType="licenses"
                          @filterChanged="onUpdateFilter" />
       <filter-check-list v-if="renderProvidersFilter"

@@ -22,10 +22,12 @@
              :disabled="disabled"
              @change="onValueChange" />
         {{ item.name }} 
+        <i :class="item.icon1"></i>
+        <i :class="item.icon2"></i>
+        <i :class="item.icon3"></i>
+        <i :class="item.icon4"></i>
       </label>
-
         <img :src="item.img" /> 
-
     </div>
     </template>
   </div>
@@ -71,7 +73,7 @@ label {
   color: #333333;
 }
 img {
- max-width: 11px;
+ max-width: 12px;
  float: right; 
  margin-right: 8px;
 }
