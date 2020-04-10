@@ -6,10 +6,10 @@ import { screenWidth } from '../utils/getBrowserInfo';
 
 export const filterData = {
   licenses: [
-    { code: 'cc0', name: 'CC0', checked: false },
-    { code: 'pdm', name: 'Public Domain Mark', checked: false },
-    { code: 'by', name: 'BY', checked: false },
-    { code: 'by-sa', name: 'BY-SA', checked: false },
+    { code: 'cc0', name: 'CC0', checked: false, img: require('@/assets/question.svg') },
+    { code: 'pdm', name: 'Public Domain Mark', checked: false, img: require('@/assets/question.svg') },
+    { code: 'by', name: 'BY', checked: false, img: require('@/assets/question.svg')  },
+    { code: 'by-sa', name: 'BY-SA', checked: false, img: require('@/assets/question.svg')  },
     { code: 'by-nc', name: 'BY-NC', checked: false },
     { code: 'by-nd', name: 'BY-ND', checked: false },
     { code: 'by-nc-sa', name: 'BY-NC-SA', checked: false },
