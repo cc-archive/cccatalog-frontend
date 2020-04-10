@@ -21,13 +21,13 @@
              :checked="item.checked"
              :disabled="disabled"
              @change="onValueChange" />
-        {{ item.name }} 
+        {{ item.name }}
         <i :class="item.icon1"></i>
         <i :class="item.icon2"></i>
         <i :class="item.icon3"></i>
         <i :class="item.icon4"></i>
       </label>
-        <img :src="item.img" /> 
+        <img :src="item.img" />
     </div>
     </template>
   </div>
@@ -74,7 +74,10 @@ label {
 }
 img {
  max-width: 12px;
- float: right; 
+ float: right;
  margin-right: 8px;
+}
+i.icon {
+  margin-left: 3px;
 }
 </style>
