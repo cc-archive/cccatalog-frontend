@@ -1,5 +1,5 @@
 <template>
-<footer class="main-footer">
+<footer class="main-footer margin-top-big">
   <div class="container">
     <div class="columns">
       <div class="column">

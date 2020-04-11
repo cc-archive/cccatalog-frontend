@@ -37,18 +37,20 @@
       </div>
       <home-license-filter />
     </form>
-    <div class="help-links">
-      <span class="margin-right-bigger">
-        Go to the
-        <a href="https://oldsearch.creativecommons.org/">old CC Search</a> portal
-      </span>
+    <div class="help-links-wrapper margin-top-big margin-bottom-big">
+      <div class="help-links">
+        <span class="margin-right-bigger">
+          Go to the
+          <a href="https://oldsearch.creativecommons.org/">old CC Search</a> portal
+        </span>
 
-      <span>
-        See our
-        <a href="/search-help">
-          Search Syntax Guide
-        </a>
-      </span>
+        <span>
+          See our
+          <a href="/search-help">
+            Search Syntax Guide
+          </a>
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -108,7 +110,6 @@ $hero-height: 74vh;
 
 .help-links {
   position: absolute;
-  bottom: 5rem;
   left: 2rem;
 
   @media screen and (max-width: 40em) {
