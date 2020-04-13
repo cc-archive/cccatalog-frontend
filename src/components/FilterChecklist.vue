@@ -22,20 +22,33 @@
              :disabled="disabled"
              @change="onValueChange" />
         {{ item.name }}
-        <i :class="item.icon1"></i>
-        <i :class="item.icon2"></i>
-        <i :class="item.icon3"></i>
-        <i :class="item.icon4"></i>
+        <i v-show="item.code === 'cc0' || 'pdm' || 'by' || 'by-sa' ||
+                                 'by-nc' || 'by-nd' || 'by-nc-sa' || 'by-nc-nd'"
+                                 :class="item.icon1" />
+        <i v-show="item.code === 'by' || 'by-sa' || 'by-nc' || 'by-nd'
+                                 || 'by-nc-sa' || 'by-nc-nd'"
+                                 :class="item.icon2" />
+        <i v-show="item.code === 'by-sa' || 'by-nc' || 'by-nd' ||
+                                 'by-nc-sa' || 'by-nc-nd'"
+                                 :class="item.icon3" />
+        <i v-show="item.code === 'by-nc-sa' || 'by-nc-nd'"
+                                 :class="item.icon4" />
       </label>
-        <img :src="item.img" />
+        <help-tooltip v-if="filterType === 'licenses'" :tooltip="item.tooltip" />
+        <img v-if="filterType === 'aspectRatios'" :src="item.img" />
     </div>
     </template>
   </div>
 </template>
 <script>
+import HelpTooltip from '@/components/HelpTooltip';
+
 export default {
   name: 'filter-check-list',
   props: ['options', 'title', 'filterType', 'disabled'],
+  components: {
+    HelpTooltip,
+  },
   data() {
     return { filtersVisible: false };
   },

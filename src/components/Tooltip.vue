@@ -32,6 +32,7 @@ export default {
     position:relative;
     display:inline-block;
     cursor: pointer;
+    float: right;
   }
   [tooltip]::before {
       content: "";
