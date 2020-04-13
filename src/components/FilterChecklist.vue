@@ -35,7 +35,9 @@
         <i v-show="item.code === 'by-nc-sa' || 'by-nc-nd'"
                                  :class="item.icon4" />
         <help-tooltip v-if="filterType === 'licenses'" :tooltip="item.tooltip" />
-        <img v-if="filterType === 'aspectRatios'" :src="item.img" />
+        <img v-if="filterType === 'aspectRatios'" 
+                                 class="margin-right-small" 
+                                 :src="item.img" />
     </div>
     </template>
   </div>
@@ -86,7 +88,6 @@ label {
   color: #333333;
 }
 img {
- max-width: 27px;
  float: right;
 }
 i.icon {

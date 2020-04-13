@@ -33,7 +33,7 @@ export const filterData = {
   ],
   aspectRatios: [
     { code: 'tall', name: 'Tall', checked: false, img: require('@/assets/tall.svg') },
-    { code: 'wide', name: 'Wide', checked: false, img: require('@/assets/wide.png') },
+    { code: 'wide', name: 'Wide', checked: false, img: require('@/assets/wide.svg') },
     { code: 'square', name: 'Square', checked: false, img: require('@/assets/square.svg') },
   ],
   sizes: [
