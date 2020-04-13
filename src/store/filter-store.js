@@ -7,7 +7,7 @@ import { screenWidth } from '../utils/getBrowserInfo';
 /* eslint-disable */
 export const filterData = {
   licenses: [
-    { code: 'cc0', name: 'CC0', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-logo' },
+    { code: 'cc0', name: 'CC0', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-logo', tooltip: 'Credit the creator \n Commercial' },
     { code: 'pdm', name: 'Public Domain Mark', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-pd' },
     { code: 'by', name: 'CC BY', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-logo', icon2: 'icon cc-by' },
     { code: 'by-sa', name: 'CC BY-SA', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-logo', icon2: 'icon cc-by', icon3: 'icon cc-sa' },
@@ -32,9 +32,9 @@ export const filterData = {
     { code: 'svg', name: 'SVGs', checked: false },
   ],
   aspectRatios: [
-    { code: 'tall', name: 'Tall', checked: false, img: require('@/assets/tall.png') },
+    { code: 'tall', name: 'Tall', checked: false, img: require('@/assets/tall.svg') },
     { code: 'wide', name: 'Wide', checked: false, img: require('@/assets/wide.png') },
-    { code: 'square', name: 'Square', checked: false, img: require('@/assets/square.png') },
+    { code: 'square', name: 'Square', checked: false, img: require('@/assets/square.svg') },
   ],
   sizes: [
     { code: 'small', name: 'Small', checked: false },

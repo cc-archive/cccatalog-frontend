@@ -22,6 +22,7 @@
              :disabled="disabled"
              @change="onValueChange" />
         {{ item.name }}
+      </label>
         <i v-show="item.code === 'cc0' || 'pdm' || 'by' || 'by-sa' ||
                                  'by-nc' || 'by-nd' || 'by-nc-sa' || 'by-nc-nd'"
                                  :class="item.icon1" />
@@ -33,7 +34,6 @@
                                  :class="item.icon3" />
         <i v-show="item.code === 'by-nc-sa' || 'by-nc-nd'"
                                  :class="item.icon4" />
-      </label>
         <help-tooltip v-if="filterType === 'licenses'" :tooltip="item.tooltip" />
         <img v-if="filterType === 'aspectRatios'" :src="item.img" />
     </div>
@@ -86,9 +86,8 @@ label {
   color: #333333;
 }
 img {
- max-width: 12px;
+ max-width: 27px;
  float: right;
- margin-right: 8px;
 }
 i.icon {
   margin-left: 3px;

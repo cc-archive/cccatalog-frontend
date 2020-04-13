@@ -90,19 +90,23 @@ export default {
     top:50%;
     margin-left:-8px;
     transform: translateX(-100%)   translateY(-50%);
+    white-space: pre-wrap;
   }
   [tooltip-position='top']::after{
     left:50%;
+    white-space: pre-wrap;
   }
   [tooltip-position='buttom']::after{
     top:100%;
     margin-top:8px;
     transform: translateX(-50%) translateY(0%);
+    white-space: pre-wrap;
   }
   [tooltip-position='right']::after{
     left:100%;
     top:50%;
     margin-left:8px;
     transform: translateX(0%)   translateY(-50%);
+    white-space: pre-wrap;
   }
 </style>
