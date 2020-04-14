@@ -23,19 +23,25 @@
              @change="onValueChange" />
         {{ item.name }}
       </label>
-        <i v-show="item.code === 'cc0' || 'pdm' || 'by' || 'by-sa' ||
+        <i v-show="item.code == 'cc0' || 'pdm' || 'by' || 'by-sa' ||
                                  'by-nc' || 'by-nd' || 'by-nc-sa' || 'by-nc-nd'"
                                  :class="item.icon1" />
-        <i v-show="item.code === 'by' || 'by-sa' || 'by-nc' || 'by-nd'
+        <i v-show="item.code == 'by' || 'by-sa' || 'by-nc' || 'by-nd'
                                  || 'by-nc-sa' || 'by-nc-nd'"
                                  :class="item.icon2" />
-        <i v-show="item.code === 'by-sa' || 'by-nc' || 'by-nd' ||
+        <i v-show="item.code == 'by-sa' || 'by-nc' || 'by-nd' ||
                                  'by-nc-sa' || 'by-nc-nd'"
                                  :class="item.icon3" />
-        <i v-show="item.code === 'by-nc-sa' || 'by-nc-nd'"
+        <i v-show="item.code == 'by-nc-sa' || 'by-nc-nd'"
                                  :class="item.icon4" />
         <help-tooltip v-if="filterType === 'licenses'" :tooltip="item.tooltip" />
-        <img v-if="filterType === 'aspectRatios'"
+        <img v-if="item.code == 'tall'"
+                                 class="margin-right-small"
+                                 :src="item.img" />
+        <img v-if="item.code == 'wide'"
+                                 class="margin-right-smaller"
+                                 :src="item.img" />
+        <img v-if="item.code == 'square'"
                                  class="margin-right-small"
                                  :src="item.img" />
     </div>
