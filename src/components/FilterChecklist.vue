@@ -108,6 +108,7 @@ img {
   width: 155px;
 }
 i.icon {
-  font-size: large;
+  font-size: larger;
+  font-weight: bold;
 }
 </style>
