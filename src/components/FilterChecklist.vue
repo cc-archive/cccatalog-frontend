@@ -14,27 +14,32 @@
     <template v-if="filtersVisible">
     <div v-for="(item, index) in options" :key="index" class="margin-top-small">
       <label class="checkbox" :for="item.code">
+        <div class="is-flex">
         <input type="checkbox"
-             class="filter-checkbox"
+             class="filter-checkbox margin-top-smaller"
              :id="item.code"
              :key="index"
              :checked="item.checked"
              :disabled="disabled"
              @change="onValueChange" />
-        {{ item.name }}
-      </label>
+        <div v-if="filterType === 'licenses'" class="margin-top-smaller margin-left-small icons">
         <i v-show="item.code == 'cc0' || 'pdm' || 'by' || 'by-sa' ||
                                  'by-nc' || 'by-nd' || 'by-nc-sa' || 'by-nc-nd'"
                                  :class="item.icon1" />
-        <i v-show="item.code == 'by' || 'by-sa' || 'by-nc' || 'by-nd'
-                                 || 'by-nc-sa' || 'by-nc-nd'"
-                                 :class="item.icon2" />
-        <i v-show="item.code == 'by-sa' || 'by-nc' || 'by-nd' ||
-                                 'by-nc-sa' || 'by-nc-nd'"
-                                 :class="item.icon3" />
-        <i v-show="item.code == 'by-nc-sa' || 'by-nc-nd'"
-                                 :class="item.icon4" />
-        <help-tooltip v-if="filterType === 'licenses'" :tooltip="item.tooltip" />
+        <i :class="item.icon2" />
+        <i :class="item.icon3" />
+        </div>
+        <div v-if="filterType === 'licenses'" class="margin-top-smaller margin-left-larger name">
+        {{ item.name }}
+        </div>
+        <div v-if="filterType === 'licenses'" class="margin-top-smaller question-mark">
+        <img :src="item.img" />
+        </div>
+        <div v-else class="margin-left-small other-filters" >
+        {{ item.name }}
+        </div>
+        </div>
+      </label>
         <img v-if="item.code == 'tall'"
                                  class="margin-right-small"
                                  :src="item.img" />
@@ -49,14 +54,9 @@
   </div>
 </template>
 <script>
-import HelpTooltip from '@/components/HelpTooltip';
-
 export default {
   name: 'filter-check-list',
   props: ['options', 'title', 'filterType', 'disabled'],
-  components: {
-    HelpTooltip,
-  },
   data() {
     return { filtersVisible: false };
   },
@@ -98,5 +98,15 @@ img {
 }
 i.icon {
   margin-left: 3px;
+  font-weight: 500;
+}
+.icons {
+  width:65px;
+}
+.question-mark {
+  width: 20px;
+}
+.name {
+  width: 155px;
 }
 </style>
