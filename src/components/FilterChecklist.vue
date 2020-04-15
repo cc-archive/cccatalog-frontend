@@ -22,7 +22,7 @@
              :checked="item.checked"
              :disabled="disabled"
              @change="onValueChange" />
-        <div v-if="filterType === 'licenses'" class="margin-top-smaller margin-left-small icons">
+        <div v-if="filterType === 'licenses'" class="margin-left-small icons">
         <i v-if="item.code === 'cc0' || 'pdm' || 'by' || 'by-sa' ||
                                  'by-nc' || 'by-nd' || 'by-nc-sa' || 'by-nc-nd'"
                                  :class="item.icon1" />
@@ -32,7 +32,7 @@
         <i v-show="item.code === 'by-nc-sa' || 'by-nc-nd'"
                                  :class="item.icon3" />
         </div>
-        <div v-if="filterType === 'licenses'" class="margin-top-smaller margin-left-bigger name">
+        <div v-if="filterType === 'licenses'" class="margin-left-bigger name">
         {{ item.name }}
         </div>
         <div v-else class="margin-left-small other-filters" >
@@ -98,17 +98,16 @@ label {
 img {
  float: right;
 }
-i.icon {
-  margin-left: 3px;
-  font-weight: 500;
-}
 .icons {
   width:65px;
 }
 .question-mark {
-  width: 25px;
+  width: 22px;
 }
 .name {
   width: 155px;
+}
+i.icon {
+  font-size: larger;
 }
 </style>
