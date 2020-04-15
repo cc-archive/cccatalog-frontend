@@ -2,7 +2,7 @@
   <div v-if="visible"
        :tooltip="tooltip"
        :tooltip-position="tooltipPosition"
-       class="margin-right-smaller help-tooltip"
+       class="help-tooltip"
        @click="toggleVisibility">
     <slot></slot>
   </div>
@@ -32,8 +32,6 @@ export default {
     position:relative;
     display:inline-block;
     cursor: pointer;
-    float: right;
-    margin-right: 4px;
   }
   [tooltip]::before {
       content: "";
@@ -75,11 +73,11 @@ export default {
       top:-6px;
       transform: translateX(-50%)   translateY(-100%);
       background: rgba(0,0,0,0.9);
-      text-align: left;
+      text-align: center;
       color: #fff;
       padding:4px 2px;
-      font-size: 11px;
-      min-width: 110px;
+      font-size: 12px;
+      min-width: 300px;
       border-radius: 5px;
       pointer-events: none;
       padding: 4px 4px;
@@ -91,23 +89,19 @@ export default {
     top:50%;
     margin-left:-8px;
     transform: translateX(-100%)   translateY(-50%);
-    white-space: pre-wrap;
   }
   [tooltip-position='top']::after{
-    left:10%;
-    white-space: pre-wrap;
+    left:50%;
   }
   [tooltip-position='buttom']::after{
     top:100%;
     margin-top:8px;
     transform: translateX(-50%) translateY(0%);
-    white-space: pre-wrap;
   }
   [tooltip-position='right']::after{
     left:100%;
     top:50%;
     margin-left:8px;
     transform: translateX(0%)   translateY(-50%);
-    white-space: pre-wrap;
   }
 </style>

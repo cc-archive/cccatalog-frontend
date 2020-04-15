@@ -9,12 +9,12 @@ export const filterData = {
   licenses: [
     { code: 'cc0', name: 'CC0', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-zero' },
     { code: 'pdm', name: 'Public Domain Mark', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-pd' },
-    { code: 'by', name: 'CC BY', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', tooltip: '*Credit the creator.' },
-    { code: 'by-sa', name: 'CC BY-SA', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', tooltip: '*Credit the creator.\n*Share alike.' },
-    { code: 'by-nc', name: 'CC BY-NC', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nc', tooltip: '*Credit the creator.\n*Commercial use not permitted.' },
-    { code: 'by-nd', name: 'CC BY-ND', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nd', tooltip: '*Credit the creator.\n*No derivatives or modifications permitted.' },
-    { code: 'by-nc-sa', name: 'CC BY-NC-SA', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nc', icon3: 'icon cc-sa', tooltip: '*Credit the creator.\n*Commercial use not permitted.\n*Share alike.' },
-    { code: 'by-nc-nd', name: 'CC BY-NC-ND', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nc', icon3: 'icon cc-nd', tooltip: '*Credit the creator.\n*Commercial use not permitted.\n*No derivatives or modifications permitted.' },
+    { code: 'by', name: 'CC BY', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by' },
+    { code: 'by-sa', name: 'CC BY-SA', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-sa' },
+    { code: 'by-nc', name: 'CC BY-NC', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nc' },
+    { code: 'by-nd', name: 'CC BY-ND', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nd' },
+    { code: 'by-nc-sa', name: 'CC BY-NC-SA', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nc', icon3: 'icon cc-sa' },
+    { code: 'by-nc-nd', name: 'CC BY-NC-ND', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nc', icon3: 'icon cc-nd' },
   ],
   licenseTypes: [
     { code: 'commercial', name: 'Use for commercial purposes', checked: false },

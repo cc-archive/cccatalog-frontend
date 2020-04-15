@@ -23,23 +23,24 @@
              :disabled="disabled"
              @change="onValueChange" />
         <div v-if="filterType === 'licenses'" class="margin-top-smaller margin-left-small icons">
-        <i v-show="item.code == 'cc0' || 'pdm' || 'by' || 'by-sa' ||
+        <i v-if="item.code === 'cc0' || 'pdm' || 'by' || 'by-sa' ||
                                  'by-nc' || 'by-nd' || 'by-nc-sa' || 'by-nc-nd'"
                                  :class="item.icon1" />
-        <i :class="item.icon2" />
-        <i :class="item.icon3" />
+        <i v-if="item.code === 'by-sa' || 'by-nc' || 'by-nd'
+                                 || 'by-nc-sa' || 'by-nc-nd'"
+                                 :class="item.icon2" />
+        <i v-show="item.code === 'by-nc-sa' || 'by-nc-nd'"
+                                 :class="item.icon3" />
         </div>
-        <div v-if="filterType === 'licenses'" class="margin-top-smaller margin-left-larger name">
+        <div v-if="filterType === 'licenses'" class="margin-top-smaller margin-left-bigger name">
         {{ item.name }}
-        </div>
-        <div v-if="filterType === 'licenses'" class="margin-top-smaller question-mark">
-        <img :src="item.img" />
         </div>
         <div v-else class="margin-left-small other-filters" >
         {{ item.name }}
         </div>
         </div>
-      </label>
+        </label>
+        <img v-if="filterType === 'licenses'" class="question-mark" :src="item.img" />
         <img v-if="item.code == 'tall'"
                                  class="margin-right-small"
                                  :src="item.img" />
@@ -62,6 +63,7 @@ export default {
   },
   methods: {
     onValueChange(e) {
+      console.log(e.target);
       this.$emit('filterChanged', { code: e.target.id, filterType: this.$props.filterType });
     },
     toggleFilterVisibility() {
@@ -104,7 +106,7 @@ i.icon {
   width:65px;
 }
 .question-mark {
-  width: 20px;
+  width: 25px;
 }
 .name {
   width: 155px;
