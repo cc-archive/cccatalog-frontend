@@ -45,7 +45,7 @@
                                  class="margin-right-small"
                                  :src="item.img" />
         <img v-if="item.code == 'wide'"
-                                 class="margin-right-smaller"
+                                 class="margin-top-smaller margin-right-smaller"
                                  :src="item.img" />
         <img v-if="item.code == 'square'"
                                  class="margin-right-small"
