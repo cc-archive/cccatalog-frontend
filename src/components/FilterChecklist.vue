@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     onValueChange(e) {
-      this.$emit('filterChanged', { code: e.target.id, filterType: this.$props.filterType });
+      this.$emit('filterChanged', { code: e.target.id, filterType: this.$props.filterType, inner: e.path[1].innerText });
     },
     toggleFilterVisibility() {
       this.filtersVisible = !this.filtersVisible;

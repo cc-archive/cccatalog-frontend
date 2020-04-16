@@ -52,8 +52,7 @@
 </template>
 
 <script>
-import { TOGGLE_FILTER } from '@/store/action-types';
-import { CLEAR_FILTERS } from '@/store/mutation-types';
+import { TOGGLE_FILTER, CLEAR_FILTERS, SET_FILTER_BTN_INFOR } from '@/store/action-types';
 import FilterCheckList from './FilterChecklist';
 
 export default {
@@ -83,7 +82,9 @@ export default {
     },
   },
   methods: {
-    onUpdateFilter({ code, filterType }) {
+    onUpdateFilter({ code, filterType, inner }) {
+      this.$store.commit(SET_FILTER_BTN_INFOR, { display: 'inline-block', type: filterType, label: inner });
+
       this.$store.dispatch(TOGGLE_FILTER, {
         code,
         filterType,
@@ -93,6 +94,8 @@ export default {
       });
     },
     onUpdateSearchByCreator() {
+      this.$store.commit(SET_FILTER_BTN_INFOR, { display: 'inline-block', type: 'searchBy', label: 'Search by creator' });
+
       this.$store.dispatch(TOGGLE_FILTER, {
         filterType: 'searchBy',
         isCollectionsPage: this.$props.isCollectionsPage,
@@ -112,7 +115,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .search-filters {
   display: none;
   height: auto;

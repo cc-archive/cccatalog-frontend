@@ -14,6 +14,7 @@ import ABTestStore from './abtest-store';
 import UserStore from './user-store';
 import UsageDataStore from './usage-data-store';
 import FilterStore from './filter-store';
+import FiltersAppliedStore from './filters-applied-store';
 
 
 Vue.use(Vuex);
@@ -38,6 +39,7 @@ const store = (GoogleAnalytics, router) => (new Vuex.Store({
     BugReportStore.state,
     ABTestStore.state,
     UserStore.state,
+    FiltersAppliedStore.state,
   ),
   mutations: Object.assign(
     SearchStore.mutations(redirectTo(router)),
@@ -45,6 +47,7 @@ const store = (GoogleAnalytics, router) => (new Vuex.Store({
     ImageProviderStore.mutations,
     BugReportStore.mutations,
     ABTestStore.mutations,
+    FiltersAppliedStore.mutations,
   ),
 }));
 
