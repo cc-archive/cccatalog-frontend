@@ -55,11 +55,13 @@
         </div>
       </div>
     </div>
+    <SearchGridFilterTags v-if="isFilterApplied" />
   </form>
 </template>
 
 <script>
 import SearchGridFilter from '@/components/SearchGridFilter';
+import SearchGridFilterTags from '@/components/SearchGridFilterTags';
 import { SET_FILTER_IS_VISIBLE } from '@/store/mutation-types';
 
 export default {
@@ -72,6 +74,7 @@ export default {
   data: () => ({ searchTermsModel: null }),
   components: {
     SearchGridFilter,
+    SearchGridFilterTags,
   },
   computed: {
     searchTerms() {
