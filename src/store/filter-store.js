@@ -7,14 +7,14 @@ import { screenWidth } from '../utils/getBrowserInfo';
 /* eslint-disable */
 export const filterData = {
   licenses: [
-    { code: 'cc0', name: 'CC0', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-zero' },
-    { code: 'pdm', name: 'Public Domain Mark', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-pd' },
-    { code: 'by', name: 'CC BY', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by' },
-    { code: 'by-sa', name: 'CC BY-SA', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-sa' },
-    { code: 'by-nc', name: 'CC BY-NC', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nc' },
-    { code: 'by-nd', name: 'CC BY-ND', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nd' },
-    { code: 'by-nc-sa', name: 'CC BY-NC-SA', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nc', icon3: 'icon cc-sa' },
-    { code: 'by-nc-nd', name: 'CC BY-NC-ND', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nc', icon3: 'icon cc-nd' },
+    { code: 'cc0', name: 'CC0', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-zero', info1: 'This work has been marked as dedicated to the public domain.', link: 'https://creativecommons.org/publicdomain/zero/1.0/' },
+    { code: 'pdm', name: 'Public Domain Mark', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-pd', info1: 'This work is marked as being in the public domain.', link: 'https://creativecommons.org/share-your-work/public-domain/pdm/' },
+    { code: 'by', name: 'CC BY', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', info1: 'Credit the creator.', link: 'https://creativecommons.org/licenses/by/4.0/' },
+    { code: 'by-sa', name: 'CC BY-SA', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-sa', info1: 'Credit the creator.', info2: 'Share adaptations under the same terms.', link: 'https://creativecommons.org/licenses/by-sa/4.0/' },
+    { code: 'by-nc', name: 'CC BY-NC', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nc', info1: 'Credit the creator.', info2: 'Noncommercial uses only.', link: 'https://creativecommons.org/licenses/by-nc/4.0/' },
+    { code: 'by-nd', name: 'CC BY-ND', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nd', info1: 'Credit the creator.', info2: 'No derivatives or adaptations permitted.', link: 'https://creativecommons.org/licenses/by-nd/4.0/' },
+    { code: 'by-nc-sa', name: 'CC BY-NC-SA', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nc', icon3: 'icon cc-sa', info1: 'Credit the creator.', info2: 'Noncommercial uses only.', info3: 'Share adaptations under the same terms.', link: 'https://creativecommons.org/licenses/by-nc-sa/4.0/' },
+    { code: 'by-nc-nd', name: 'CC BY-NC-ND', checked: false, img: require('@/assets/question.svg'), icon1: 'icon cc-by', icon2: 'icon cc-nc', icon3: 'icon cc-nd', info1: 'Credit the creator.', info2: 'Noncommercial uses only.', info3: 'No derivatives or adaptations permitted.', link: 'https://creativecommons.org/licenses/by-nc-nd/4.0/' },
   ],
   licenseTypes: [
     { code: 'commercial', name: 'Use for commercial purposes', checked: false },
