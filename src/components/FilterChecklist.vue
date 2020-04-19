@@ -168,6 +168,11 @@ i.icon {
   display: flex;
   z-index: 1;
 }
+@-moz-document url-prefix() {
+  .modal {
+  min-height: 45%;
+  }
+}
 .modal-enter-active, .modal-leave-active {
   transition: opacity 350ms;
 }
@@ -192,5 +197,6 @@ i.icon {
 }
 h6 {
   text-transform: none;
+  font-size: 1.1rem;
 }
 </style>
