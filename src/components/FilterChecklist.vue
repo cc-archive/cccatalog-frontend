@@ -170,7 +170,7 @@ i.icon {
 }
 @-moz-document url-prefix() {
   .modal {
-  min-height: 45%;
+  min-height: 27%;
   }
 }
 .modal-enter-active, .modal-leave-active {
