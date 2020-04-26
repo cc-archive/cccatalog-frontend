@@ -8,7 +8,7 @@ CC Search is an interface to search for content that is licensed under Creative 
 
 The frontend app is built using [Vue.JS](https://vuejs.org/), [Babel](https://babeljs.io/) and [Webpack](https://webpack.js.org/).
 
-## Getting Started
+## Getting Started :
 
 Run the following commands in order to have the code up and running on your machine:
 
