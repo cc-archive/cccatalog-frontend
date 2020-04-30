@@ -35,6 +35,14 @@
         </a>
     </div>
     </div>
+
+    <div class="margin-bottom-big">
+      <span class="is-block margin-bottom-small">File Type</span>
+      <span class="body-big">
+        {{ fileType }}
+      </span>
+    </div>
+
     <div class="margin-bottom-big">
       <span class="is-block margin-bottom-small">Dimensions</span>
       <span class="body-big">
@@ -82,6 +90,14 @@ export default {
     },
     providerName() {
       return getProviderName(this.$store.state.imageProviders, this.$props.image.source);
+    },
+    fileType() {
+      if (!this.image || !this.image.url) return '';
+      const ext = this.image.url.match(/\.[^.]*$/g)[0];
+      if (ext === '.jpg') return 'JPEG';
+      if (ext === '.gif') return 'GIF';
+      if (ext === '.png') return 'PNG';
+      return ext;
     },
   },
   methods: {
