@@ -144,15 +144,19 @@ export default {
 
 .search-filters {
   display: none;
-  height: auto;
   top: 0;
   position: sticky;
+  height: auto;
 
   label {
     color: #333333;
   }
 
   &__visible {
+    @media (min-width: 768px) {
+      height: 100vh;
+      overflow-y: scroll;
+    }
     border-top: 1px solid #e8e8e8;
     display: block;
   }
