@@ -134,6 +134,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "bulma/sass/utilities/_all.sass";
 
 .filter-visibility-toggle {
   float: right;
@@ -153,7 +154,7 @@ export default {
   }
 
   &__visible {
-    @media (min-width: 768px) {
+    @include desktop {
       height: 100vh;
       overflow-y: scroll;
     }
