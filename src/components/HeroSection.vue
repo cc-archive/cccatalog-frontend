@@ -49,7 +49,8 @@
       </div>
       <home-license-filter />
     </form>
-    <div class="help-links is-hidden-mobile">
+    <collection-logos-section />
+    <div class="help-links">
       <span class="margin-right-bigger">
         Go to the
         <a href="https://oldsearch.creativecommons.org/">old CC Search</a> portal
@@ -60,13 +61,14 @@
 
 <script>
 import { SET_QUERY } from '@/store/mutation-types';
+import CollectionLogosSection from '@/components/CollectionLogosSection';
 import HomeLicenseFilter from './HomeLicenseFilter';
-
 
 export default {
   name: 'hero-section',
   components: {
     HomeLicenseFilter,
+    CollectionLogosSection,
   },
   data: () => ({ form: { searchTerm: '' } }),
   methods: {
@@ -84,12 +86,9 @@ export default {
 @import "node_modules/bulma/sass/utilities/derived-variables";
 @import "node_modules/bulma/sass/utilities/mixins";
 
-$hero-height: 74vh;
-
 .hero {
   background: #fff;
   position: relative;
-  height: $hero-height;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -114,11 +113,6 @@ $hero-height: 74vh;
 
   .mobile-input {
     width: 100%;
-  }
-
-  /* Small only */
-  @include mobile {
-    height: 80vh;
   }
 }
 
