@@ -100,9 +100,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-<<<<<<< HEAD
-@import "bulma/sass/utilities/_all.sass";
-=======
 .modal {
   width: 30rem;
   max-height: 37rem;
@@ -112,7 +109,6 @@ export default {
   overflow-y: scroll;
   box-shadow: 0 2px 8px 3px;
 }
->>>>>>> upstream/develop
 
 .overlay {
   position: fixed;
@@ -129,14 +125,7 @@ export default {
 
 .search-filters {
   display: none;
-<<<<<<< HEAD
-  top: 0;
-  position: sticky;
   height: auto;
-
-=======
-  height: auto;
->>>>>>> upstream/develop
   label {
     color: #333333;
   }
