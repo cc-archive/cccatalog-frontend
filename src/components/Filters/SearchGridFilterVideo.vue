@@ -20,14 +20,15 @@
     <div class="is-hidden-touch">
       <div :class="{ 'search-filters': true,
                      'search-filters__visible': isFilterVisible, }">
-        <filters-list :filters="filters"
+        <filters-list-video :filters="filters"
                       :isFilterApplied="isFilterApplied"
                       :licenseTypesDisabled="licenseTypesDisabled"
                       :licensesDisabled="licensesDisabled"
                       @onUpdateFilter="onUpdateFilter"
                       @onUpdateSearchByCreator="onUpdateSearchByCreator"
                       @onToggleSearchGridFilter="onToggleSearchGridFilter"
-                      @onClearFilters="onClearFilters" />
+                      @onClearFilters="onClearFilters"
+                      />
       </div>
     </div>
   </div>
@@ -136,48 +137,4 @@ export default {
     display: block;
   }
 }
-
-</style>
-
-<style>
-
-/* Content Type Selection */
-#content_type_select {
-  display:inline-flex;
-  border-bottom: 1px solid #e2e2e2;
-  width: 100%;
-}
-
-input.tgl-radio-tab-child {
-  position: absolute;
-  left: -99999em;
-  top: -99999em;
-  opacity: 1;
-  z-index: 1;
-}
-
-input.tgl-radio-tab-child+label {
-  cursor: pointer;
-  float: left;
-  margin-right: -1px;
-  padding: .5em 1em;
-  position: relative;
-  font-weight: bold;
-  font-size: 1.6em;
-  padding-top: 24px;
-}
-
-input.tgl-radio-tab-child+label:hover {
-  border-bottom: 4px solid #333;
-}
-
-input.tgl-radio-tab-child+label:checked+label {
-  border-bottom: 1px solid #333;
-}
-
-[type=radio]:checked+label {
-  border-bottom: 4px solid #333;
-  z-index: 1;
-}
-
 </style>

@@ -55,6 +55,35 @@
         </div>
       </div>
     </div>
+    <div id="content_type_select">
+    <input type="radio"
+              id="image"
+              name="content_type"
+              value="image"
+              v-model="searchTermsModelType"
+              class="form-check-input tgl-radio-tab-child"
+              @click="onSubmit">
+    <label for="image" class="content_type {query.content_type}">Images</label>
+    <br />
+    <input type="radio"
+              id="audio"
+              name="content_type"
+              value="audio"
+              v-model="searchTermsModelType"
+              class="form-check-input tgl-radio-tab-child"
+              @click="onSubmit">
+    <label for="audio" class="content_type">Audio</label>
+    <br />
+    <input type="radio"
+              id="video"
+              name="content_type"
+              value="video"
+              v-model="searchTermsModelType"
+              class="form-check-input tgl-radio-tab-child"
+              @click="onSubmit">
+    <label for="video" class="content_type">Video</label>
+    <br />
+    </div>
   </form>
 </template>
 
@@ -84,7 +113,7 @@ export default {
     onSubmit(e) {
       e.preventDefault();
       if (this.searchTermsModel) {
-        this.$emit('onSearchFormSubmit', { query: { q: this.searchTermsModel }, shouldNavigate: true });
+        this.$emit('onSearchFormSubmit', { query: { q: this.searchTermsModel, content_type: this.searchTermsModelType }, shouldNavigate: true });
         this.$refs.search.blur();
       }
     },
