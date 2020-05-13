@@ -25,16 +25,6 @@
       </label>
     </div>
     </template>
-    <template v-if="filtersVisible && filterType === 'mature'">
-        <label class="checkbox margin-top-small" for="mature">
-          <input id="mature"
-                 class="filter-checkbox"
-                 type="checkbox"
-                 :checked="checked"
-                 @change="onValueChange">
-          Enable Mature Content
-        </label>
-    </template>
   </div>
 </template>
 
@@ -57,10 +47,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.filters {
-  border-bottom: 2px solid rgb(245, 245, 245);
-}
-
 .filters-title {
   font-size: 1.250em;
   font-weight: 600;

@@ -45,16 +45,19 @@
                       title="Image Size"
                       filterType="sizes"
                       @filterChanged="onUpdateFilter" />
-    <filter-check-list title="Search Settings"
-                      filterType="mature"
-                      :checked="filters.mature"
-                      @filterChanged="onUpdateFilter" />
 
-    <div class="margin-normal filter-option small-filter margin-bottom-normal">
+    <div class="filters padding-vertical-big padding-left-big padding-right-normal">
       <input type="checkbox" id="creator-chk"
               :checked="filters.searchBy.creator"
               @change="onUpdateSearchByCreator">
       <label for="creator-chk">Search by Creator</label>
+    </div>
+    <div class="filters padding-vertical-big padding-left-big padding-right-normal">
+      <input type="checkbox" id="mature"
+             :checked="filters.mature"
+             @change="onUpdateShowMatureContent">
+      <label for="mature">Show Mature Content</label>
+      <i class="icon flag has-text-grey-light margin-left-small"/>
     </div>
   </form>
 
@@ -95,6 +98,9 @@ export default {
     onUpdateSearchByCreator() {
       this.$emit('onUpdateSearchByCreator');
     },
+    onUpdateShowMatureContent() {
+      this.$emit('onUpdateShowMatureContent');
+    },
     onToggleSearchGridFilter() {
       this.$emit('onToggleSearchGridFilter');
     },
@@ -104,3 +110,10 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.filters {
+  border-bottom: 2px solid rgb(245, 245, 245);
+}
+
+</style>

@@ -12,6 +12,7 @@
                           :renderProvidersFilter="licensesDisabled"
                           @onUpdateFilter="onUpdateFilter"
                           @onUpdateSearchByCreator="onUpdateSearchByCreator"
+                          @onUpdateShowMatureContent="onUpdateShowMatureContent"
                           @onToggleSearchGridFilter="onToggleSearchGridFilter"
                           @onClearFilters="onClearFilters" />
           </div>
@@ -28,6 +29,7 @@
                       :renderProvidersFilter="renderProvidersFilter"
                       @onUpdateFilter="onUpdateFilter"
                       @onUpdateSearchByCreator="onUpdateSearchByCreator"
+                      @onUpdateShowMatureContent="onUpdateShowMatureContent"
                       @onToggleSearchGridFilter="onToggleSearchGridFilter"
                       @onClearFilters="onClearFilters" />
       </div>
@@ -86,6 +88,14 @@ export default {
     onUpdateSearchByCreator() {
       this.$store.dispatch(TOGGLE_FILTER, {
         filterType: 'searchBy',
+        isCollectionsPage: this.$props.isCollectionsPage,
+        provider: this.$props.provider,
+        shouldNavigate: true,
+      });
+    },
+    onUpdateShowMatureContent() {
+      this.$store.dispatch(TOGGLE_FILTER, {
+        filterType: 'mature',
         isCollectionsPage: this.$props.isCollectionsPage,
         provider: this.$props.provider,
         shouldNavigate: true,
