@@ -19,7 +19,6 @@
 </template>
 
 <script>
-
 const APItoIconNameMap = {
   by: 'by',
   nc: 'nc',
@@ -28,7 +27,6 @@ const APItoIconNameMap = {
   cc0: 'zero',
   pdm: 'pd',
 };
-
 const LicenseIcons = {
   name: 'license-icons',
   components: {},
@@ -44,9 +42,27 @@ const LicenseIcons = {
       }
       return licenses.map(l => APItoIconNameMap[l]);
     },
+    getLicenseURL(image) {
+      if (!image) {
+        return '';
+      }
+      const BASE_URL = 'https://creativecommons.org';
+      let url = `${BASE_URL}/licenses/${image.license}/${image.license_version}`;
+      let license = '';
+      if (image.license) {
+        license = image.license;
+      }
+      if (license === 'cc0') {
+        this.image.license_version = '1.0';
+        url = `${BASE_URL}/publicdomain/zero/1.0/`;
+      }
+      else if (image.license === 'pdm') {
+        url = `${BASE_URL}/publicdomain/mark/1.0/`;
+      }
+      return url;
+    },
   },
 };
-
 export default LicenseIcons;
 </script>
 
