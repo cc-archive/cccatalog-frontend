@@ -1,9 +1,4 @@
 <template>
-  <a :href="getLicenseURL(image)"
-      @click.stop="() => false"
-     class="photo-license-icons"
-     target="_blank"
-     rel="noopener noreferrer">
     <i class="icon cc-logo is-size-4 has-text-black has-background-white" title="CC">
     <!-- Closing i and opening template tag must be adjacent to prevent whitespace -->
     </i><template v-for="(license, index) in getLicenseIcon(image.license)">
@@ -19,7 +14,6 @@
           :alt="`${license.toUpperCase()}`"
           :key="index" />
     </template>
-  </a>
 </template>
 
 <script>
