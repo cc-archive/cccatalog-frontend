@@ -76,9 +76,8 @@ export default LicenseIcons;
     vertical-align: middle;
     margin-right: .3rem;
   }
-  
   .disabled {
     pointer-events: none;
     cursor: default;
-  } 
+  }
 </style>
