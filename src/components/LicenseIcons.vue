@@ -1,4 +1,5 @@
 <template>
+  <div>
     <i class="icon cc-logo is-size-4 has-text-black has-background-white" title="CC">
     <!-- Closing i and opening template tag must be adjacent to prevent whitespace -->
     </i><template v-for="(license, index) in getLicenseIcon(image.license)">
@@ -14,6 +15,7 @@
           :alt="`${license.toUpperCase()}`"
           :key="index" />
     </template>
+  </div>
 </template>
 
 <script>
