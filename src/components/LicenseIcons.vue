@@ -1,9 +1,5 @@
 <template>
-  <a :href="getLicenseURL(image)"
-      @click.stop="() => false"
-     class="photo-license-icons"
-     target="_blank"
-     rel="noopener noreferrer">
+  <a class="photo-license-icons">
     <i class="icon cc-logo is-size-4 has-text-black has-background-white" title="CC">
     <!-- Closing i and opening template tag must be adjacent to prevent whitespace -->
     </i><template v-for="(license, index) in getLicenseIcon(image.license)">
@@ -47,29 +43,6 @@ const LicenseIcons = {
         licenses = license.split('-');
       }
       return licenses.map(l => APItoIconNameMap[l]);
-    },
-    getLicenseURL(image) {
-      if (!image) {
-        return '';
-      }
-
-      const BASE_URL = 'https://creativecommons.org';
-      let url = `${BASE_URL}/licenses/${image.license}/${image.license_version}`;
-      let license = '';
-
-      if (image.license) {
-        license = image.license;
-      }
-
-      if (license === 'cc0') {
-        this.image.license_version = '1.0';
-        url = `${BASE_URL}/publicdomain/zero/1.0/`;
-      }
-      else if (image.license === 'pdm') {
-        url = `${BASE_URL}/publicdomain/mark/1.0/`;
-      }
-
-      return url;
     },
   },
 };
