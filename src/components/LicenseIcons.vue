@@ -1,5 +1,9 @@
 <template>
-  <a class="photo-license-icons">
+  <a :href="getLicenseURL(image)"
+      @click.stop="() => false"
+     class="photo-license-icons disabled"
+     target="_blank"
+     rel="noopener noreferrer">
     <i class="icon cc-logo is-size-4 has-text-black has-background-white" title="CC">
     <!-- Closing i and opening template tag must be adjacent to prevent whitespace -->
     </i><template v-for="(license, index) in getLicenseIcon(image.license)">
@@ -72,4 +76,9 @@ export default LicenseIcons;
     vertical-align: middle;
     margin-right: .3rem;
   }
+  
+  .disabled {
+    pointer-events: none;
+    cursor: default;
+  } 
 </style>
