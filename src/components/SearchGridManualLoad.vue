@@ -208,7 +208,6 @@ export default {
   .search-grid-cells {
     display: flex;
     flex-wrap: wrap;
-    
     @include tablet {
       &:after {
         content: '';
