@@ -1,8 +1,8 @@
 <template>
   <div class="padding-normal is-clearfix report-form">
     <button class="button close-button is-text tiny is-pulled-right is-block has-text-grey-light"
-        id="cross-icon"  @click="closeForm()">
-      <i class="icon cross" ></i>
+            @click="closeForm()">
+      <i class="icon cross"></i>
     </button>
     <dmca-notice v-if="selectedCopyright && isReportSent"
                       :imageURL="imageURL"
@@ -53,8 +53,8 @@
                 placeholder="Issue description required (with at least 20 characters)" />
       <div>
         <button class="button other-back-button is-text tiny margin-top-normal has-text-grey"
-              @click="onBackClick()">
-          <span id="back-button"><i class="icon chevron-left margin-right-small"></i> Back</span>
+                @click="onBackClick()">
+          <span><i class="icon chevron-left margin-right-small"></i> Back</span>
         </button>
 
         <button type="button"
@@ -74,9 +74,7 @@ import { REPORT_FORM_CLOSED } from '@/store/mutation-types';
 import dmcaNotice from './DmcaNotice';
 import DoneMessage from './DoneMessage';
 import ReportError from './ReportError';
-
 const dmcaFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdZLZpYJGegL8G2FsEAHNsR1nqVx1Wxfp-oj3o0h8rqe9j8dg/viewform';
-
 export default {
   name: 'content-report-form',
   props: ['imageId', 'imageURL', 'providerName'],
@@ -139,10 +137,5 @@ export default {
   font-size: 13px;
   font-family: Source Sans Pro;
 }
-#back-button:hover{
-  color:rgb(73, 73, 73);
-}
-#cross-icon:hover{
-  background-color: grey;
-}
 </style>
+© 2020 GitHub, Inc.
