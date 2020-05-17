@@ -209,7 +209,6 @@ export default {
     display: flex;
     flex-wrap: wrap;
     
-
     @include tablet {
       &:after {
         content: '';
