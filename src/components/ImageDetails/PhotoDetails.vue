@@ -31,7 +31,7 @@
                            :providerName="providerName" />
     </div>
     </div>
-    <div class="column image-info" id="right-side">
+    <div class="column image-info margin-left-xl">
       <div class="margin-vertical-normal" >
         <h4 class="b-header">{{ image.title }}</h4>
         <span v-if="image.creator" class="caption has-text-weight-semibold">
@@ -175,8 +175,5 @@ export default {
 
 <style lang="scss">
   @import '../../styles/photodetails.scss';
-  #right-side{
-    margin-left:64px;
-  }
 </style>
 
