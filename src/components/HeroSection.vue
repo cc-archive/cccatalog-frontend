@@ -1,5 +1,6 @@
 <template>
   <div class="hero">
+    <div class="locale-block"><locale-selector /></div>
     <h2 class="has-text-centered">{{ $t('hero') }}</h2>
     <form class="hero_search-form margin-top-bigger"
           role="search"
@@ -61,12 +62,13 @@
 <script>
 import { SET_QUERY } from '@/store/mutation-types';
 import HomeLicenseFilter from './HomeLicenseFilter';
-
+import LocaleSelector from './LocaleSelector';
 
 export default {
   name: 'hero-section',
   components: {
     HomeLicenseFilter,
+    LocaleSelector,
   },
   data: () => ({ form: { searchTerm: '' } }),
   methods: {
@@ -114,6 +116,12 @@ $hero-height: 74vh;
 
   .mobile-input {
     width: 100%;
+  }
+
+  .locale-block {
+    position: absolute;
+    top: 2.5rem;
+    right: 4rem;
   }
 
   /* Small only */
