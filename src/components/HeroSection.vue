@@ -1,6 +1,6 @@
 <template>
   <div class="hero">
-    <h2 class="has-text-centered">Search for content to reuse</h2>
+    <h2 class="has-text-centered">{{ $t('hero') }}</h2>
     <form class="hero_search-form margin-top-bigger"
           role="search"
           method="get"
