@@ -1,20 +1,33 @@
 # cccatalog-frontend
 
-![cccatalog-frontend-ci](https://github.com/creativecommons/cccatalog-frontend/workflows/cccatalog-frontend-ci/badge.svg)
+<div align="center">
+	<h1>CC Search<br>
+   <img src="src/assets/cc-logo_large_black.png" width="100%"><br>
+  </h1>
+</div>
 
 ## About
+CC Search is a tool that allows openly licensed and public domain works to be discovered
+and used by everyone. Creative Commons, the nonprofit behind CC Search, is the maker of the
+[CC Licensed](https://creativecommons.org/share-your-work/licensing-examples/)
+used over 1.4 billion times to help creators share knowledge and creativity online.
 
 Repository containing the [CC Search](https://ccsearch.creativecommons.org/) frontend application. This web app contains all the UI which communicates with the [CC Search API](https://github.com/creativecommons/cccatalog-api) to get the data that is rendered in the browser.
 
 CC Search is an interface to search for content that is licensed under Creative Commons licenses or in the public domain.
 
+##  Setup Environment
 The frontend app is built using [Vue.JS](https://vuejs.org/), [Babel](https://babeljs.io/) and [Webpack](https://webpack.js.org/).
 
-## Getting Started
+### Getting Started
 
 Run the following commands in order to have the code up and running on your machine:
 
+### Method 1
 ``` bash
+# In order that vue not install in your machine, latest stable
+$ npm install vue
+
 # installs dependencies
 $ npm install
 
@@ -22,7 +35,7 @@ $ npm install
 $ npm run dev
 ```
 
-### Docker setup
+### Method 2 ~ Docker Setup
 
 Alternatively, you can use Docker to build and run the application. You just have to run:
 
@@ -33,6 +46,9 @@ $ docker-compose up
 You should now have the application running and accessible at http://localhost:8443.
 
 You don't need to have the CC Search API running locally to be able to run the frontend application. It's configured to communicate, by default, with the [API](https://api.creativecommons.engineering) that's already publicly available. If you wish, you can change the URL of the API that's used during development at https://github.com/creativecommons/cccatalog-frontend/blob/develop/config/.env#L5
+
+## Contribution 
+In order to do contribution visit to [CONTRIBUTING](https://github.com/creativecommons/cccatalog-frontend/blob/develop/CONTRIBUTING.md) file
 
 ## Running tests
 
