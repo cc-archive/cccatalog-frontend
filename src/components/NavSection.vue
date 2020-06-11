@@ -30,12 +30,12 @@
         </form>
       </div>
       <div class="navbar-end">
-        <a class="navbar-item" href="/about">About</a>
-        <a class="navbar-item" href="/collections">Collections</a>
-        <a class="navbar-item" href="/search-help">Search Guide</a>
-        <a class="navbar-item" href="/feedback">Feedback</a>
+        <a class="navbar-item" href="/about">{{$t('header.about')}}</a>
+        <a class="navbar-item" href="/collections">{{$t('header.collections')}}</a>
+        <a class="navbar-item" href="/search-help">{{$t('header.search-guide')}}</a>
+        <a class="navbar-item" href="/feedback">{{$t('header.feedback')}}</a>
         <a class="navbar-item" href="https://opensource.creativecommons.org/ccsearch-browser-extension/" target="_blank">
-        Extension
+        {{$t('header.extension')}}
         <i class="icon external-link" />
         </a>
       </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="hero">
     <div class="locale-block"><locale-selector /></div>
-    <h2 class="has-text-centered">{{ $t('hero') }}</h2>
+    <h2 class="has-text-centered">{{ $t('hero.title') }}</h2>
     <form class="hero_search-form margin-top-bigger"
           role="search"
           method="get"
@@ -14,13 +14,15 @@
                 class="hero_search-input input is-large"
                 type="search"
                 name="q"
-                placeholder="I would like to see..."
+                :placeholder="$t('hero.search.placeholder')"
                 autocapitalize="none"
                 id="searchTerm"
                 v-model.lazy="form.searchTerm" />
           </div>
           <div class="control">
-            <button class="button is-primary big" title="Search">Search</button>
+            <button class="button is-primary big" title="Search">
+              {{$t('hero.search.button')}}
+            </button>
           </div>
         </div>
       </div>
@@ -31,30 +33,35 @@
                 class="input"
                 type="search"
                 name="q"
-                placeholder="I would like to see..."
+                :placeholder="$t('hero.search.placeholder')"
                 autocapitalize="none"
                 id="searchTerm"
                 v-model.lazy="form.searchTerm" />
           </div>
           <div class="control">
-            <button class="button is-primary small" title="Search">Search</button>
+            <button class="button is-primary small" title="Search">
+              {{$t('hero.search.button')}}
+            </button>
           </div>
         </div>
       </div>
       <div class="caption has-text-centered margin-top-big">
-        <p>
-          All our content is under Creative Commons licenses.
-          <a href="https://creativecommons.org/share-your-work/licensing-examples/" target="_blank" rel="noopener">Learn more</a>
-          about CC licenses.
-        </p>
+        <i18n path="hero.caption.content" tag="p">
+          <template v-slot:link>
+            <a href="https://creativecommons.org/share-your-work/licensing-examples/" target="_blank" rel="noopener">
+              {{$t('hero.caption.link')}}
+            </a>
+          </template>
+        </i18n>
       </div>
       <home-license-filter />
     </form>
     <div class="help-links is-hidden-mobile">
-      <span class="margin-right-bigger">
-        Go to the
-        <a href="https://oldsearch.creativecommons.org/">old CC Search</a> portal
-      </span>
+      <i18n path="hero.old-cc-search.label" tag="span" class="margin-right-bigger">
+        <template v-slot:link>
+          <a href="https://oldsearch.creativecommons.org/">{{ $t('hero.old-cc-search.link') }}</a>
+        </template>
+      </i18n>
     </div>
   </div>
 </template>
