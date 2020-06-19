@@ -2,50 +2,56 @@
 <div class="about-page">
   <header-section showNavSearch="true"></header-section>
   <div class="margin-normal">
-    <h2>About CC Search</h2>
-      <p>
-        CC Search is a tool that allows openly licensed and public domain works to be discovered
-        and used by everyone. Creative Commons, the nonprofit behind CC Search, is the maker of the
-        <a href="https://creativecommons.org/share-your-work/licensing-examples/">CC licenses</a>,
-        used over 1.4 billion times to help creators share knowledge and creativity online.
-      </p>
-      <p>
-        CC Search searches across more than 300 million images from open APIs and the
-        <a href="http://commoncrawl.org/">Common Crawl</a> dataset.
-        It goes beyond simple search to aggregate results across multiple public repositories
-         into a single catalog, and facilitates reuse through features like machine-generated tags
-         and one-click attribution.
-      </p>
-      <p>
-        Currently CC Search only searches images, but we plan to add additional media types such as
-        open texts and audio, with the ultimate goal of providing access to all 1.4 billion CC
-        licensed and public domain works on the web. Learn more about CC’s
-        <a href="https://creativecommons.org/2019/03/19/cc-search/">2019 vision, strategy</a> and
-        <a href="https://docs.google.com/document/d/19yH2V5K4nzWgEXaZhkzD1egzrRayyDdxlzxZOTCm_pc/edit#heading=h.jih78emira0r">roadmap</a>
-        for CC Search and see what
-        <a href="https://github.com/orgs/creativecommons/projects/7">we’re currently working on</a>.
-        All of our code is open source
-        (<a href="https://github.com/creativecommons/cccatalog-frontend/">CC Search</a>,
-        <a href="https://github.com/creativecommons/cccatalog-api/">CC Catalog API</a>,
-        <a href="https://github.com/creativecommons/cccatalog/">CC Catalog</a>)
-        and we <a href="https://creativecommons.github.io/contributing-code/">welcome community contribution</a>.
-      </p>
-      <p>
-        Please note that CC does not verify whether the images are properly CC licensed, or whether
-        the attribution and other licensing information we have aggregated is accurate or complete.
-        Please independently verify the licensing status and attribution information before reusing
-        the content. For more details, read the <a href="https://creativecommons.org/terms/">CC Terms of Use</a>.
-      </p>
-      <p>
-        Looking for the old CC Search portal? Visit
-        <a href="https://oldsearch.creativecommons.org">https://oldsearch.creativecommons.org</a>.
-      </p>
-      <h3 class="margin-vertical-normal">Sources</h3>
+    <h2>{{$t('about.title')}}</h2>
+      <i18n path="about.description.content" tag="p">
+          <template v-slot:link>
+            <a href="https://creativecommons.org/share-your-work/licensing-examples/">{{$t('about.description.licenses-link')}}</a>
+          </template>
+      </i18n>
+      <i18n path="about.collection" tag="p">
+          <template v-slot:common-crawl>
+            <a href="http://commoncrawl.org/">Common Crawl</a>
+          </template>
+      </i18n>
+      <i18n path="about.planning.content" tag="p">
+          <template v-slot:vision>
+            <a href="https://creativecommons.org/2019/03/19/cc-search/">{{$t('about.planning.vision')}}</a>
+          </template>
+          <template v-slot:roadmap>
+            <a href="https://docs.google.com/document/d/19yH2V5K4nzWgEXaZhkzD1egzrRayyDdxlzxZOTCm_pc/edit#heading=h.jih78emira0r">{{$t('about.planning.roadmap')}}</a>
+          </template>
+          <template v-slot:working>
+            <a href="https://github.com/orgs/creativecommons/projects/7">{{$t('about.planning.working')}}</a>
+          </template>
+          <template v-slot:search>
+            <a href="https://github.com/creativecommons/cccatalog-frontend/">{{$t('about.planning.search')}}</a>
+          </template>
+          <template v-slot:catalog-api>
+            <a href="https://github.com/creativecommons/cccatalog-api/">{{$t('about.planning.catalog-api')}}</a>
+          </template>
+          <template v-slot:catalog>
+            <a href="https://github.com/creativecommons/cccatalog/">{{$t('about.planning.catalog')}}</a>
+          </template>
+          <template v-slot:community>
+            <a href="https://creativecommons.github.io/contributing-code/">{{$t('about.planning.community')}}</a>
+          </template>
+      </i18n>
+      <i18n path="about.declaration.content" tag="p">
+          <template v-slot:terms>
+            <a href="https://creativecommons.org/terms/">{{$t('about.declaration.terms')}}</a>
+          </template>
+      </i18n>
+      <i18n path="about.old-cc-search" tag="p">
+          <template v-slot:link>
+            <a href="https://oldsearch.creativecommons.org">https://oldsearch.creativecommons.org</a>
+          </template>
+      </i18n>
+      <h3 class="margin-vertical-normal">{{$t('about.sources')}}</h3>
       <table class="table is-bordered is-striped">
         <thead>
-          <th>Source</th>
-          <th>Domain</th>
-          <th># CC Licensed Works</th>
+          <th>{{$t('about.providers.source')}}</th>
+          <th>{{$t('about.providers.domain')}}</th>
+          <th>{{$t('about.providers.work')}}</th>
         </thead>
         <tbody>
           <tr v-for="(imageProvider, index) in imageProviders"
