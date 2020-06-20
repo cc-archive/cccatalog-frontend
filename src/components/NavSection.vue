@@ -25,7 +25,7 @@
                 :placeholder="navSearchPlaceholder"
                 v-model.lazy="form.searchTerm">
           <div class="is-sr-only">
-            <button type="submit" class="button secondary" value="Search"></button>
+            <button tabindex="-1" type="submit" class="button secondary" value="Search"></button>
           </div>
         </form>
       </div>
