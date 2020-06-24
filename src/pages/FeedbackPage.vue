@@ -2,24 +2,26 @@
   <div class="feedback-page">
     <header-section showNavSearch="true"></header-section>
     <div class="margin-larger">
-      <h1 id="feedback">Feedback</h1>
-      <p>
-        Thank you for using CC Search! We welcome your ideas for improving the tool below.
-        To provide regular user feedback, join the
-        <a href="https://creativecommons.slack.com/messages/CCS9CF2JE/details/">#cc-usability</a> channel on
-        <a href="https://wiki.creativecommons.org/wiki/Slack#How_to_join_Slack">CC Slack</a>.
-      </p>
+      <h1 id="feedback">{{$t('feedback.title')}}</h1>
+      <i18n path="feedback.description" tag="p">
+          <template v-slot:channel>
+            <a href="https://creativecommons.slack.com/messages/CCS9CF2JE/details/">#cc-usability</a>
+          </template>
+          <template v-slot:slack>
+            <a href="https://wiki.creativecommons.org/wiki/Slack#How_to_join_Slack">CC Slack</a>
+          </template>
+      </i18n>
       <div class="column">
         <section class="tabs margin-top-big">
           <ul>
             <li :class="tabClass(0, 'tab')">
               <a href="#panel0" :aria-selected="activeTab == 0" @click.prevent="setActiveTab(0)">
-                Help us Improve
+                {{$t('feedback.improve')}}
               </a>
             </li>
             <li :class="tabClass(1, 'tab')">
               <a href="#panel1" :aria-selected="activeTab == 1" @click.prevent="setActiveTab(1)">
-                Report a Bug
+                {{$t('feedback.bug')}}
               </a>
             </li>
           </ul>
@@ -33,7 +35,7 @@
                     marginheight="0"
                     marginwidth="0"
                     title="feedback form">
-              Loading...
+              {{$t('feedback.loading')}}
             </iframe>
           </div>
           <div :class="tabClass(1, 'tabs-panel')">
@@ -44,7 +46,7 @@
                     marginheight="0"
                     marginwidth="0"
                     title="feedback form">
-              Loading...
+              {{$t('feedback.loading')}}
             </iframe>
           </div>
         </section>
