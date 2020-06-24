@@ -2,15 +2,15 @@
   <div>
     <header-section></header-section>
     <div class="collections-page padding-larger">
-      <h1>Browse collections</h1>
-      <h2 class="margin-bottom-normal">Museum Collections</h2>
+      <h1>{{$t('collections.title')}}</h1>
+      <h2 class="margin-bottom-normal">{{$t('collections.museum')}}</h2>
       <div class="providers-list columns is-multiline">
         <collection-item v-for="(provider, index) in museumProviders"
                         :key="index"
                         :provider="provider" />
       </div>
       <hr />
-      <h2 class="margin-bottom-normal">Other Collections</h2>
+      <h2 class="margin-bottom-normal">{{$t('collections.other')}}</h2>
       <div class="providers-list columns is-multiline">
         <collection-item v-for="(provider, index) in otherProviders"
                           :key="index"
