@@ -2,7 +2,7 @@
 <div class="grid-container full">
   <header-section></header-section>
   <div class="not-found">
-    Page Not Found
+    {{$t('not-found')}}
   </div>
   <footer-section></footer-section>
 </div>
