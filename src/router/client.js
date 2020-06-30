@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import VueMeta from 'vue-meta';
 import VueRouter from 'vue-router';
 import AboutPage from '@/pages/AboutPage';
 import HomePage from '@/pages/HomePage';
@@ -9,8 +10,10 @@ import CollectionsPage from '@/pages/CollectionsPage';
 import CollectionBrowsePage from '@/pages/client/CollectionBrowsePage';
 import SearchHelpPage from '@/pages/SearchHelpPage';
 import NotFoundPage from '@/pages/NotFoundPage';
+import redirectOnEmptySearch from './redirectOnEmptySearch';
 
 Vue.use(VueRouter);
+Vue.use(VueMeta);
 
 const router = new VueRouter({
   mode: 'history',
@@ -19,6 +22,10 @@ const router = new VueRouter({
       path: '/search',
       name: 'browse-page',
       component: BrowsePage,
+      // a meta field
+      meta: {
+        requiresQuery: true,
+      },
       props: route => ({ query: route.query.q }),
     },
     {
@@ -86,5 +93,7 @@ router.afterEach((to) => {
     ga('send', 'pageview');
   }
 });
+
+redirectOnEmptySearch(router);
 
 export default router;

@@ -6,10 +6,10 @@
         <h2>{{ searchTerm }}</h2>
         <span class="caption has-text-weight-semibold"> {{ _imagesCount }}</span>
         <div class="is-pulled-right padding-right-big is-hidden-touch">
-          <search-rating :searchTerm="_query.q" />
+          <search-rating v-if="_query.q" :searchTerm="_query.q" />
         </div>
         <div class="is-hidden-desktop is-block">
-          <search-rating :searchTerm="searchTerm" />
+          <search-rating v-if="_query.q" :searchTerm="searchTerm" />
         </div>
       </div>
       <div class="search-grid-cells">
@@ -52,7 +52,6 @@ export default {
   data: () => ({
     isDataInitialized: false,
     shouldContainImages: false,
-    currentPage: 1,
   }),
   props: {
     imagesCount: {
@@ -87,6 +86,9 @@ export default {
     },
     _images() {
       return this.useInfiniteScroll ? this.$store.state.images : this.images;
+    },
+    currentPage() {
+      return this.$store.state.imagePage;
     },
     _imagesCount() {
       const count = this.useInfiniteScroll ? this.$store.state.imagesCount : this.imagesCount;
@@ -128,20 +130,16 @@ export default {
       }, 100); // One-tenth of a second should be sufficient to calculate new height
     },
     searchChanged() {
-      this.$store.commit(SET_IMAGES, { images: [] });
-      this.currentPage = 1;
+      this.$store.commit(SET_IMAGES, { images: [], page: 1 });
     },
     onLoadMoreImages() {
-      if (this.isFetchingImages === false) {
-        this.currentPage += 1;
-        const searchParams = {
-          page: this.currentPage,
-          shouldPersistImages: true,
-          ...this._query,
-        };
+      const searchParams = {
+        page: this.currentPage + 1,
+        shouldPersistImages: true,
+        ...this._query,
+      };
 
-        this.$emit('onLoadMoreImages', searchParams);
-      }
+      this.$emit('onLoadMoreImages', searchParams);
     },
   },
 };

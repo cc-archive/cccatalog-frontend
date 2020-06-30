@@ -26,7 +26,7 @@
                       @filterChanged="onUpdateFilter" />
     <filter-check-list v-if="renderProvidersFilter"
                       :options="filters.providers"
-                      title="Collections"
+                      title="Sources"
                       filterType="providers"
                       @filterChanged="onUpdateFilter" />
     <filter-check-list :options="filters.categories"
@@ -84,7 +84,7 @@ import FilterCheckList from './FilterChecklist';
 
 export default {
   name: 'filters-list',
-  props: ['filters', 'isFilterApplied', 'licenseTypesDisabled', 'licensesDisabled'],
+  props: ['filters', 'isFilterApplied', 'licenseTypesDisabled', 'licensesDisabled', 'renderProvidersFilter'],
   components: {
     FilterCheckList,
   },
