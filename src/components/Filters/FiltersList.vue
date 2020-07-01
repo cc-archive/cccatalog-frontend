@@ -1,18 +1,21 @@
 <template>
 <div>
-  <h4 class="padding-top-big padding-left-big padding-right-normal is-inline-block">
-    {{ $t('filter-list.filter-by') }}
-  </h4>
+  <div class="filterlist-header">
+    <h4 class="padding-top-big padding-left-big padding-right-normal is-inline-block">
+      {{ $t('filter-list.filter-by') }}
+    </h4>
 
-  <button type="button"
-          class="button is-text tiny is-paddingless margin-top-big
-                  margin-right-small report is-shadowless is-pulled-right"
-          @click="onToggleSearchGridFilter()">
-    <span class="has-color-tomato is-hidden-touch">{{ $t('filter-list.hide') }}</span>
-    <span class="margin-right-normal is-size-5 is-hidden-desktop">
-      <i class="icon cross" />
-    </span>
-  </button>
+    <button type="button"
+            class="button is-text tiny is-paddingless margin-top-big
+                    margin-right-small report is-shadowless is-pulled-right"
+            @click="onToggleSearchGridFilter()">
+      <span class="has-color-tomato is-hidden-touch">{{ $t('filter-list.hide') }}</span>
+      <span class="margin-right-normal is-size-5 is-hidden-desktop">
+        <i class="icon cross" />
+      </span>
+    </button>
+  </div>
+
   <form class="filters-form" role="filter">
     <filter-check-list :options="filters.licenseTypes"
                       :disabled="licenseTypesDisabled"
@@ -104,3 +107,11 @@ export default {
   },
 };
 </script>
+
+<style>
+.filterlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+</style>
