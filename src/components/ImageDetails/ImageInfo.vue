@@ -1,13 +1,17 @@
 <template>
   <section class="sidebar_section">
     <div class="margin-bottom-big">
-      <h5 class="is-block margin-bottom-small b-header">Dimensions</h5>
+      <h5 class="is-block margin-bottom-small b-header">
+        {{ $t('photo-details.information.dimensions') }}
+      </h5>
       <span class="body-big">
         {{ imageWidth }} &times;  {{ imageHeight }} pixels
       </span>
     </div>
     <div class="margin-bottom-big">
-      <h5 class="is-block margin-bottom-small b-header">Source</h5>
+      <h5 class="is-block margin-bottom-small b-header">
+        {{ $t('photo-details.information.source') }}
+      </h5>
       <div class="body-big">
         <a :href="image.foreign_landing_url"
             target="blank"
@@ -20,14 +24,18 @@
     </div>
     </div>
     <div class="margin-bottom-big">
-      <h5 class="is-block margin-bottom-small b-header">License</h5>
+      <h5 class="is-block margin-bottom-small b-header">
+        {{ $t('photo-details.information.license') }}
+      </h5>
       <license-icons :license="image.license"></license-icons>
       <a class="photo_license body-big" :href="ccLicenseURL">
       {{ fullLicenseName }}
       </a>
     </div>
     <div class="margin-bottom-big">
-      <h5 class="is-block margin-bottom-small b-header">Tags</h5>
+      <h5 class="is-block margin-bottom-small b-header">
+        {{ $t('photo-details.information.tags') }}
+      </h5>
       <photo-tags :tags="image.tags" :showHeader="false" />
     </div>
   </section>
