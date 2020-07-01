@@ -6,7 +6,10 @@
         <search-grid-filter @onSearchFilterChanged="onSearchFormSubmit" />
       </div>
       <div class="column search-grid-ctr">
-        <search-grid-form @onSearchFormSubmit="onSearchFormSubmit" />
+        <search-grid-form
+                    @onSearchFormSubmit="onSearchFormSubmit"
+                    :searchBoxPlaceholder=
+                    "$t('browse-page.search-form.placeholder')" />
         <filter-display :query="query" />
         <search-grid v-if="query.q"
                      :query="query"

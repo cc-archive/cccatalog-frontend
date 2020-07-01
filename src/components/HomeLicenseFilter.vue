@@ -10,7 +10,7 @@
               name="lt"
               :value="licenseType.code"
               @input="onFilterChanged(licenseType.code)" />
-        {{ licenseType.name }}
+        {{ $t(licenseType.name) }}
       </label>
     </template>
   </div>

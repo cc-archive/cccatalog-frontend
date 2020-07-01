@@ -24,7 +24,7 @@
              :disabled="disabled"
              @change="onValueChange" />
         <license-icons v-if="filterType == 'licenses'" :license="item.code" />
-        {{ item.name }}
+        {{ $t(item.name) }}
       </label>
       <img  v-if="filterType == 'licenses'"
             src="@/assets/help_icon.svg"
@@ -44,7 +44,7 @@
                  type="checkbox"
                  :checked="checked"
                  @change="onValueChange">
-          Enable Mature Content
+          {{ $t('filters.mature.enable') }}
         </label>
     </template>
   </div>

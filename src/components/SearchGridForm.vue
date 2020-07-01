@@ -8,7 +8,7 @@
               class="button toggle-filter padding-vertical-normal padding-horizontal-big"
               type="button"
               @click.prevent="onToggleSearchGridFilter()">
-        Filters
+        {{ $t('filters.title') }}
       </button>
       <div class="field has-addons search-input">
         <div class="control has-icons-left margin-left-small">
@@ -25,7 +25,11 @@
           </span>
         </div>
         <div class="control">
-          <input type="submit" class="button is-primary" @click.prevent="onSubmit" value="Search" />
+          <input
+            type="submit"
+            class="button is-primary"
+            @click.prevent="onSubmit"
+            :value="$t('browse-page.search-form.button')" />
         </div>
       </div>
     </div>
@@ -34,7 +38,7 @@
               class="button small toggle-filter padding-small"
               type="button"
               @click.prevent="onToggleSearchGridFilter()">
-        Filters
+        {{ $t('filters.title') }}
       </button>
       <div class="field has-addons search-input">
         <div class="control has-icons-left margin-left-small">
@@ -51,7 +55,10 @@
           </span>
         </div>
         <div class="control">
-          <input type="submit" class="button is-primary small" value="Search" />
+          <input
+            type="submit"
+            class="button is-primary small"
+            :value="$t('browse-page.search-form.button')" />
         </div>
       </div>
     </div>

@@ -1,14 +1,14 @@
 <template>
 <div>
   <h4 class="padding-top-big padding-left-big padding-right-normal is-inline-block">
-    Filter results by
+    {{ $t('filter-list.filter-by') }}
   </h4>
 
   <button type="button"
           class="button is-text tiny is-paddingless margin-top-big
                   margin-right-small report is-shadowless is-pulled-right"
           @click="onToggleSearchGridFilter()">
-    <span class="has-color-tomato is-hidden-touch">Hide filters</span>
+    <span class="has-color-tomato is-hidden-touch">{{ $t('filter-list.hide') }}</span>
     <span class="margin-right-normal is-size-5 is-hidden-desktop">
       <i class="icon cross" />
     </span>
@@ -16,36 +16,36 @@
   <form class="filters-form" role="filter">
     <filter-check-list :options="filters.licenseTypes"
                       :disabled="licenseTypesDisabled"
-                      title="Use"
+                      :title="$t('filters.license-types.title')"
                       filterType="licenseTypes"
                       @filterChanged="onUpdateFilter" />
     <filter-check-list :options="filters.licenses"
                       :disabled="licensesDisabled"
-                      title="Licenses"
+                      :title="$t('filters.licenses.title')"
                       filterType="licenses"
                       @filterChanged="onUpdateFilter" />
     <filter-check-list v-if="renderProvidersFilter"
                       :options="filters.providers"
-                      title="Sources"
+                      :title="$t('filters.providers.title')"
                       filterType="providers"
                       @filterChanged="onUpdateFilter" />
     <filter-check-list :options="filters.categories"
-                      title="Image Type"
+                      :title="$t('filters.categories.title')"
                       filterType="categories"
                       @filterChanged="onUpdateFilter" />
     <filter-check-list :options="filters.extensions"
-                      title="File Type"
+                      :title="$t('filters.extensions.title')"
                       filterType="extensions"
                       @filterChanged="onUpdateFilter" />
     <filter-check-list :options="filters.aspectRatios"
-                      title="Aspect Ratio"
+                      :title="$t('filters.aspect-ratios.title')"
                       filterType="aspectRatios"
                       @filterChanged="onUpdateFilter" />
     <filter-check-list :options="filters.sizes"
-                      title="Image Size"
+                      :title="$t('filters.sizes.title')"
                       filterType="sizes"
                       @filterChanged="onUpdateFilter" />
-    <filter-check-list title="Search Settings"
+    <filter-check-list :title="$t('filters.mature.title')"
                       filterType="mature"
                       :checked="filters.mature"
                       @filterChanged="onUpdateFilter" />
@@ -54,7 +54,7 @@
       <input type="checkbox" id="creator-chk"
               :checked="filters.searchBy.creator"
               @change="onUpdateSearchByCreator">
-      <label for="creator-chk">Search by Creator</label>
+      <label for="creator-chk">{{ $t('filters.creator.title') }}</label>
     </div>
   </form>
 
@@ -62,18 +62,18 @@
         v-if="isFilterApplied">
     <button class="button tiny"
             @click="onClearFilters">
-      Clear filters
+      {{ $t('filter-list.clear') }}
     </button>
   </div>
 
   <div v-if="isFilterApplied"
        class="has-background-white padding-big is-hidden-desktop has-text-centered">
     <button class="button tiny margin-right-normal" @click="onClearFilters">
-      Clear filters
+      {{ $t('filter-list.clear') }}
     </button>
     <button class="button is-primary tiny"
             @click="onToggleSearchGridFilter()">
-      Show results
+      {{ $t('filter-list.show') }}
     </button>
   </div>
 </div>

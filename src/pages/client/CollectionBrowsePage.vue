@@ -9,7 +9,8 @@
       </div>
       <div class="column search-grid-ctr">
         <search-grid-form @onSearchFormSubmit="onSearchFormSubmit"
-                          searchBoxPlaceholder="Search this collection" />
+                          :searchBoxPlaceholder=
+                          "$t('browse-page.search-form.collection-placeholder')" />
         <search-grid v-if="query.provider"
                      :query="query"
                      :searchTerm="providerName"

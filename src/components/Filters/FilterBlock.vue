@@ -3,7 +3,7 @@
             v-if="filterType === 'searchBy' || filterType === 'mature'"
             role="filter"
             :aria-label="label">
-      <span>{{ this.$props.label }}</span>
+      <span>{{ $t(this.$props.label) }}</span>
       <span class="close margin-left-small"
             tabindex="0"
             @click="onClickIsolatedFilter"><i class="icon cross" /></span>
@@ -12,7 +12,7 @@
             class="filter-block button tiny tag margin-horizontal-smaller margin-bottom-smaller"
             role="filter"
             :aria-label="label">
-      <span>{{ this.$props.label }}</span>
+      <span>{{ $t(this.$props.label) }}</span>
       <span class="close padding-left-normal"
             tabindex="0"
             @click="onClick"><i class="icon cross" /></span>

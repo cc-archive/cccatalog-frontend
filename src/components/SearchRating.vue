@@ -1,19 +1,19 @@
 <template>
   <div class="caption has-text-weight-semibold">
     <div v-if="status == 'NOT_SENT'">
-      <span>Are these results relevant?</span>
+      <span>{{ $t('browse-page.search-rating.content') }}</span>
       <button class="button is-text tiny is-paddingless rating is-shadowless"
               @click="sendSearchRatingEvent(true)">
-        Yes
+        {{ $t('browse-page.search-rating.yes') }}
       </button>
       •
       <button class="button is-text tiny is-paddingless rating is-shadowless"
               @click="sendSearchRatingEvent(false)">
-        No
+        {{ $t('browse-page.search-rating.no') }}
       </button>
     </div>
     <div v-else-if="status == 'SENT'">
-      <span class="thank-you">Thank you for the feedback!</span>
+      <span class="thank-you">{{ $t('browse-page.search-rating.feedback') }}</span>
     </div>
   </div>
 </template>
