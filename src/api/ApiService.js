@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'redaxios'
 import es6Promise from 'es6-promise'
 
 es6Promise.polyfill()

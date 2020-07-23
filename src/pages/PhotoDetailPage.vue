@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'redaxios'
 import PhotoDetails from '@/components/ImageDetails/PhotoDetails'
 import PhotoTags from '@/components/PhotoTags'
 import RelatedImages from '@/components/RelatedImages'
