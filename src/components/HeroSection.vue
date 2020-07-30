@@ -2,7 +2,7 @@
   <main class="hero" role="main">
     <div class="hero-center">
       <!-- <div class="locale-block"><locale-selector /></div> -->
-      <h2 class="has-text-centered">{{ $t('hero.title') }}</h2>
+      <h1 class="has-text-centered">{{ $t('hero.title') }}</h1>
       <form
         class="hero_search-form margin-top-bigger"
         role="search"
