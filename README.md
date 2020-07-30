@@ -70,3 +70,8 @@ CC Search uses [CalVer](https://calver.org/) for version numbering, in the `YYYY
 ## Deployment
 
 Details about how to deploy the frontend code can be found on the [CC Wiki](https://wikijs.creativecommons.org/tech/cc-search/frontend) (Accessible to CC Staff only).
+
+
+## All Contributors
+
+[All our contributors](https://github.com/all-contributors/all-contributors)
