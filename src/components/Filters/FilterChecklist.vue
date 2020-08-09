@@ -42,13 +42,14 @@
           {{ $t(item.name) }}
         </label>
         <img
-          aria-label="license explanation"
+          :aria-label="$t('browse-page.aria.license-explanation')"
           tabindex="0"
           v-if="filterType == 'licenses'"
           src="@/assets/help_icon.svg"
           alt="help"
           class="license-help is-pulled-right padding-top-smallest padding-right-smaller"
           @click.stop="toggleLicenseExplanationVisibility(item.code)"
+          v-on:keyup.enter="toggleLicenseExplanationVisibility(item.code)"
         />
 
         <license-explanation-tooltip
