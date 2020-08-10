@@ -4,7 +4,7 @@
       :aria-label="$t('photo-details.aria.close-form')"
       class="button close-button is-text tiny is-pulled-right is-block has-text-grey-light"
       @click="closeForm()"
-      v-on:keyup.enter="closeForm()"
+      @keyup.enter="closeForm()"
     >
       <i class="icon cross"></i>
     </button>
