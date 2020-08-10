@@ -1,103 +1,122 @@
 <template>
-  <div class="padding-normal is-clearfix arrow-popup">
-    <button
-      :aria-label="$t('photo-details.aria.close-form')"
-      class="button close-button is-text tiny is-pulled-right is-block has-text-grey-light"
-      @click="closeForm()"
-      @keyup.enter="closeForm()"
-    >
-      <i class="icon cross"></i>
-    </button>
-    <dmca-notice
-      v-if="selectedCopyright"
-      :imageURL="imageURL"
-      :providerName="providerName"
-      :dmcaFormUrl="dmcaFormUrl"
-      @onBackClick="onBackClick()"
-    />
-    <done-message
-      v-else-if="!selectedCopyright && isReportSent"
-      :imageURL="imageURL"
-      :providerName="providerName"
-    />
-    <report-error v-else-if="reportFailed" />
-
-    <other-issue-form
-      v-else-if="selectedOther"
-      @onBackClick="onBackClick()"
-      @sendContentReport="sendContentReport"
-    />
-    <form v-else>
-      <h5 class="b-header margin-bottom-normal">
-        {{ $t('photo-details.content-report.title') }}
-      </h5>
-      <fieldset class="margin-bottom-normal">
-        <legend class="margin-bottom-normal">
-          {{ $t('photo-details.content-report.issue') }}
-        </legend>
-
-        <div>
-          <label for="dmca" class="margin-left-small">
-            <input
-              type="radio"
-              name="type"
-              id="dmca"
-              value="dmca"
-              v-model="selectedReason"
-            />
-            {{ $t('photo-details.content-report.copyright') }}
-          </label>
-        </div>
-
-        <div>
-          <label for="mature" class="margin-left-small">
-            <input
-              type="radio"
-              name="type"
-              id="mature"
-              value="mature"
-              v-model="selectedReason"
-            />
-            {{ $t('photo-details.content-report.mature') }}
-          </label>
-        </div>
-
-        <div>
-          <label for="other" class="margin-left-small">
-            <input
-              type="radio"
-              name="type"
-              id="other"
-              value="other"
-              v-model="selectedReason"
-            />
-            {{ $t('photo-details.content-report.other') }}
-          </label>
-        </div>
-      </fieldset>
-
-      <span
-        class="caption has-text-weight-semibold has-text-grey margin-bottom-normal"
-      >
-        {{ $t('photo-details.content-report.caption') }}
-      </span>
-
+  <div @keyup.esc="closeForm">
+    <div class="margin-bottom-smaller has-text-left">
       <button
-        type="button"
-        :disabled="selectedReason === null"
-        class="button next-button tiny is-info is-pulled-right"
-        @click="onIssueSelected()"
-        v-on:keyup.enter="onIssueSelected()"
+        class="button is-text tiny is-paddingless report is-shadowless"
+        @click="toggleReportFormVisibility()"
       >
-        {{ $t('photo-details.content-report.next') }}
+        <span class="has-color-tomato margin-left-small">
+          <i class="icon flag margin-right-small"></i>
+          {{ $t('photo-details.content-report.title') }}
+        </span>
       </button>
-    </form>
+    </div>
+    <div
+      class="padding-normal is-clearfix arrow-popup"
+      v-if="isReportFormVisible"
+    >
+      <button
+        :aria-label="$t('photo-details.aria.close-form')"
+        class="button close-button is-text tiny is-pulled-right is-block has-text-grey-light"
+        @click="closeForm()"
+        @keyup.enter="closeForm()"
+      >
+        <i class="icon cross"></i>
+      </button>
+      <dmca-notice
+        v-if="selectedCopyright"
+        :imageURL="imageURL"
+        :providerName="providerName"
+        :dmcaFormUrl="dmcaFormUrl"
+        @onBackClick="onBackClick()"
+      />
+      <done-message
+        v-else-if="!selectedCopyright && isReportSent"
+        :imageURL="imageURL"
+        :providerName="providerName"
+      />
+      <report-error v-else-if="reportFailed" />
+
+      <other-issue-form
+        v-else-if="selectedOther"
+        @onBackClick="onBackClick()"
+        @sendContentReport="sendContentReport"
+      />
+      <form v-else>
+        <h5 class="b-header margin-bottom-normal">
+          {{ $t('photo-details.content-report.title') }}
+        </h5>
+        <fieldset class="margin-bottom-normal">
+          <legend class="margin-bottom-normal">
+            {{ $t('photo-details.content-report.issue') }}
+          </legend>
+
+          <div>
+            <label for="dmca" class="margin-left-small">
+              <input
+                type="radio"
+                name="type"
+                id="dmca"
+                value="dmca"
+                v-model="selectedReason"
+              />
+              {{ $t('photo-details.content-report.copyright') }}
+            </label>
+          </div>
+
+          <div>
+            <label for="mature" class="margin-left-small">
+              <input
+                type="radio"
+                name="type"
+                id="mature"
+                value="mature"
+                v-model="selectedReason"
+              />
+              {{ $t('photo-details.content-report.mature') }}
+            </label>
+          </div>
+
+          <div>
+            <label for="other" class="margin-left-small">
+              <input
+                type="radio"
+                name="type"
+                id="other"
+                value="other"
+                v-model="selectedReason"
+              />
+              {{ $t('photo-details.content-report.other') }}
+            </label>
+          </div>
+        </fieldset>
+
+        <span
+          class="caption has-text-weight-semibold has-text-grey margin-bottom-normal"
+        >
+          {{ $t('photo-details.content-report.caption') }}
+        </span>
+
+        <button
+          type="button"
+          :disabled="selectedReason === null"
+          class="button next-button tiny is-info is-pulled-right"
+          @click="onIssueSelected()"
+          v-on:keyup.enter="onIssueSelected()"
+        >
+          {{ $t('photo-details.content-report.next') }}
+        </button>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
 import { SEND_CONTENT_REPORT } from '@/store/action-types'
-import { REPORT_FORM_CLOSED } from '@/store/mutation-types'
+import {
+  REPORT_FORM_CLOSED,
+  TOGGLE_REPORT_FORM_VISIBILITY,
+} from '@/store/mutation-types'
 import dmcaNotice from './DmcaNotice'
 import OtherIssueForm from './OtherIssueForm'
 import DoneMessage from './DoneMessage'
@@ -124,6 +143,9 @@ export default {
     }
   },
   computed: {
+    isReportFormVisible() {
+      return this.$store.state.isReportFormVisible
+    },
     isReportSent() {
       return this.$store.state.isReportSent
     },
@@ -132,6 +154,9 @@ export default {
     },
   },
   methods: {
+    toggleReportFormVisibility() {
+      this.$store.commit(TOGGLE_REPORT_FORM_VISIBILITY)
+    },
     onIssueSelected() {
       if (this.selectedReason === 'other') {
         this.selectedOther = true

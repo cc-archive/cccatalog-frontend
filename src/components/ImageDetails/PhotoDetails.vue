@@ -20,20 +20,8 @@
 
       <legal-disclaimer />
 
-      <div class="margin-bottom-smaller has-text-left">
-        <button
-          class="button is-text tiny is-paddingless report is-shadowless"
-          @click="toggleReportFormVisibility()"
-        >
-          <span class="has-color-tomato margin-left-small">
-            <i class="icon flag margin-right-small"></i>
-            {{ $t('photo-details.content-report.title') }}
-          </span>
-        </button>
-      </div>
       <div class="margin-top-small has-text-left">
         <content-report-form
-          v-if="isReportFormVisible"
           :imageId="image.id"
           :imageURL="image.foreign_landing_url"
           :providerName="providerName"
@@ -149,7 +137,6 @@
 
 <script>
 import ContentReportForm from '@/components/ContentReport/ContentReportForm'
-import { TOGGLE_REPORT_FORM_VISIBILITY } from '@/store/mutation-types'
 import {
   SEND_DETAIL_PAGE_EVENT,
   DETAIL_PAGE_EVENTS,
@@ -187,9 +174,6 @@ export default {
     }
   },
   computed: {
-    isReportFormVisible() {
-      return this.$store.state.isReportFormVisible
-    },
     fullLicenseName() {
       const license = this.image.license
       const version = this.image.license_version
@@ -228,9 +212,6 @@ export default {
     attributionHtml() {
       const licenseURL = `${this.ccLicenseURL}&atype=html`
       return attributionHtml(this.image, licenseURL, this.fullLicenseName)
-    },
-    toggleReportFormVisibility() {
-      this.$store.commit(TOGGLE_REPORT_FORM_VISIBILITY)
     },
     onPhotoSourceLinkClicked() {
       this.$store.dispatch(SEND_DETAIL_PAGE_EVENT, {

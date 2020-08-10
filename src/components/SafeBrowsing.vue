@@ -1,5 +1,5 @@
 <template>
-  <div class="safe-browsing">
+  <div class="safe-browsing" @keyup.esc="closeShowForm">
     <button
       class="button is-text tiny is-paddingless rating is-shadowless"
       @click="toggleShowForm"

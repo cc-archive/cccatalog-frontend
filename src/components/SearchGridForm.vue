@@ -17,8 +17,7 @@
       </button>
       <div class="field has-addons search-input">
         <div class="control has-icons-left margin-left-small">
-          <label for="searchInput" class="is-sr-only"
-            >Search
+          <label for="searchInput">
             <input
               :aria-label="$t('browse-page.aria.search')"
               id="searchInput"
