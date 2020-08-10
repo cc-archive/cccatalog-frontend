@@ -64,7 +64,11 @@ export default {
   },
   methods: {
     checkKey(e) {
-      if (e.keyCode === 27) this.$emit('close')
+      if (this.visible && e.keyCode === 27) {
+        console.log(e)
+        console.log('emitted close event!')
+        this.$emit('close')
+      }
     },
   },
 }

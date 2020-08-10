@@ -44,7 +44,6 @@
         <button
           type="button"
           @click="showMetaImageSearch = true"
-          v-on:keyup.enter="showMetaImageSearch = true"
           class="meta-popup-trigger has-color-tomato text-center caption padding-normal"
         >
           {{ $t('browse-page.other-source') }}
@@ -59,15 +58,12 @@
     </div>
 
     <app-modal
+      v-show="showMetaImageSearch"
       :visible="showMetaImageSearch"
       :title="'Search Images from Other Sources'"
       @close="showMetaImageSearch = false"
     >
-      <meta-search-card
-        type="image"
-        :query="query"
-        @close="showMetaImageSearch = false"
-      />
+      <meta-search-card type="image" :query="query" />
     </app-modal>
   </section>
 </template>
