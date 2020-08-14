@@ -61,20 +61,20 @@ export default {
         code,
         filterType,
         provider: this.$props.provider,
-        shouldNavigate: true,
+        shouldNavigate: false,
       })
     },
     onClearFilters() {
       this.$store.commit(CLEAR_FILTERS, {
         provider: this.$props.provider,
-        shouldNavigate: true,
+        shouldNavigate: false,
       })
     },
     onUpdateSearchByCreator() {
       this.$store.dispatch(TOGGLE_FILTER, {
         filterType: 'searchBy',
         provider: this.$props.provider,
-        shouldNavigate: true,
+        shouldNavigate: false,
       })
     },
     onToggleSearchGridFilter() {

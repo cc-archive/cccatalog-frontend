@@ -76,7 +76,7 @@ const BrowsePage = {
       this.getImages(searchParams)
     },
     onSearchFormSubmit(searchParams) {
-      this.$store.commit(SET_QUERY, { ...searchParams, shouldNavigate: true })
+      this.$store.commit(SET_QUERY, { ...searchParams, shouldNavigate: false })
     },
     onToggleSearchGridFilter() {
       this.$store.commit(SET_FILTER_IS_VISIBLE, {
