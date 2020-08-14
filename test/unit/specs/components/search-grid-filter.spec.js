@@ -76,7 +76,7 @@ describe('SearchGridFilter', () => {
       code: 'foo',
       filterType: 'bar',
       provider: props.provider,
-      shouldNavigate: true,
+      shouldNavigate: false,
     })
   })
 
@@ -86,7 +86,7 @@ describe('SearchGridFilter', () => {
     expect(dispatchMock).toHaveBeenCalledWith('TOGGLE_FILTER', {
       filterType: 'searchBy',
       provider: props.provider,
-      shouldNavigate: true,
+      shouldNavigate: false,
     })
   })
 
@@ -95,7 +95,7 @@ describe('SearchGridFilter', () => {
     wrapper.vm.onClearFilters()
     expect(commitMock).toHaveBeenCalledWith('CLEAR_FILTERS', {
       provider: props.provider,
-      shouldNavigate: true,
+      shouldNavigate: false,
     })
   })
 
