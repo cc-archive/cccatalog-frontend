@@ -1,4 +1,4 @@
-import AboutPage from '@/pages/AboutPage'
+import AboutPage from '@/pages-old/AboutPage'
 import render from '../../test-utils/render'
 
 describe('AboutPage', () => {

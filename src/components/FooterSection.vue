@@ -19,7 +19,7 @@
               viewBox="0 0 304 73"
             >
               <title id="title" lang="en">Logo</title>
-              <use href="/static/logos/cc/logomark.svg#logomark"></use>
+              <use href="~/assets/logos/cc/logomark.svg#logomark"></use>
             </svg>
           </a>
           <address class="margin-bottom-normal">
@@ -165,17 +165,3 @@ export default {
   name: 'footer-section',
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-.donate,
-.social {
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-.icon {
-  vertical-align: middle;
-}
-</style>

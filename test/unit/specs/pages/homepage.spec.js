@@ -1,4 +1,4 @@
-import Homepage from '@/pages/HomePage'
+import Homepage from '@/pages-old/HomePage'
 import render from '../../test-utils/render'
 
 describe('Homepage', () => {

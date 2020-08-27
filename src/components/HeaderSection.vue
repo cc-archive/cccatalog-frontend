@@ -4,19 +4,14 @@
       :showNavSearch="showNavSearch"
       :navSearchPlaceholder="navSearchPlaceholder"
     />
-    <slot></slot>
+    <slot />
   </header>
 </template>
 
 <script>
-import NavSection from '@/components/NavSection'
-
 export default {
   name: 'header-section',
-  components: {
-    NavSection,
-  },
-  props: ['showHero', 'showNavSearch', 'isHeaderFixed', 'navSearchPlaceholder'],
+  props: ['showNavSearch', 'navSearchPlaceholder'],
 }
 </script>
 

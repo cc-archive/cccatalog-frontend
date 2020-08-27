@@ -2,7 +2,7 @@
   <nav :aria-label="$t('header.aria.primary')" class="navbar">
     <div class="navbar-brand">
       <router-link class="logo" to="/">
-        <img alt="Logo" src="/static/logos/products/search.svg" />
+        <img alt="Logo" src="~assets/logos/products/search.svg" />
       </router-link>
       <a
         role="button"
@@ -127,9 +127,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-/* header */
-
+<style lang="scss">
 .logo > img {
   height: 42px;
   padding-right: 11px;

@@ -1,4 +1,4 @@
-import ImageProviderService from '@/api/ImageProviderService'
+import ImageProviderService from '@/api-old/ImageProviderService'
 
 export default function getProviderLogo(providerName) {
   const provider = ImageProviderService.getProviderInfo(providerName)

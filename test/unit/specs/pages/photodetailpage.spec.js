@@ -1,4 +1,4 @@
-import PhotoDetailPage from '@/pages/PhotoDetailPage'
+import PhotoDetailPage from '@/pages-old/PhotoDetailPage'
 import render from '../../test-utils/render'
 import i18n from '../../test-utils/i18n'
 

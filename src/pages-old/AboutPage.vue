@@ -138,7 +138,7 @@
 <script>
 import HeaderSection from '@/components/HeaderSection'
 import FooterSection from '@/components/FooterSection'
-import ServerPrefetchProvidersMixin from '@/pages/mixins/ServerPrefetchProvidersMixin'
+import ServerPrefetchProvidersMixin from '@/pages-old/mixins/ServerPrefetchProvidersMixin'
 
 const AboutPage = {
   name: 'about-page',

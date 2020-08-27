@@ -1,4 +1,4 @@
-import FeedbackPage from '@/pages/FeedbackPage'
+import FeedbackPage from '@/pages-old/FeedbackPage'
 import render from '../../test-utils/render'
 
 describe('Feedback page', () => {

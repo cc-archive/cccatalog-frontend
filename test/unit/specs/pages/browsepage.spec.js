@@ -1,6 +1,6 @@
 import Vuex from 'vuex'
 import { createLocalVue } from '@vue/test-utils'
-import BrowsePage from '@/pages/BrowsePage'
+import BrowsePage from '@/pages-old/BrowsePage'
 import render from '../../test-utils/render'
 
 describe('BrowsePage', () => {
