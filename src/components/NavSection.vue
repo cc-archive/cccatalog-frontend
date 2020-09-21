@@ -82,14 +82,6 @@
             <router-link class="navbar-item" to="/feedback">{{
               $t('header.feedback')
             }}</router-link>
-            <a
-              href="https://api.creativecommons.engineering/"
-              target="_blank"
-              rel="noopener"
-              class="navbar-item"
-              >{{ $t('API') }}
-              <i class="icon external-link" />
-            </a>
           </div>
         </div>
         <router-link class="navbar-item" to="/support">{{
@@ -112,7 +104,6 @@
 
 <script>
 import { SET_QUERY } from '@/store/mutation-types'
-
 export default {
   props: {
     showNavSearch: {
@@ -143,15 +134,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 /* header */
-
 .logo > img {
   height: 42px;
   padding-right: 11px;
 }
-
 .hero_search-form {
   margin: 0 15px;
-
   input {
     width: 16rem;
   }
