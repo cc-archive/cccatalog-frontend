@@ -7,7 +7,6 @@
 
 <script>
 import NavSection from '@/components/NavSection'
-import local from '@/utils/local'
 
 export default {
   name: 'HeaderSection',
