@@ -13,6 +13,6 @@ export default {
   components: {
     NavSection,
   },
-  props: { showNavSearch: { type: Boolean, default: false } }
+  props: { showNavSearch: { type: Boolean, default: false } },
 }
 </script>
