@@ -30,7 +30,11 @@ export const actions = Object.assign(
   RelatedImagesStore.actions(ImageService),
   {
     async nuxtServerInit({ dispatch }) {
-      await dispatch(FETCH_IMAGE_PROVIDERS)
+      try {
+        await dispatch(FETCH_IMAGE_PROVIDERS)
+      } catch (error) {
+        console.log("Couldn't fetch image providers due to error!", error)
+      }
     },
   }
 )
