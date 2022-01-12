@@ -1,12 +1,14 @@
-> 🙅 **status: discontinued:** Project is in maintenance mode.
->
-> **This project is being continued by WordPress:**
-> - **[WordPress/openverse-frontend](https://github.com/WordPress/openverse-frontend): The gateway to the Openverse. Openverse is a search tool for CC-licensed and public domain content across the internet.**
->
-> For additional context see:
-> - 2020-12-07: [Upcoming Changes to the CC Open Source Community — Creative Commons Open Source](https://opensource.creativecommons.org/blog/entries/2020-12-07-upcoming-changes-to-community/)
-> - 2021-05-03: [CC Search to Join WordPress - Creative Commons](https://creativecommons.org/2021/05/03/cc-search-to-join-wordpress/)
-> - **2021-05-10: [Welcome to Openverse – Openverse — WordPress.org](https://make.wordpress.org/openverse/2021/05/11/hello-world/)**
+--------
+# Project Transferred
+**This project was transfered to WordPress:**
+- **[WordPress/openverse-frontend](https://github.com/WordPress/openverse-frontend): The gateway to the Openverse. Openverse is a search tool for CC-licensed and public domain content across the internet.**
+
+For additional context see:
+- 2020-12-07: [Upcoming Changes to the CC Open Source Community — Creative Commons Open Source](https://opensource.creativecommons.org/blog/entries/2020-12-07-upcoming-changes-to-community/)
+- 2021-05-03: [CC Search to Join WordPress - Creative Commons](https://creativecommons.org/2021/05/03/cc-search-to-join-wordpress/)
+- 2021-05-10: [Welcome to Openverse – Openverse — WordPress.org](https://make.wordpress.org/openverse/2021/05/11/hello-world/)
+- 2021-12-13: [Dear Users of CC Search, Welcome to Openverse - Creative Commons](https://creativecommons.org/2021/12/13/dear-users-of-cc-search-welcome-to-openverse/)
+--------
 
 # cccatalog-frontend
 
