@@ -70,7 +70,7 @@ export default {
 </script>
 
 <style>
-/* @remove when this class is added to vocabulary by https://github.com/creativecommons/vocabulary/issues/515   */
+/* @remove when this class is added to vocabulary by https://github.com/cc-archive/vocabulary-legacy/issues/515   */
 .has-color-dark-gray {
   color: rgb(120, 120, 120);
 }
